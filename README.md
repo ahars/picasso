@@ -47,9 +47,11 @@ Le site effectue des requètes sur deux services :
 Le serveur de Payutc permet de récupérer les informations suivantes :
 * Tarifs
 * Articles en vente
+
 On utilise le [JSONClientMiddleware](https://github.com/payutc/casper/tree/master/src/Payutc/Casper) pour faire des requêtes.
 
 Le portail des associations permet de récupérer les informations suivantes :
 * Calendrier des permanences
 * Dernière News
+
 On utilise la classe CURL pour faire des requêtes.
