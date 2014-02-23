@@ -1,32 +1,22 @@
 <?php 
-require 'vendor/autoload.php';
-require 'classes/db.class.php';
-require 'classes/cas.class.php';
-require 'classes/user.class.php';
-require 'classes/session.class.php';
-require 'helpers/date.helper.php';
 
-$_CONFIG['semestre'] = "P14";
+require 'vendor/autoload.php';
+
+use \Picasso\Config;
+use \Picasso\Session;
+use \Payutc\Casper\JsonClientMiddleware;
+
+require 'config.incl.php';
+
+Config::init($_CONFIG);
 
 // Set the current mode
-$app = new \Slim\Slim(array(
-    'mode' => 'development'
-));
+$app = new \Slim\Slim(Config::get('slim_config'));
 
-$app->add(new \Slim\Middleware\SessionCookie(array(
-    'expires' => '20 minutes',
-    'path' => '/',
-    'domain' => null,
-    'secure' => false,
-    'httponly' => false,
-    'name' => 'slim_session',
-    'secret' => sha1('assos.utc.fr/picasso'),
-    'cipher' => MCRYPT_RIJNDAEL_256,
-    'cipher_mode' => MCRYPT_MODE_CBC
-)));
-/*
-    Change la configuration de l'application en fontion du mode : production ou developpement
- */
+// Settings for cookies
+$sessionPath = parse_url(Config::get("casper_url"), PHP_URL_PATH);
+session_set_cookie_params(0, $sessionPath);
+session_start();
 
 // Only invoked if mode is "production"
 $app->configureMode('production', function () use ($app) {
@@ -43,6 +33,9 @@ $app->configureMode('development', function () use ($app) {
         'debug' => true
     ));
 });
+
+// This middleware loads all our json clients
+$app->add(new JsonClientMiddleware);
 
 function sanitize(array $_files, $top = true){
     $files = array();
@@ -197,10 +190,66 @@ $app->get('/admin', $CASauthenticate('admin'),  function () use ($app){
     ));
 })->name('admin');
 
-$app->get('/logout', function () use ($app){
-    $service = $app->request()->getUrl().$app->urlFor("home");
-    Session::flush();
-    $app->redirect(CAS::logout_url($service));
+// --- CAS
+$app->get('/login', function() use ($app) {
+    // Si pas de ticket, c'est une invitation à se connecter
+    if(empty($_GET["ticket"])) {
+        $app->getLog()->debug("No CAS ticket, unsetting cookies and redirecting to CAS");
+        // On jette les cookies actuels
+        JsonClientFactory::getInstance()->destroyCookie();
+        
+        // Redirection vers le CAS
+        $app->redirect(JsonClientFactory::getInstance()->getClient("MYACCOUNT")->getCasUrl()."/login?service=".Config::get("casper_url").'login');
+    } else {
+        // Connexion au serveur avec le ticket CAS
+        try {
+            $app->getLog()->debug("Trying loginCas");
+            
+            $result = JsonClientFactory::getInstance()->getClient("MYACCOUNT")->loginCas(array(
+                "ticket" => $_GET["ticket"],
+                "service" => Config::get("casper_url").'login'
+            ));
+        } catch (\JsonClient\JsonException $e) {
+            // Si l'utilisateur n'existe pas, go inscription
+            if($e->getType() == "Payutc\Exception\UserNotFound"){
+                // On doit garder le cookie car le serveur garde le login de son côté
+                JsonClientFactory::getInstance()->setCookie(JsonClientFactory::getInstance()->getClient("MYACCOUNT")->cookie);
+                
+                // Redirection vers la charte
+                $app->redirect($app->urlFor('register'));
+            }
+            
+            $app->getLog()->warn("Error with CAS ticket ".$_GET["ticket"].": ".$e->getMessage());
+            
+            // Affichage d'une page avec juste l'erreur
+            $app->render('header.php', array("title" => Config::get("title", "payutc")));
+            $app->render('error.php', array('login_erreur' => 'Erreur de login CAS<br /><a href="'.$app->urlFor('login').'">Réessayer</a>'));
+            $app->render('footer.php');
+            $app->stop();
+        }
+
+        // On stocke le cookie
+        JsonClientFactory::getInstance()->setCookie(JsonClientFactory::getInstance()->getClient("MYACCOUNT")->cookie);
+            
+        // Go vers la page d'accueil
+        $app->redirect($app->urlFor('home'));
+    }
+})->name('login');
+
+$app->get('/logout', function() use ($app) {
+    // On clot la session avec le serveur
+    try {
+        JsonClientFactory::getInstance()->getClient("MYACCOUNT")->logout();        
+    }
+    catch (\JsonClient\JsonException $e){
+        // No worries, we'll just continue
+    }
+    
+    // Throw our cookies away
+    JsonClientFactory::getInstance()->destroyCookie();
+    
+    // Logout from CAS
+    $app->redirect(JsonClientFactory::getInstance()->getClient("MYACCOUNT")->getCasUrl()."/logout?service=".Config::get("casper_url").'login');
 })->name('logout');
 
 $app->get('/', function () use ($app){

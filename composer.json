@@ -1,5 +1,12 @@
 {
     "require": {
         "slim/slim": "2.*"
+    },
+    "autoload": {
+        "classmap": ["vendor/payutc-json-client/jsonclient/"],
+        "psr-0": {
+            "Payutc": "src/",
+            "Picasso": "src/"
+        }
     }
 }

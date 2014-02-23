@@ -23,5 +23,15 @@ $_CONFIG["casper_url"] = "http://localhost/payutc/casper/";
 // URL du serveur payutc (avec le / final)
 $_CONFIG["server_url"] = "http://localhost/payutc/server/web/";
 
+$_CONFIG['database'] =  array(
+    'datasource' => 'Database/MySQL',
+    'persistent' => false,
+    'host' => '127.0.0.1',
+    'login' => 'picasso',
+    'password' => 'picasso',
+    'database' => 'picasso',
+    'prefix' => '',
+    'encoding' => 'utf8',
+);
 
 ?>

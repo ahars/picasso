@@ -5,22 +5,12 @@ namespace Picasso;
 class DB{
 
 	private $pdo;
-	private $default = array(
-		'datasource' => 'Database/MySQL',
-		'persistent' => false,
-		'host' => '127.0.0.1',
-		'login' => 'picasso',
-		'password' => 'picasso',
-		'database' => 'picasso',
-		'prefix' => '',
-		'encoding' => 'utf8',
-	);
 	private $messages = array();
 	private $lastId;
 
 	function __construct($default = null){
 		if (!isset($default)) {
-			$default = $this->default;
+			$default = \Picasso\Config::get('database');
 		}
 		try{
 		    $this->pdo = new PDO('mysql:host='.$default['host'].';dbname='.$default['database'], $default['login'], $default['password'],array(
