@@ -6,7 +6,7 @@ require 'classes/user.class.php';
 require 'classes/session.class.php';
 require 'helpers/date.helper.php';
 
-$_CONFIG['semestre'] = "P13";
+$_CONFIG['semestre'] = "P14";
 
 // Set the current mode
 $app = new \Slim\Slim(array(
