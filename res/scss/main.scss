@@ -1,0 +1,436 @@
+@import "compass";
+@import "compass/reset";
+@import "susy"; 
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab);
+
+/* -------------------------------------------------------------------------*/
+/* 960 grid system */
+
+$total-columns: 12;
+$column-width: 4em;
+$gutter-width: 1em;
+$grid-padding: 1em;
+
+$container-style: static;
+
+$aubergine: #131325;
+$blanc: #FFFFFF;
+$rouge: #B31B28;
+
+/* -------------------------------------------------------------------------*/
+/* Media */
+
+.visible-phone {
+  display: none;
+}
+.visible-desktop {
+  display: inherit;
+}
+@media (max-width: 700px) {
+  .visible-phone {
+    display: inherit;
+  }
+  .visible-desktop {
+    display: none;
+  }
+}
+
+/* -------------------------------------------------------------------------*/
+/* Body */
+
+body{
+    font-family: 'Roboto Slab', sans-serif;
+    font-size:14px; 
+    color:$blanc;
+    background: $aubergine;
+    padding: O $gutter-width/2;
+    font-weight: 200;
+}
+
+::selection{
+    background-color: $rouge;
+    color: $blanc;
+}
+
+/* -------------------------------------------------------------------------*/
+/* Basics */
+
+img, table, td, blockquote, code, pre, textarea, input, iframe, object, embed, video {
+  max-width: 100%;
+}
+
+p,ul,ol,blockquote{ 
+  margin-bottom: $gutter-width; 
+}
+
+a{  
+  color:$rouge; text-decoration: none; 
+  @include transition(color 0.1s ease-in);
+}
+a:hover{ 
+  color:darken($rouge,25%); 
+  text-decoration: none; 
+}
+
+h1,h2,h3,h4,h5,h6{ 
+  margin-bottom: 12px; color:$blanc; font-weight: 200;
+}
+h1{ font-size:49pt; }
+h2{ font-size:23pt; }
+h3{ font-size:17pt; }
+h4{ font-size:14pt; }
+h5,h6{ font-size:1em; }
+
+ul, ol{ margin-left: $gutter-width;}
+ul{ list-style: square inside; }
+ul ul, ol ul{ list-style: circle inside; margin-bottom: 0;}
+ol{ list-style:decimal inside; }
+ol ol,ul ol{ list-style:lower-roman inside; margin-bottom: 0;}
+
+blockquote{
+  margin: 0 60px 0 45px;
+  border-left:5px solid $rouge;
+  padding-left: 10px;
+  font-style:italic; 
+  overflow: hidden;
+  margin-bottom: 1.5em;
+  margin-top: 1.5em;
+}
+blockquote p{ 
+  margin-bottom: 0.75em;
+}
+blockquote em{
+  display:block; 
+  text-align: right;
+  font-family: Helvetica, sans-serif;
+  font-style:normal; 
+}
+blockquote em:before{
+  content:'—'
+}
+
+img.alignleft{
+  float:left; margin-right: $gutter-width;
+}
+img.alignright{
+  float:right; margin-left: $gutter-width;
+}
+img.aligncenter{
+  display:block; margin: 0 auto;
+}
+
+p{ text-align: justify;}
+
+em{
+    font-style: italic;
+}
+
+.marker{
+    background-color: yellow;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: 200;
+  vertical-align: middle;
+}
+
+.fixed{
+  position:fixed;
+}
+
+/* -------------------------------------------------------------------------*/
+/* Grid */
+
+[class*="span"]{
+    @include box-sizing(border-box);
+}
+.span2 { @include span-columns(2,$total-columns); }
+.span2.omega { @include span-columns(2 omega,$total-columns); }
+.span3 { @include span-columns(3,$total-columns); }
+.span3.omega { @include span-columns(3 omega,$total-columns); }
+.span4 { @include span-columns(4,$total-columns); }
+.span4.omega { @include span-columns(4 omega,$total-columns); }
+.span5 { @include span-columns(5,$total-columns); }
+.span5.omega { @include span-columns(5 omega,$total-columns); }
+.span6 { @include span-columns(6,$total-columns); }
+.span6.omega { @include span-columns(6 omega,$total-columns); }
+.span7 { @include span-columns(7,$total-columns); }
+.span7.omega { @include span-columns(7 omega,$total-columns); }
+.span8 { @include span-columns(8,$total-columns); }
+.span8.omega { @include span-columns(8 omega,$total-columns); }
+.span9 { @include span-columns(9,$total-columns); }
+.span9.omega { @include span-columns(9 omega,$total-columns); }
+.clear{clear:both;}
+
+.push-right { float:right; }
+.push-left { float:left; }
+
+/* -------------------------------------------------------------------------*/
+/* Container */
+
+.container { 
+  @include container;
+  margin:0 auto;
+  position: relative;
+}
+
+/* -------------------------------------------------------------------------*/
+/* Header */
+
+header{
+  height: 64px;
+  background: $blanc;
+  top:0;
+  left:0;
+  right:0;
+  z-index: 5000;
+  #main-logo{
+    position: absolute;
+    margin-left: -150px;
+    height: 150px;
+    width: 150px;
+    background: $blanc;
+    border-radius: 50%;
+    a{
+      text-decoration: none;
+      img{
+        width: 150px;
+        height: 150px;
+      }
+    }
+  }
+
+  ul{
+    list-style: none;
+    margin:0;
+    padding:0;
+    &.menu-left{
+      float:left;
+      margin-left: 75px;
+      li:first-child{
+        border-left:1px solid $aubergine;
+      }
+    }
+    &.menu-right{
+      float:right;
+      li:hover, 
+      li:active,
+      li:focus,
+      li.active{
+        background-color:$rouge;
+      }
+      li{
+        a{
+          margin:15px 15px;
+        }
+        border:0;
+      }
+    }
+    li{
+      display: block;
+      float: left;
+      border-right:1px solid $aubergine;
+      margin:0;
+      padding:0;
+      @include transition(background-color 0.3s ease-in);
+      &:hover, 
+      &:active,
+      &:focus,
+      &.active{
+        background-color: $aubergine;
+      }
+      a{
+        display: block;
+        margin:15px 35px;
+        background: url("../img/sprite.svg") 0 0 no-repeat;
+        height: 34px;
+        width: 34px;
+      }
+      a#menu-calendrier{
+        background-position: -4*34px 0;
+      }
+      &:hover a#menu-calendrier, 
+      &:active a#menu-calendrier,
+      &:focus a#menu-calendrier,
+      &.active a#menu-calendrier
+      {
+        background-position: -4*34px -34px;
+      }
+      a#menu-weekbieres{
+        background-position: 0 0;
+      }
+      &:hover a#menu-weekbieres, 
+      &:active a#menu-weekbieres,
+      &:focus a#menu-weekbieres,
+      &.active a#menu-weekbieres
+      {
+        background-position: 0 -34px;
+      }
+      a#menu-goodies{
+        background-position: -5*34px 0;
+      }
+      &:hover a#menu-goodies, 
+      &:active a#menu-goodies,
+      &:focus a#menu-goodies,
+      &.active a#menu-goodies
+      {
+        background-position: -5*34px -34px;
+      }
+      a#menu-tarifs{
+        background-position: -2*34px 0;
+      }
+      &:hover a#menu-tarifs, 
+      &:active a#menu-tarifs,
+      &:focus a#menu-tarifs,
+      &.active a#menu-tarifs
+      {
+        background-position: -2*34px -34px;
+      }
+      a#menu-facebook{
+        background-position: -1*34px 0;
+      }
+      &:hover a#menu-facebook, 
+      &:active a#menu-facebook,
+      &:focus a#menu-facebook,
+      &.active a#menu-facebook
+      {
+        background-position: -1*34px -34px;
+      }
+      a#menu-payutc{
+        background-position: -3*34px 0;
+      }
+      &:hover a#menu-payutc, 
+      &:active a#menu-payutc,
+      &:focus a#menu-payutc,
+      &.active a#menu-payutc
+      {
+        background-position: -3*34px -34px;
+      }
+    }
+  }
+}
+
+/* -------------------------------------------------------------------------*/
+/* Main Container */
+
+#main-container{
+  position:relative;
+  z-index: 1000;
+  section.slider{
+    section.slides{
+      width:760px;
+      position: relative;
+      h3{margin-left: 78px;}
+      section.box{
+        border: 1px solid $rouge;
+        padding: 1em;
+        min-height: 200px;
+        div.columns{
+          float:left;
+          margin-right: 1em;
+          &:last-child{
+            margin-right: 0;
+            &:after{
+              content: "";
+              clear: both;
+            }
+          }
+          .block{
+            height: 20px;
+            width: 82px;
+            background: $rouge;
+            border-bottom: 2px solid $aubergine;
+            cursor: pointer;
+            padding:1em;
+            line-height: 20px;
+            position: relative;
+            a{
+              color: $blanc;
+            }
+            a:hover{
+              color: $aubergine;
+            }
+            .detail{
+              position: absolute;
+              background: $aubergine;
+              width: 360px;
+              height: 198px;
+              display: none;
+              z-index: 4000;
+              &.d-left{
+                left: 122px;
+              }
+              &.d-right{
+                right: 122px;
+              }
+              &.d-1{
+                top: 0px;
+              }
+              &.d-2{
+                top: -50px;
+              }
+              &.d-3{
+                top: -100px;
+              }
+              &.d-4{
+                top: -150px;
+              }
+            }
+          }
+          .liste{
+            border:0;
+            margin:0;
+            border-left: 2px solid $rouge;
+            padding-left: 1em;
+            width: 164px;
+            tr{
+              td{
+                padding-top:0.35em;
+                padding-bottom:0.35em;
+                font-size: 1.1em;
+              }
+              .titre{
+                padding-left:1em;
+              }
+              .prix{
+                padding-left:1.5em;
+              }
+              .degre{
+                padding-left:1em;
+                color: $rouge;
+              }
+            }
+          }
+        }
+      }
+      section.selectors{
+        position: absolute;
+        right: -32px;
+        top:44%;
+        ul{
+          list-style: none;
+          margin: auto 0;
+          padding:0;
+          li{
+            margin:2em 0;
+            a{
+              display: block;
+              border-radius: 50%;
+              width: 13px;
+              height: 13px; 
+              background-color: $rouge;
+              @include transition(background-color 0.3s ease-in);
+              &:hover, 
+              &:active,
+              &:focus,
+              &.active{
+                background-color: $blanc;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

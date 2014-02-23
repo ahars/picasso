@@ -1,0 +1,42 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab);
+/* line 8, ../scss/static.scss */
+body {
+  color: #131325;
+  text-align: center;
+  font-family: "Roboto Slab", sans-serif;
+  margin: 0;
+  width: 800px;
+  margin: auto;
+  font-size: 14px;
+  font-weight: 200;
+}
+
+/* line 18, ../scss/static.scss */
+h1 {
+  font-size: 56px;
+  line-height: 100px;
+  font-weight: normal;
+  color: #b31b28;
+}
+
+/* line 24, ../scss/static.scss */
+h2 {
+  font-size: 24px;
+  color: #131325;
+  line-height: 1.5em;
+}
+
+/* line 26, ../scss/static.scss */
+h3 {
+  color: #b31b28;
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 28px;
+}
+
+/* line 33, ../scss/static.scss */
+hr {
+  margin: 18px 0;
+  border: 0;
+  border-top: 1px solid #131325;
+}

@@ -1,0 +1,37 @@
+@import "compass";
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab);
+
+$aubergine: #131325;
+$blanc: #FFFFFF;
+$rouge: #B31B28;
+
+body {
+  color: $aubergine;
+  text-align: center;
+  font-family: "Roboto Slab", sans-serif;
+  margin:0;
+  width: 800px;
+  margin: auto;
+  font-size: 14px;
+  font-weight: 200;
+}
+h1 {
+  font-size: 56px;
+  line-height: 100px;
+  font-weight: normal;
+  color: $rouge;
+}
+h2 { font-size: 24px; color: $aubergine; line-height: 1.5em; }
+
+h3 {
+  color: $rouge;
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 28px;
+}
+
+hr {
+  margin: 18px 0;
+  border: 0;
+  border-top: 1px solid $aubergine;
+}
