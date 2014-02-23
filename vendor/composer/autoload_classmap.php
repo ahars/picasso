@@ -6,4 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'JsonClient\\AutoJsonClient' => $vendorDir . '/payutc-json-client/jsonclient/JsonClient.class.php',
+    'JsonClient\\JsonClient' => $vendorDir . '/payutc-json-client/jsonclient/JsonClient.class.php',
+    'JsonClient\\JsonException' => $vendorDir . '/payutc-json-client/jsonclient/JsonClient.class.php',
 );

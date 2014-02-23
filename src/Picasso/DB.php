@@ -1,8 +1,7 @@
 <?php 
 
-/**
-* DB
-*/
+namespace Picasso;
+
 class DB{
 
 	private $pdo;

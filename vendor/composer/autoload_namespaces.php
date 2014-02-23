@@ -7,4 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Slim' => array($vendorDir . '/slim/slim'),
+    'Picasso' => array($baseDir . '/src'),
+    'Payutc' => array($baseDir . '/src'),
 );

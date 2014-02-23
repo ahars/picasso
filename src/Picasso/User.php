@@ -1,5 +1,8 @@
 <?php 
-require_once("db.class.php");
+
+namespace Picasso;
+
+use \Picasso\DB;
 
 class User{
 

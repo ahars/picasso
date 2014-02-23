@@ -1,9 +1,10 @@
 <?php
-class CURL
-{
+
+namespace Picasso;
+
+class Curl{
 	private $ch;
-	public function __construct()
-	{
+	public function __construct(){
 		$this->ch = curl_init();
 		curl_setopt($this->ch, CURLOPT_HEADER, false);
 		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
@@ -12,24 +13,24 @@ class CURL
 		curl_setopt($this->ch, CURLOPT_SSL_VERIFYPEER, false);
 		//hcurl_setopt($this->ch, CURLOPT_SSL_VERIFYHOST, 2);
 	}
-	public function setCookies($cookies)
-	{
+
+	public function setCookies($cookies){
 		curl_setopt($this->ch, CURLOPT_COOKIE, $cookies);
 	}
-	public function get($url)
-	{
+	
+	public function get($url){
 		curl_setopt($this->ch, CURLOPT_URL, $url);
 		return curl_exec($this->ch);
 	}
-	public function post($url, $params)
-	{
+	
+	public function post($url, $params){
 		curl_setopt($this->ch, CURLOPT_URL, $url);
 		curl_setopt($this->ch, CURLOPT_POST, true);
 		curl_setopt($this->ch, CURLOPT_POSTFIELDS, $params);
 		return curl_exec($this->ch);
 	}
-	public function error()
-	{
+	
+	public function error(){
 		return curl_error($this->ch);
 	}
 }

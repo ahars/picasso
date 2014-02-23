@@ -1,5 +1,8 @@
 <?php
-require_once("curl.class.php");
+
+namespace Picasso;
+
+use \Picasso\CURL;
 
 class Cas {
 
