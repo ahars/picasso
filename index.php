@@ -2,7 +2,7 @@
 
 require 'vendor/autoload.php';
 
-use \Picasso\Config;
+use \Payutc\Config;
 use \Picasso\Session;
 use \Payutc\Casper\JsonClientMiddleware;
 
@@ -35,7 +35,7 @@ $app->configureMode('development', function () use ($app) {
 });
 
 // This middleware loads all our json clients
-$app->add(new JsonClientMiddleware);
+//$app->add(new JsonClientMiddleware);
 
 function sanitize(array $_files, $top = true){
     $files = array();

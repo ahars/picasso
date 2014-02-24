@@ -7,7 +7,7 @@ use \Payutc\Casper\JsonClientFactory;
 class JsonClientMiddleware extends \Slim\Middleware
 {
     protected $services = array(
-        "MYACCOUNT"
+        "GESARTICLE"
     );
     
     public function call()

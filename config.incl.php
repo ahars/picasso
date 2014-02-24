@@ -12,7 +12,7 @@ $_CONFIG['slim_config'] = array(
     ))
 );
 
-$_CONFIG["application_key"] = "casper";
+$_CONFIG["application_key"] = "picasso";
 
 // Nom de l'instance de payutc (pour affichage)
 $_CONFIG["title"] = "picasso";
