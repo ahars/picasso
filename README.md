@@ -1,15 +1,15 @@
 Introduction
 ============
 Le picasso est une association étudiante de l'Université de Technologie de Compiègne. Cette association s'occupe du foyer étudiant.
-Les étudiants peuvent s'y détendre en jouant au babby-foot, en sirotant des sodas et en grignotant des snacks.
-Les différentes associations de l'UTC tiennent des persmanences le matin, midi et soir afin de servir les étudiants et animer la salle.
+Les étudiants peuvent s'y détendre en jouant au baby-foot, en sirotant des sodas et en grignotant des snacks.
+Les différentes associations de l'UTC tiennent des permanences le matin, midi et soir afin de servir les étudiants et animer la salle.
 Le site est disponible à l'adresse suivante [Site du Picasso](http://assos.utc.fr/picasso/).
 
 Frameworks
 ============
 Le site utilise le framework PHP Slim. La documentation est en ligne : [Doc Slim](http://docs.slimframework.com/).
 
-Pour le design, le framework [Compass](http://compass-style.org/install/) avec le Plugin [Susy](http://susydocs.oddbird.net/en/latest/) sont utilisés.
+Pour le design, le framework [Compass](http://compass-style.org/install/) ainsi que le Plugin [Susy](http://susydocs.oddbird.net/en/latest/) sont utilisés.
 Ces derniers sont des Gem Ruby.
 
 Installation
@@ -24,9 +24,9 @@ Puis, installer les dépendances :
 
 `php composer.phar install`
 
-Ensuite il faut importer la base de donnée de dev `picasso_%date%.sql`.
+Ensuite il faut importer la base de données de dev `picasso_%date%.sql`.
 
-La configuration de la base de donnée ce fait directement dans le fichier `classes/db.class.php`.
+La configuration de la base de données se fait directement dans le fichier `classes/db.class.php`.
 
 Il faut y renseigner l'adresse, le username, le password et la table à utiliser.
 
@@ -36,11 +36,11 @@ Pour activer le script de compilation des fichiers SCSS en CSS, il faut entrer l
 
 `compass watch /path/to/the/config.rb/folder`
 
-Celui cherchera dans ce dossier le fichier `config.rb` pour compiler les fichiers avec la bonne configuration (dossiers etc).
+Compass cherchera dans ce dossier le fichier `config.rb` pour compiler les fichiers avec la bonne configuration (dossiers etc).
 
 Développement
 ======
-Le site effectue des requètes sur deux services :
+Le site effectue des requêtes sur deux services :
 * [Payutc](https://github.com/payutc/server)
 * [Portail des associations](https://github.com/simde-utc/portail)
 
