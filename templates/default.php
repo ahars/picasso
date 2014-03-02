@@ -21,6 +21,7 @@
               <a href="http://assos.utc.fr/picasso"><img src="res/img/logo.svg" alt="Picasso Logo"></a>
             </div>
             <ul class="menu-left">
+              <li><a id="menu-news" href="#news"></a></li>
               <li><a id="menu-calendrier" href="#calendrier"></a></li>
               <li><a id="menu-weekbieres" href="#weekbieres"></a></li>
               <li><a id="menu-goodies" href="#goodies"></a></li>
@@ -37,15 +38,16 @@
           <div class="container">
             <section class="slider">
               <section class="slides" id="news">
-                <h1>Dernières News</h1>
+                <h1>Dernière News</h1>
                 <h3></h3>
                 <section class="box">
                   
                 </section>
                 <section class="selectors">
                   <ul>
+                    <li><a class="selector-news active" href="#news"></a></li>
                     <li><a class="selector-calendrier" href="#calendrier"></a></li>
-                    <li><a class="selector-weekbieres active" href="#weekbieres"></a></li>
+                    <li><a class="selector-weekbieres" href="#weekbieres"></a></li>
                     <li><a class="selector-goodies" href="#goodies"></a></li>
                     <li><a class="selector-tarifs" href="#tarifs"></a></li>
                   </ul>
@@ -262,6 +264,7 @@
                 </section>
                 <section class="selectors">
                   <ul>
+                    <li><a class="selector-news" href="#news"></a></li>
                     <li><a class="selector-calendrier active" href="#calendrier"></a></li>
                     <li><a class="selector-weekbieres" href="#weekbieres"></a></li>
                     <li><a class="selector-goodies" href="#goodies"></a></li>
@@ -277,6 +280,7 @@
                 </section>
                 <section class="selectors">
                   <ul>
+                    <li><a class="selector-news" href="#news"></a></li>
                     <li><a class="selector-calendrier" href="#calendrier"></a></li>
                     <li><a class="selector-weekbieres active" href="#weekbieres"></a></li>
                     <li><a class="selector-goodies" href="#goodies"></a></li>
@@ -298,6 +302,7 @@
                 </section>
                 <section class="selectors">
                   <ul>
+                    <li><a class="selector-news" href="#news"></a></li>
                     <li><a class="selector-calendrier" href="#calendrier"></a></li>
                     <li><a class="selector-weekbieres" href="#weekbieres"></a></li>
                     <li><a class="selector-goodies active" href="#goodies"></a></li>
@@ -402,6 +407,7 @@
                 </section>
                 <section class="selectors">
                   <ul>
+                    <li><a class="selector-news" href="#news"></a></li>
                     <li><a class="selector-calendrier" href="#calendrier"></a></li>
                     <li><a class="selector-weekbieres" href="#weekbieres"></a></li>
                     <li><a class="selector-goodies" href="#goodies"></a></li>

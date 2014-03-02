@@ -2,6 +2,8 @@
 
 namespace Picasso;
 
+use \PDO;
+
 class DB{
 
 	private $pdo;
@@ -10,7 +12,7 @@ class DB{
 
 	function __construct($default = null){
 		if (!isset($default)) {
-			$default = \Picasso\Config::get('database');
+			$default = \Payutc\Casper\Config::get('database');
 		}
 		try{
 		    $this->pdo = new PDO('mysql:host='.$default['host'].';dbname='.$default['database'], $default['login'], $default['password'],array(

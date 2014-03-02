@@ -2,13 +2,17 @@
 
 require 'vendor/autoload.php';
 
-use \Payutc\Config;
+use \Payutc\Casper\Config;
 use \Picasso\Session;
+use \Picasso\Cas;
+use \Picasso\DB;
+use \Picasso\Curl;
 use \Payutc\Casper\JsonClientMiddleware;
+use \Payutc\Casper\JsonClientFactory;
 
 require 'config.incl.php';
 
-Config::init($_CONFIG);
+Config::initFromArray($_CONFIG);
 
 // Set the current mode
 $app = new \Slim\Slim(Config::get('slim_config'));
@@ -35,7 +39,7 @@ $app->configureMode('development', function () use ($app) {
 });
 
 // This middleware loads all our json clients
-//$app->add(new JsonClientMiddleware);
+$app->add(new JsonClientMiddleware);
 
 function sanitize(array $_files, $top = true){
     $files = array();
@@ -192,7 +196,7 @@ $app->get('/admin', $CASauthenticate('admin'),  function () use ($app){
 
 // --- CAS
 $app->get('/login', function() use ($app) {
-    // Si pas de ticket, c'est une invitation à se connecter
+    /*// Si pas de ticket, c'est une invitation à se connecter
     if(empty($_GET["ticket"])) {
         $app->getLog()->debug("No CAS ticket, unsetting cookies and redirecting to CAS");
         // On jette les cookies actuels
@@ -234,6 +238,7 @@ $app->get('/login', function() use ($app) {
         // Go vers la page d'accueil
         $app->redirect($app->urlFor('home'));
     }
+    */
 })->name('login');
 
 $app->get('/logout', function() use ($app) {
@@ -262,6 +267,17 @@ $app->get('/', function () use ($app){
     $week_start = date('Y-m-d', strtotime('-'.$day.' days'));
     $week_end = date('Y-m-d', strtotime('+'.(6-$day).' days'));
     $datas = array();
+
+    //$xml = $curl->get("http://assos.utc.fr/asso/articles/picasso");
+    //$document_xml = simplexml_load_string($xml); // Instanciation de la classe DomDocument : création d'un nouvel objet
+    
+    //print_r($document_xml);
+    
+    $app->log->info('Calling getCategories function on CATALOG service');
+    $products = JsonClientFactory::getInstance()->getClient("CATALOG")->getProductsByCategories(array("fun_ids" => json_encode(array(1))));
+    
+    print_r($products);
+   
     $datas['goodies'] = $pdo->find("SELECT numero,nom,prenom FROM goodies WHERE semaine = '$schema' ORDER BY numero,nom,prenom; ");
     $datas['weekbieres'] = $pdo->find("SELECT nom,degre,prix,img_url FROM bieres WHERE disabled = 0 AND semaine = '$schema' ORDER BY prix ASC, degre DESC, nom ;");
     $datas['softs'] = $pdo->find("SELECT nom,prix FROM softs WHERE disabled = 0 ORDER BY prix, nom;");
