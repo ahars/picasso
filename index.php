@@ -274,10 +274,11 @@ $app->get('/', function () use ($app){
     //print_r($document_xml);
     
     $app->log->info('Calling getCategories function on CATALOG service');
-    $products = JsonClientFactory::getInstance()->getClient("CATALOG")->getProductsByCategories(array("fun_ids" => json_encode(array(1))));
-    
+    $products = JsonClientFactory::getInstance()->getClient("CATALOG")->getProductsByCategories();
+    echo '<pre>';
     print_r($products);
-   
+    echo '</pre>';
+    die();
     $datas['goodies'] = $pdo->find("SELECT numero,nom,prenom FROM goodies WHERE semaine = '$schema' ORDER BY numero,nom,prenom; ");
     $datas['weekbieres'] = $pdo->find("SELECT nom,degre,prix,img_url FROM bieres WHERE disabled = 0 AND semaine = '$schema' ORDER BY prix ASC, degre DESC, nom ;");
     $datas['softs'] = $pdo->find("SELECT nom,prix FROM softs WHERE disabled = 0 ORDER BY prix, nom;");
