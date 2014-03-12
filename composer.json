@@ -2,6 +2,12 @@
     "require": {
         "slim/slim": "2.*"
     },
+	"repositories": [
+        {
+    		"type": "git",
+    		"url": "https://github.com/payutc/payutc-json-client.git"
+        }
+    ],
     "autoload": {
         "classmap": ["vendor/payutc-json-client/jsonclient/"],
         "psr-0": {
