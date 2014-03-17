@@ -38,8 +38,13 @@ $app->configureMode('development', function () use ($app) {
     ));
 });
 
+/*
+En attente du service CATALOG
+********************************************************************************************************************
 // This middleware loads all our json clients
-$app->add(new JsonClientMiddleware);
+//$app->add(new JsonClientMiddleware);
+********************************************************************************************************************
+*/
 
 function sanitize(array $_files, $top = true){
     $files = array();

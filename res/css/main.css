@@ -1,5 +1,6 @@
+@charset "UTF-8";
 @import url(http://fonts.googleapis.com/css?family=Roboto+Slab);
-/* line 17, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -21,45 +22,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
@@ -270,178 +271,43 @@ caption, th, td {
 
 /* -------------------------------------------------------------------------*/
 /* Grid */
-/* line 146, ../scss/main.scss */
-[class*="span"] {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+/*
+[class*="span"]{
+    @include box-sizing(border-box);
 }
+.span2 { @include span-columns(2,$total-columns); }
+.span2.omega { @include span-columns(2 omega,$total-columns); }
+.span3 { @include span-columns(3,$total-columns); }
+.span3.omega { @include span-columns(3 omega,$total-columns); }
+.span4 { @include span-columns(4,$total-columns); }
+.span4.omega { @include span-columns(4 omega,$total-columns); }
+.span5 { @include span-columns(5,$total-columns); }
+.span5.omega { @include span-columns(5 omega,$total-columns); }
+.span6 { @include span-columns(6,$total-columns); }
+.span6.omega { @include span-columns(6 omega,$total-columns); }
+.span7 { @include span-columns(7,$total-columns); }
+.span7.omega { @include span-columns(7 omega,$total-columns); }
+.span8 { @include span-columns(8,$total-columns); }
+.span8.omega { @include span-columns(8 omega,$total-columns); }
+.span9 { @include span-columns(9,$total-columns); }
+.span9.omega { @include span-columns(9 omega,$total-columns); }
+.clear{clear:both;}
 
-/* line 149, ../scss/main.scss */
-.span2 {
-  width: 9em;
-  float: left;
-  margin-right: 1em;
-  display: inline;
-}
-
-/* line 150, ../scss/main.scss */
-.span2.omega {
-  width: 9em;
-  float: right;
-  margin-right: 0;
-  *margin-left: -1em;
-  display: inline;
-}
-
-/* line 151, ../scss/main.scss */
-.span3 {
-  width: 14em;
-  float: left;
-  margin-right: 1em;
-  display: inline;
-}
-
-/* line 152, ../scss/main.scss */
-.span3.omega {
-  width: 14em;
-  float: right;
-  margin-right: 0;
-  *margin-left: -1em;
-  display: inline;
-}
-
-/* line 153, ../scss/main.scss */
-.span4 {
-  width: 19em;
-  float: left;
-  margin-right: 1em;
-  display: inline;
-}
-
-/* line 154, ../scss/main.scss */
-.span4.omega {
-  width: 19em;
-  float: right;
-  margin-right: 0;
-  *margin-left: -1em;
-  display: inline;
-}
-
-/* line 155, ../scss/main.scss */
-.span5 {
-  width: 24em;
-  float: left;
-  margin-right: 1em;
-  display: inline;
-}
-
-/* line 156, ../scss/main.scss */
-.span5.omega {
-  width: 24em;
-  float: right;
-  margin-right: 0;
-  *margin-left: -1em;
-  display: inline;
-}
-
-/* line 157, ../scss/main.scss */
-.span6 {
-  width: 29em;
-  float: left;
-  margin-right: 1em;
-  display: inline;
-}
-
-/* line 158, ../scss/main.scss */
-.span6.omega {
-  width: 29em;
-  float: right;
-  margin-right: 0;
-  *margin-left: -1em;
-  display: inline;
-}
-
-/* line 159, ../scss/main.scss */
-.span7 {
-  width: 34em;
-  float: left;
-  margin-right: 1em;
-  display: inline;
-}
-
-/* line 160, ../scss/main.scss */
-.span7.omega {
-  width: 34em;
-  float: right;
-  margin-right: 0;
-  *margin-left: -1em;
-  display: inline;
-}
-
-/* line 161, ../scss/main.scss */
-.span8 {
-  width: 39em;
-  float: left;
-  margin-right: 1em;
-  display: inline;
-}
-
-/* line 162, ../scss/main.scss */
-.span8.omega {
-  width: 39em;
-  float: right;
-  margin-right: 0;
-  *margin-left: -1em;
-  display: inline;
-}
-
-/* line 163, ../scss/main.scss */
-.span9 {
-  width: 44em;
-  float: left;
-  margin-right: 1em;
-  display: inline;
-}
-
-/* line 164, ../scss/main.scss */
-.span9.omega {
-  width: 44em;
-  float: right;
-  margin-right: 0;
-  *margin-left: -1em;
-  display: inline;
-}
-
-/* line 165, ../scss/main.scss */
-.clear {
-  clear: both;
-}
-
-/* line 167, ../scss/main.scss */
-.push-right {
-  float: right;
-}
-
-/* line 168, ../scss/main.scss */
-.push-left {
-  float: left;
-}
-
+.push-right { float:right; }
+.push-left { float:left; }
+*/
 /* -------------------------------------------------------------------------*/
 /* Container */
 /* line 173, ../scss/main.scss */
 .container {
   *zoom: 1;
-  width: 59em;
-  padding-left: 1em;
-  padding-right: 1em;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
+  width: 61em;
+  max-width: 100%;
   margin: 0 auto;
   position: relative;
 }
-/* line 38, ../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+/* line 38, ../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
 .container:after {
   content: "";
   display: table;
@@ -463,10 +329,10 @@ header {
 header #main-logo {
   position: absolute;
   margin-left: -150px;
-  height: 150px;
-  width: 150px;
+  margin-top: -2px;
+  height: 64.5px;
+  width: 208.25px;
   background: white;
-  border-radius: 50%;
 }
 /* line 196, ../scss/main.scss */
 header #main-logo a {
@@ -474,8 +340,8 @@ header #main-logo a {
 }
 /* line 198, ../scss/main.scss */
 header #main-logo a img {
-  width: 150px;
-  height: 150px;
+  width: 208.25px;
+  height: 64.5px;
 }
 /* line 205, ../scss/main.scss */
 header ul {
@@ -613,22 +479,27 @@ header ul li:hover a#menu-payutc, header ul li:active a#menu-payutc, header ul l
   border: 1px solid #b31b28;
   padding: 1em;
   min-height: 200px;
+  /* Rubrique Comming Soon */
 }
-/* line 340, ../scss/main.scss */
+/* line 341, ../scss/main.scss */
+#main-container section.slider section.slides section.box h3 {
+  line-height: 200px;
+}
+/* line 342, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns {
   float: left;
   margin-right: 1em;
 }
-/* line 343, ../scss/main.scss */
+/* line 345, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns:last-child {
   margin-right: 0;
 }
-/* line 345, ../scss/main.scss */
+/* line 347, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns:last-child:after {
   content: "";
   clear: both;
 }
-/* line 350, ../scss/main.scss */
+/* line 352, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block {
   height: 20px;
   width: 82px;
@@ -639,15 +510,15 @@ header ul li:hover a#menu-payutc, header ul li:active a#menu-payutc, header ul l
   line-height: 20px;
   position: relative;
 }
-/* line 359, ../scss/main.scss */
+/* line 361, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block a {
   color: white;
 }
-/* line 362, ../scss/main.scss */
+/* line 364, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block a:hover {
   color: #131325;
 }
-/* line 365, ../scss/main.scss */
+/* line 367, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail {
   position: absolute;
   background: #131325;
@@ -656,31 +527,31 @@ header ul li:hover a#menu-payutc, header ul li:active a#menu-payutc, header ul l
   display: none;
   z-index: 4000;
 }
-/* line 372, ../scss/main.scss */
+/* line 374, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-left {
   left: 122px;
 }
-/* line 375, ../scss/main.scss */
+/* line 377, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-right {
   right: 122px;
 }
-/* line 378, ../scss/main.scss */
+/* line 380, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-1 {
   top: 0px;
 }
-/* line 381, ../scss/main.scss */
+/* line 383, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-2 {
   top: -50px;
 }
-/* line 384, ../scss/main.scss */
+/* line 386, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-3 {
   top: -100px;
 }
-/* line 387, ../scss/main.scss */
+/* line 389, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-4 {
   top: -150px;
 }
-/* line 392, ../scss/main.scss */
+/* line 394, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .liste {
   border: 0;
   margin: 0;
@@ -688,42 +559,42 @@ header ul li:hover a#menu-payutc, header ul li:active a#menu-payutc, header ul l
   padding-left: 1em;
   width: 164px;
 }
-/* line 399, ../scss/main.scss */
+/* line 401, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .liste tr td {
   padding-top: 0.35em;
   padding-bottom: 0.35em;
   font-size: 1.1em;
 }
-/* line 404, ../scss/main.scss */
+/* line 406, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .liste tr .titre {
   padding-left: 1em;
 }
-/* line 407, ../scss/main.scss */
+/* line 409, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .liste tr .prix {
   padding-left: 1.5em;
 }
-/* line 410, ../scss/main.scss */
+/* line 412, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .liste tr .degre {
   padding-left: 1em;
   color: #b31b28;
 }
-/* line 418, ../scss/main.scss */
+/* line 420, ../scss/main.scss */
 #main-container section.slider section.slides section.selectors {
   position: absolute;
   right: -32px;
   top: 39%;
 }
-/* line 422, ../scss/main.scss */
+/* line 424, ../scss/main.scss */
 #main-container section.slider section.slides section.selectors ul {
   list-style: none;
   margin: auto 0;
   padding: 0;
 }
-/* line 426, ../scss/main.scss */
+/* line 428, ../scss/main.scss */
 #main-container section.slider section.slides section.selectors ul li {
   margin: 2em 0;
 }
-/* line 428, ../scss/main.scss */
+/* line 430, ../scss/main.scss */
 #main-container section.slider section.slides section.selectors ul li a {
   display: block;
   border-radius: 50%;
@@ -735,7 +606,7 @@ header ul li:hover a#menu-payutc, header ul li:active a#menu-payutc, header ul l
   -o-transition: background-color 0.3s ease-in;
   transition: background-color 0.3s ease-in;
 }
-/* line 438, ../scss/main.scss */
+/* line 440, ../scss/main.scss */
 #main-container section.slider section.slides section.selectors ul li a:hover, #main-container section.slider section.slides section.selectors ul li a:active, #main-container section.slider section.slides section.selectors ul li a:focus, #main-container section.slider section.slides section.selectors ul li a.active {
   background-color: white;
 }

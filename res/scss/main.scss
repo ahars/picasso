@@ -142,7 +142,7 @@ caption, th, td {
 
 /* -------------------------------------------------------------------------*/
 /* Grid */
-
+/*
 [class*="span"]{
     @include box-sizing(border-box);
 }
@@ -166,7 +166,7 @@ caption, th, td {
 
 .push-right { float:right; }
 .push-left { float:left; }
-
+*/
 /* -------------------------------------------------------------------------*/
 /* Container */
 
@@ -189,15 +189,15 @@ header{
   #main-logo{
     position: absolute;
     margin-left: -150px;
-    height: 150px;
-    width: 150px;
+    margin-top: -2px;
+    height: 64.5px;
+    width: 208.25px;
     background: $blanc;
-    border-radius: 50%;
     a{
       text-decoration: none;
       img{
-        width: 150px;
-        height: 150px;
+        width: 208.25px;
+        height: 64.5px;
       }
     }
   }
@@ -337,6 +337,8 @@ header{
         border: 1px solid $rouge;
         padding: 1em;
         min-height: 200px;
+        /* Rubrique Comming Soon */
+        h3{line-height:200px;}
         div.columns{
           float:left;
           margin-right: 1em;
