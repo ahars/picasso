@@ -593,7 +593,7 @@ header ul li:hover a#menu-payutc, header ul li:active a#menu-payutc, header ul l
 #main-container section.slider section.slides section.selectors {
   position: absolute;
   right: -32px;
-  top: 39%;
+  top: 43%;
 }
 /* line 433, ../scss/main.scss */
 #main-container section.slider section.slides section.selectors ul {

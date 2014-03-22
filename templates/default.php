@@ -44,7 +44,7 @@
                   <?php
                     if (!empty($article_img)){
                       echo '<img src="' . $article_img . '" width="' . $article_width . '" height="' . $article_height . '" class="picture">';
-                    } else {echo 'massala ?';}
+                    }
                   ?>
                   <div class="article">
                     <?php echo $article_corps; ?>
@@ -62,7 +62,7 @@
               </section>
               <section class="slides" id="calendrier">
                 <h1>Calendrier</h1>
-                <h3></h3>
+                <h3>Semestre <?php echo $semestre; ?> - Semaine du <?php echo $semaine_start; ?> au <?php echo $semaine_end; ?></h3>
                 <section class="box">
                   <!-- TODO -->
                   <h3 id="comming_soon">Coming Soon !</h3>
@@ -79,7 +79,7 @@
               </section>
               <section class="slides" id="weekbieres">
                 <h1>Bières de la semaine</h1>
-                <h3></h3>
+                <h3>Semestre <?php echo $semestre; ?> - Semaine du <?php echo $semaine_start; ?> au <?php echo $semaine_end; ?></h3>
                 <section class="box">
                   <!-- TODO -->
                   <h3 id="comming_soon">Coming Soon !</h3>
@@ -96,10 +96,10 @@
               </section>
               <section class="slides" id="goodies">
                 <h1>Goodies</h1>
-                <h3></h3>
+                <h3>Les gagnants - Semaine du <?php echo $semaine_start; ?> au <?php echo $semaine_end; ?></h3>
                 <section class="box">
                   <!-- TODO -->
-                  <h3 id="comming_soon">Coming Soon !</h3>
+                  <h3 id="coming_soon">Coming Soon !</h3>
                   <?php /*foreach ($datas['goodies'] as $k => $v): ?>
                     <tr class="col-sm-4">
                       <td><?php echo $v['numero'] ?></td>
@@ -120,10 +120,10 @@
               </section>
               <section class="slides" id="tarifs">
                 <h1>Tarifs</h1>
-                <h3></h3>
+                <h3>Semestre <?php echo $semestre; ?></h3>
                 <section class="box">
                   <!-- TODO -->
-                  <h3 id="comming_soon">Coming Soon !</h3>
+                  <h3 id="coming_soon">Coming Soon !</h3>
                 </section>
                 <section class="selectors">
                   <ul>

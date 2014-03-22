@@ -271,6 +271,8 @@ $app->get('/', function () use ($app){
     $schema = $annee."-W".$semaine;
     $week_start = date('Y-m-d', strtotime('-'.$day.' days'));
     $week_end = date('Y-m-d', strtotime('+'.(6-$day).' days'));
+    $semaine_start = date('d/m', strtotime('-'.($day-1).' days'));
+    $semaine_end = date('d/m', strtotime('+'.(7-$day).' days'));
     $datas = array();
 
     // Récupération du dernier article du portail
@@ -311,7 +313,7 @@ $app->get('/', function () use ($app){
             $compt = 1;
         }
     }
-    
+
     $app->log->info('Calling getCategories function on CATALOG service');
     try {
         $products = JsonClientFactory::getInstance()->getClient("CATALOG")->getProductsByCategories();
@@ -339,7 +341,10 @@ $app->get('/', function () use ($app){
         'article_img' => $article_img,
         'article_img_width' => $article_img_width,
         'article_img_height' => $article_img_height,
-        'article_corps' => $article_corps
+        'article_corps' => $article_corps,
+        'semestre' => Config::get('semestre'),
+        'semaine_start' => $semaine_start,
+        'semaine_end' => $semaine_end,
     ));
 })->name('home');
 
