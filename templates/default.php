@@ -137,7 +137,7 @@
         </div>
         <script src="res/js/jquery-1.9.1.min.js"></script>
         <script src="res/js/jquery.easing.js"></script>
-        <!--script src="res/js/jquery.scrollspy.js"></script-->
+        <script src="res/js/jquery.scrollspy.js"></script>
         <script src="res/js/main.js"></script>
     </body>
 </html>

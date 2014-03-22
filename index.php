@@ -298,9 +298,16 @@ $app->get('/', function () use ($app){
                 $article_img_height = $temp->getAttribute('height');
             }
 
+            $article_corps = '';
             $temp = $elt->getElementsByTagName('p');
-            $article_corps = $temp->item(0)->nodeValue;
-
+            foreach ($temp->item(0)->childNodes as $pChild) {
+                if ($pChild->nodeType === XML_TEXT_NODE) {
+                    $article_corps = $article_corps . trim($pChild->textContent);
+                }
+                if ($pChild->nodeType == XML_ELEMENT_NODE) {
+                    $article_corps = $article_corps . '<br />';
+                }
+            }
             $compt = 1;
         }
     }
