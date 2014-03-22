@@ -41,7 +41,11 @@
                 <h1>Dernière News</h1>
                 <h3><?php echo $article_titre . ' - ' . $article_date; ?></h3>
                 <section class="box">
-                  <img src="<?php echo $article_img; ?>" width="<?php echo $article_width; ?>" height="<?php echo $article_height; ?>" class="picture">
+                  <?php
+                    if (!empty($article_img)){
+                      echo '<img src="' . $article_img . '" width="' . $article_width . '" height="' . $article_height . '" class="picture">';
+                    } else {echo 'massala ?';}
+                  ?>
                   <div class="article">
                     <?php echo $article_corps; ?>
                   </div>
