@@ -39,10 +39,12 @@
             <section class="slider">
               <section class="slides" id="news">
                 <h1>Dernière News</h1>
-                <h3></h3>
+                <h3><?php echo $article_titre . ' - ' . $article_date; ?></h3>
                 <section class="box">
-                  <!-- TODO -->
-                  <h3 id="comming_soon">Coming Soon !</h3>
+                  <img src="<?php echo $article_img; ?>" width="<?php echo $article_width; ?>" height="<?php echo $article_height; ?>" class="picture">
+                  <div class="article">
+                    <?php echo $article_corps; ?>
+                  </div>
                 </section>
                 <section class="selectors">
                   <ul>
@@ -135,7 +137,7 @@
         </div>
         <script src="res/js/jquery-1.9.1.min.js"></script>
         <script src="res/js/jquery.easing.js"></script>
-        <script src="res/js/jquery.scrollspy.js"></script>
+        <!--script src="res/js/jquery.scrollspy.js"></script-->
         <script src="res/js/main.js"></script>
     </body>
 </html>

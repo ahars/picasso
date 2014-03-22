@@ -23,6 +23,15 @@ $_CONFIG["casper_url"] = "http://localhost/payutc/casper/";
 // URL du serveur payutc (avec le / final)
 $_CONFIG["server_url"] = "http://localhost/payutc/server/web/";
 
+// URL du portail des assos
+$_CONFIG["portail_url"] = "http://assos.utc.fr";
+
+// URL des articles du portail des assos
+$_CONFIG["article_url"] = "http://assos.utc.fr/asso/picasso";
+
+// URL du calendrier du portail des assos
+$_CONFIG["calendar_url"] = "http://assos.utc.fr/event/calendar";
+
 $_CONFIG['database'] =  array(
     'datasource' => 'Database/MySQL',
     'persistent' => false,

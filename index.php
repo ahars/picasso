@@ -272,6 +272,38 @@ $app->get('/', function () use ($app){
     $week_start = date('Y-m-d', strtotime('-'.$day.' days'));
     $week_end = date('Y-m-d', strtotime('+'.(6-$day).' days'));
     $datas = array();
+
+    // Récupération du dernier article du portail
+    $curl2 = new CURL();
+    $doc = $curl2->get(Config::get('article_url'));
+    $dom_article = new DOMDocument();
+    @$dom_article->loadHTML($doc);
+    
+    $compt = 0;
+    $element = $dom_article->getElementsByTagName('div');
+    foreach ($element as $elt) {
+
+        // Récupération du dernier article publié
+        if ($elt->getAttribute('class') == 'article' AND $compt <= 0) {
+            $temp = $elt->getElementsByTagName('a');
+            $article_titre = $temp->item(0)->nodeValue;
+
+            $temp = $elt->getElementsByTagName('span');
+            $article_date = $temp->item(0)->nodeValue;
+
+            $temp = $elt->getElementsByTagName('img');
+            foreach ($temp as $temp){
+                $article_img = Config::get('portail_url') . $temp->getAttribute('src');
+                $article_img_width = $temp->getAttribute('width');
+                $article_img_height = $temp->getAttribute('height');
+            }
+
+            $temp = $elt->getElementsByTagName('p');
+            $article_corps = $temp->item(0)->nodeValue;
+
+            $compt = 1;
+        }
+    }
     
     $app->log->info('Calling getCategories function on CATALOG service');
     try {
@@ -294,7 +326,13 @@ $app->get('/', function () use ($app){
         'week_start' => $week_start,
         'week_end' => $week_end,
         'semaine' => $semaine,
-        'datas' => $datas
+        'datas' => $datas,
+        'article_titre' => $article_titre,
+        'article_date' => $article_date,
+        'article_img' => $article_img,
+        'article_img_width' => $article_img_width,
+        'article_img_height' => $article_img_height,
+        'article_corps' => $article_corps
     ));
 })->name('home');
 

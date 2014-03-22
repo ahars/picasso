@@ -2,6 +2,8 @@
 
 namespace Picasso\Log;
 
+date_default_timezone_set( 'Europe/Paris' );
+
 /**
  * DateTime Log File Writer
  *

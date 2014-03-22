@@ -1,6 +1,6 @@
 @charset "UTF-8";
 @import url(http://fonts.googleapis.com/css?family=Roboto+Slab);
-/* line 17, ../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../lib/gems/1.9.1/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -22,45 +22,45 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../lib/gems/1.9.1/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../lib/gems/1.9.1/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../lib/gems/1.9.1/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../lib/gems/1.9.1/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../lib/gems/1.9.1/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../lib/gems/1.9.1/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../lib/gems/1.9.1/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../lib/gems/1.9.1/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
@@ -307,7 +307,7 @@ caption, th, td {
   margin: 0 auto;
   position: relative;
 }
-/* line 38, ../../../../../usr/share/compass/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+/* line 38, ../../../../lib/gems/1.9.1/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
 .container:after {
   content: "";
   display: table;
@@ -479,27 +479,38 @@ header ul li:hover a#menu-payutc, header ul li:active a#menu-payutc, header ul l
   border: 1px solid #b31b28;
   padding: 1em;
   min-height: 200px;
-  /* Rubrique Comming Soon */
+  /* Rubrique Coming Soon */
 }
 /* line 341, ../scss/main.scss */
 #main-container section.slider section.slides section.box h3 {
   line-height: 200px;
 }
 /* line 342, ../scss/main.scss */
+#main-container section.slider section.slides section.box img.picture {
+  background: white;
+  border: 1px solid white;
+  float: right;
+  margin-left: 10px;
+}
+/* line 348, ../scss/main.scss */
+#main-container section.slider section.slides section.box .article {
+  line-height: 20px;
+}
+/* line 351, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns {
   float: left;
   margin-right: 1em;
 }
-/* line 345, ../scss/main.scss */
+/* line 354, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns:last-child {
   margin-right: 0;
 }
-/* line 347, ../scss/main.scss */
+/* line 356, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns:last-child:after {
   content: "";
   clear: both;
 }
-/* line 352, ../scss/main.scss */
+/* line 361, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block {
   height: 20px;
   width: 82px;
@@ -510,15 +521,15 @@ header ul li:hover a#menu-payutc, header ul li:active a#menu-payutc, header ul l
   line-height: 20px;
   position: relative;
 }
-/* line 361, ../scss/main.scss */
+/* line 370, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block a {
   color: white;
 }
-/* line 364, ../scss/main.scss */
+/* line 373, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block a:hover {
   color: #131325;
 }
-/* line 367, ../scss/main.scss */
+/* line 376, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail {
   position: absolute;
   background: #131325;
@@ -527,31 +538,31 @@ header ul li:hover a#menu-payutc, header ul li:active a#menu-payutc, header ul l
   display: none;
   z-index: 4000;
 }
-/* line 374, ../scss/main.scss */
+/* line 383, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-left {
   left: 122px;
 }
-/* line 377, ../scss/main.scss */
+/* line 386, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-right {
   right: 122px;
 }
-/* line 380, ../scss/main.scss */
+/* line 389, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-1 {
   top: 0px;
 }
-/* line 383, ../scss/main.scss */
+/* line 392, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-2 {
   top: -50px;
 }
-/* line 386, ../scss/main.scss */
+/* line 395, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-3 {
   top: -100px;
 }
-/* line 389, ../scss/main.scss */
+/* line 398, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-4 {
   top: -150px;
 }
-/* line 394, ../scss/main.scss */
+/* line 403, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .liste {
   border: 0;
   margin: 0;
@@ -559,42 +570,42 @@ header ul li:hover a#menu-payutc, header ul li:active a#menu-payutc, header ul l
   padding-left: 1em;
   width: 164px;
 }
-/* line 401, ../scss/main.scss */
+/* line 410, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .liste tr td {
   padding-top: 0.35em;
   padding-bottom: 0.35em;
   font-size: 1.1em;
 }
-/* line 406, ../scss/main.scss */
+/* line 415, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .liste tr .titre {
   padding-left: 1em;
 }
-/* line 409, ../scss/main.scss */
+/* line 418, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .liste tr .prix {
   padding-left: 1.5em;
 }
-/* line 412, ../scss/main.scss */
+/* line 421, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .liste tr .degre {
   padding-left: 1em;
   color: #b31b28;
 }
-/* line 420, ../scss/main.scss */
+/* line 429, ../scss/main.scss */
 #main-container section.slider section.slides section.selectors {
   position: absolute;
   right: -32px;
   top: 39%;
 }
-/* line 424, ../scss/main.scss */
+/* line 433, ../scss/main.scss */
 #main-container section.slider section.slides section.selectors ul {
   list-style: none;
   margin: auto 0;
   padding: 0;
 }
-/* line 428, ../scss/main.scss */
+/* line 437, ../scss/main.scss */
 #main-container section.slider section.slides section.selectors ul li {
   margin: 2em 0;
 }
-/* line 430, ../scss/main.scss */
+/* line 439, ../scss/main.scss */
 #main-container section.slider section.slides section.selectors ul li a {
   display: block;
   border-radius: 50%;
@@ -606,7 +617,7 @@ header ul li:hover a#menu-payutc, header ul li:active a#menu-payutc, header ul l
   -o-transition: background-color 0.3s ease-in;
   transition: background-color 0.3s ease-in;
 }
-/* line 440, ../scss/main.scss */
+/* line 449, ../scss/main.scss */
 #main-container section.slider section.slides section.selectors ul li a:hover, #main-container section.slider section.slides section.selectors ul li a:active, #main-container section.slider section.slides section.selectors ul li a:focus, #main-container section.slider section.slides section.selectors ul li a.active {
   background-color: white;
 }

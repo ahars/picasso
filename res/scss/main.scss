@@ -337,8 +337,17 @@ header{
         border: 1px solid $rouge;
         padding: 1em;
         min-height: 200px;
-        /* Rubrique Comming Soon */
+        /* Rubrique Coming Soon */
         h3{line-height:200px;}
+        img.picture{
+          background: $blanc;
+          border: 1px solid $blanc;
+          float: right;
+          margin-left: 10px;
+        }
+        .article{
+          line-height: 20px;
+        }
         div.columns{
           float:left;
           margin-right: 1em;
