@@ -482,7 +482,7 @@ header ul li:hover a#menu-payutc, header ul li:active a#menu-payutc, header ul l
   /* Rubrique Coming Soon */
 }
 /* line 341, ../scss/main.scss */
-#main-container section.slider section.slides section.box h3 {
+#main-container section.slider section.slides section.box h3#coming_soon {
   line-height: 200px;
 }
 /* line 342, ../scss/main.scss */

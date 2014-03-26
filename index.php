@@ -268,16 +268,18 @@ $app->get('/', function () use ($app){
     $day = date('w');
     $semaine = date('W');
     $annee = date('Y');
-    $schema = $annee."-W".$semaine;
-    $week_start = date('Y-m-d', strtotime('-'.$day.' days'));
-    $week_end = date('Y-m-d', strtotime('+'.(6-$day).' days'));
-    $semaine_start = date('d/m', strtotime('-'.($day-1).' days'));
-    $semaine_end = date('d/m', strtotime('+'.(7-$day).' days'));
+    $schema = $annee . "-W" . $semaine;
+    $week_start = date('Y-m-d', strtotime('-' . $day . ' days'));
+    $week_end = date('Y-m-d', strtotime('+' . (6 - $day) . ' days'));
+    $semaine_start = date('d/m/Y', strtotime('-' . ($day - 1) . ' days'));
+    $semaine_end = date('d/m/Y', strtotime('+' . (7 - $day) . ' days'));
+
     $datas = array();
 
-    // Récupération du dernier article du portail
+    // Récupération du dernier article publié par le Picasso sur le portail des assos.
     $curl2 = new CURL();
     $doc = $curl2->get(Config::get('article_url'));
+
     $dom_article = new DOMDocument();
     @$dom_article->loadHTML($doc);
     
@@ -285,14 +287,16 @@ $app->get('/', function () use ($app){
     $element = $dom_article->getElementsByTagName('div');
     foreach ($element as $elt) {
 
-        // Récupération du dernier article publié
         if ($elt->getAttribute('class') == 'article' AND $compt <= 0) {
+            // Récupération du titre de l'article.
             $temp = $elt->getElementsByTagName('a');
             $article_titre = $temp->item(0)->nodeValue;
 
+            // Récupération de la date de l'article.
             $temp = $elt->getElementsByTagName('span');
             $article_date = $temp->item(0)->nodeValue;
 
+            // Récupération de l'image de l'article.
             $temp = $elt->getElementsByTagName('img');
             foreach ($temp as $temp){
                 $article_img = Config::get('portail_url') . $temp->getAttribute('src');
@@ -303,16 +307,89 @@ $app->get('/', function () use ($app){
             $article_corps = '';
             $temp = $elt->getElementsByTagName('p');
             foreach ($temp->item(0)->childNodes as $pChild) {
+                // Recherche des phrases de l'article.
                 if ($pChild->nodeType === XML_TEXT_NODE) {
                     $article_corps = $article_corps . trim($pChild->textContent);
                 }
+                // Recherche des balises <br /> du texte.
                 if ($pChild->nodeType == XML_ELEMENT_NODE) {
                     $article_corps = $article_corps . '<br />';
                 }
             }
+            // On ne veut que le premier article rencontré (càd le dernier publié).
             $compt = 1;
         }
     }
+
+    // Récupération du calendrier des évènements du portail.
+    $curl2 = new CURL();
+    $doc = $curl2->get(Config::get('calendar_url'));
+
+    $cal_titre = array();
+    $cal_asso = array();
+    $cal_date = array();
+    $cal_horaire = array();
+    $cal_url = array();
+    $cal_allDay = array();
+    $cal_tag = array();
+    $cal_corps = array();
+
+    $regex = preg_replace('#^\[\{(.*)\}\]$#', '$1', $doc);
+
+    $event = split('},{', $regex);
+    foreach ($event as $evt) {
+
+      $a = preg_replace('#^"id":"(.*)","title":"(.*)$#', '$1', $evt);
+      $b = preg_replace('#^"id":"(.*)","title":"(.*)","start":(.*)$#', '$2', $evt);
+      $c = date('d/m/Y', preg_replace('#^"id":"(.*)","title":"(.*)","start":(.*),"end":(.*)$#', '$3', $evt));
+      $d = preg_replace('#^"id":"(.*)","title":"(.*)","start":(.*),"end":(.*)$#', '$3', $evt);
+      $e = date('d/m/Y', preg_replace('#^"id":"(.*)","title":"(.*)","start":(.*),"end":(.*),"url":"(.*)$#', '$4', $evt));
+      $f = preg_replace('#^"id":"(.*)","title":"(.*)","start":(.*),"end":(.*),"url":"(.*)$#', '$4', $evt);
+      $g = preg_replace('#^"id":"(.*)","title":"(.*)","start":(.*),"end":(.*),"url":"(.*)","color":"(.*)$#', '$5', $evt);
+      $g = preg_replace('#\\\/(.*)\\\/(.*)\\\/(.*)$#', '/$1/$2/$3', $g);
+      $h = preg_replace('#^"id":"(.*)","title":"(.*)","start":(.*),"end":(.*),"url":"(.*)","color":"(.*)","allDay":(.*)$#', '$6', $evt);
+      $i = preg_replace('#^"id":"(.*)","title":"(.*)","start":(.*),"end":(.*),"url":"(.*)","color":"(.*)","allDay":(.*)$#', '$7', $evt);
+
+    list($d_start, $m_start, $y_start) = explode('/', $semaine_start);
+    list($d_end, $m_end, $y_end) = explode('/', $semaine_end);
+    list($d_c, $m_c, $y_c) = explode('/', $c);
+    list($d_e, $m_e, $y_e) = explode('/', $e);
+
+      if(($d_start <= $d_c AND $m_start <= $m_c AND $y_start <= $y_c) AND ($d_e <= $d_end AND $m_e <= $m_end AND $y_e <= $y_end)){
+        array_push($cal_titre, $b);
+        array_push($cal_date, $c . ';' . $e);
+        array_push($cal_horaire, date('H:i:s', $d) . ';' . date('H:i:s', $f));
+        array_push($cal_url, Config::get('portail_url') . $g);
+        array_push($cal_allDay, $i);
+      }
+    }
+
+    foreach ($cal_url as $u) {
+
+        $curl3 = new Curl();
+        $doc = $curl3->get($u);
+
+        $dom = new DOMDocument();
+        @$dom->loadHTML($doc);
+
+        $temp = $dom->getElementsByTagName('div');
+
+        foreach ($temp as $tmp) {
+
+            if ($tmp->getAttribute('class') == 'span8') {
+                $elt = $tmp->getElementsByTagName('p');
+                array_push($cal_asso, preg_replace('#(.*)\spar\s(.*)$#', '$2', $elt->item(2)->nodeValue));
+                array_push($cal_tag, $elt->item(3)->nodeValue);
+                array_push($cal_corps, $elt->item(7)->nodeValue);
+            }
+        }
+    }
+
+    $perms = array();
+    array_push($perms, Config::get('perm_1'));
+    array_push($perms, Config::get('perm_2'));
+    array_push($perms, Config::get('perm_3'));
+    array_push($perms, Config::get('perm_4'));
 
     $app->log->info('Calling getCategories function on CATALOG service');
     try {
@@ -345,6 +422,16 @@ $app->get('/', function () use ($app){
         'semestre' => Config::get('semestre'),
         'semaine_start' => $semaine_start,
         'semaine_end' => $semaine_end,
+        'perm' => Config::get('perm'),
+        'cal_titre' => $cal_titre,
+        'cal_asso' => $cal_asso,
+        'cal_date' => $cal_date,
+        'cal_horaire' => $cal_horaire,
+        'cal_url' => $cal_url,
+        'cal_allDay' => $cal_allDay,
+        'cal_tag' => $cal_tag,
+        'cal_corps' => $cal_corps,
+        'perms' => $perms,
     ));
 })->name('home');
 

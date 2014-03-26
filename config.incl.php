@@ -1,6 +1,6 @@
 <?php
 
-$_CONFIG['semestre'] = "P14";
+$_CONFIG['semestre'] = 'P14';
 
 $_CONFIG['slim_config'] = array(
     'mode' => 'development',
@@ -12,25 +12,32 @@ $_CONFIG['slim_config'] = array(
     ))
 );
 
-$_CONFIG["application_key"] = "picasso";
+$_CONFIG['application_key'] = 'picasso';
+
+$_CONFIG['perm'] = 'Perm au Picasso';
+
+$_CONFIG['perm_1'] = '10:15:00;12:15:00';
+$_CONFIG['perm_2'] = '12:15:00;14:15:00';
+$_CONFIG['perm_3'] = '14:15:00;18:15:00';
+$_CONFIG['perm_4'] = '18:15:00;21:15:00';
 
 // Nom de l'instance de payutc (pour affichage)
-$_CONFIG["title"] = "picasso";
+$_CONFIG['title'] = 'picasso';
 
 // URL de casper (avec le / final)
-$_CONFIG["casper_url"] = "http://localhost/payutc/casper/";
+$_CONFIG['casper_url'] = 'http://localhost/payutc/casper/';
 
 // URL du serveur payutc (avec le / final)
-$_CONFIG["server_url"] = "http://localhost/payutc/server/web/";
+$_CONFIG['server_url'] = 'http://localhost/payutc/server/web/';
 
 // URL du portail des assos
-$_CONFIG["portail_url"] = "http://assos.utc.fr";
+$_CONFIG['portail_url'] = 'http://assos.utc.fr';
 
 // URL des articles du portail des assos
-$_CONFIG["article_url"] = "http://assos.utc.fr/asso/picasso";
+$_CONFIG['article_url'] = 'http://assos.utc.fr/asso/picasso';
 
 // URL du calendrier du portail des assos
-$_CONFIG["calendar_url"] = "http://assos.utc.fr/event/calendar";
+$_CONFIG['calendar_url'] = 'http://assos.utc.fr/event.json';
 
 $_CONFIG['database'] =  array(
     'datasource' => 'Database/MySQL',

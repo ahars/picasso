@@ -338,7 +338,7 @@ header{
         padding: 1em;
         min-height: 200px;
         /* Rubrique Coming Soon */
-        h3{line-height:200px;}
+        h3#coming_soon{line-height:200px;}
         img.picture{
           background: $blanc;
           border: 1px solid $blanc;

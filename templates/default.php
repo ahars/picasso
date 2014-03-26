@@ -50,31 +50,76 @@
                     <?php echo $article_corps; ?>
                   </div>
                 </section>
-                <section class="selectors">
-                  <ul>
-                    <li><a class="selector-news active" href="#news"></a></li>
-                    <li><a class="selector-calendrier" href="#calendrier"></a></li>
-                    <li><a class="selector-weekbieres" href="#weekbieres"></a></li>
-                    <li><a class="selector-goodies" href="#goodies"></a></li>
-                    <li><a class="selector-tarifs" href="#tarifs"></a></li>
-                  </ul>
-                </section>
               </section>
               <section class="slides" id="calendrier">
                 <h1>Calendrier</h1>
                 <h3>Semestre <?php echo $semestre; ?> - Semaine du <?php echo $semaine_start; ?> au <?php echo $semaine_end; ?></h3>
                 <section class="box">
-                  <!-- TODO -->
-                  <h3 id="comming_soon">Coming Soon !</h3>
-                </section>
-                <section class="selectors">
-                  <ul>
-                    <li><a class="selector-news" href="#news"></a></li>
-                    <li><a class="selector-calendrier active" href="#calendrier"></a></li>
-                    <li><a class="selector-weekbieres" href="#weekbieres"></a></li>
-                    <li><a class="selector-goodies" href="#goodies"></a></li>
-                    <li><a class="selector-tarifs" href="#tarifs"></a></li>
-                  </ul>
+                  <?php
+                    // Parcours des jours.
+                    for ($i = 0; $i < 6; $i++) { 
+                      
+                      $journee = false;
+                      echo '<div class="columns">';
+
+                      // Perm allDay.
+                      for ($k = 0; $k < count($cal_titre); $k++) {
+                        list($cal_date_s, $cal_date_e) = explode(';', $cal_date[$k]);
+                        list($perm_start, $p) = explode(';', $perms[0]);
+                        list($p, $perm_end) = explode(';', $perms[3]);
+                        list($cal_horaire_s, $cal_horaire_e) = explode(';', $cal_horaire[$k]);
+
+                        if (($cal_horaire_s == $perm_start AND $cal_horaire_e == $perm_end) AND $cal_date_s == ($semaine_start + $i) AND $cal_date_e == ($semaine_start + $i)) {
+                          
+                          for ($j = 0; $j < 4; $j++) {
+                            echo '<div class="block">';
+                            echo '<a href="' . $cal_url[$k] . '">' . $cal_asso[$k] . '</a>';
+                            if ($i < 3) {
+                              echo '<div class="detail d-left d-' . ($j + 1) . '">';
+                            } else {
+                              echo '<div class="detail d-right d-' . ($j + 1) . '">';
+                            }
+                            echo '<div class="asso">' . $cal_asso[$k] . '</div>';
+                            echo '<div class="titre">' . $cal_titre[$k] . ' (' . preg_replace('#(.*)\:(.*)\:00$#', '$1h$2', $cal_horaire_s) . ' - ' . preg_replace('#(.*)\:(.*)\:00$#', '$1h$2', $cal_horaire_e) . ')</div>';
+                            echo $cal_corps[$k] . '</div></div>';
+                          }
+                          $journee = true;
+                        }
+                      }
+
+                      // Perm normale.
+                      for ($j = 0; $j < 4; $j++) {
+
+                        list($perm_start, $perm_end) = explode(';', $perms[$j]);
+
+                        $found = false;
+                        for ($k = 0; $k < count($cal_titre); $k++) {
+
+                          list($cal_date_s, $cal_date_e) = explode(';', $cal_date[$k]);
+                          list($cal_horaire_s, $cal_horaire_e) = explode(';', $cal_horaire[$k]);
+
+                          if ($cal_tag[$k] == $perm AND $cal_date_s == ($semaine_start + $i) AND $cal_date_e == ($semaine_start + $i) AND $cal_horaire_s == $perm_start AND $cal_horaire_e == $perm_end AND !$found) {
+                            echo '<div class="block">';
+                            echo '<a href="' . $cal_url[$k] . '">' . $cal_asso[$k] . '</a>';
+                            if ($i < 3) {
+                              echo '<div class="detail d-left d-' . ($j + 1) . '">';
+                            } else {
+                              echo '<div class="detail d-right d-' . ($j + 1) . '">';
+                            }
+                            echo '<div class="asso">' . $cal_asso[$k] . '</div>';
+                            echo '<div class="titre">' . $cal_titre[$k] . ' (' . preg_replace('#(.*)\:(.*)\:00$#', '$1h$2', $cal_horaire_s) . ' - ' . preg_replace('#(.*)\:(.*)\:00$#', '$1h$2', $cal_horaire_e) . ')</div>';
+                            echo $cal_corps[$k] . '</div></div>';
+                            $found = true;
+                          }
+                        }
+
+                        if (!$found AND !$journee) {
+                          echo '<div class="block"></div>';
+                       }
+                      }
+                      echo '</div>';
+                    }
+                  ?>
                 </section>
               </section>
               <section class="slides" id="weekbieres">
@@ -82,16 +127,7 @@
                 <h3>Semestre <?php echo $semestre; ?> - Semaine du <?php echo $semaine_start; ?> au <?php echo $semaine_end; ?></h3>
                 <section class="box">
                   <!-- TODO -->
-                  <h3 id="comming_soon">Coming Soon !</h3>
-                </section>
-                <section class="selectors">
-                  <ul>
-                    <li><a class="selector-news" href="#news"></a></li>
-                    <li><a class="selector-calendrier" href="#calendrier"></a></li>
-                    <li><a class="selector-weekbieres active" href="#weekbieres"></a></li>
-                    <li><a class="selector-goodies" href="#goodies"></a></li>
-                    <li><a class="selector-tarifs" href="#tarifs"></a></li>
-                  </ul>
+                  <h3 id="coming_soon">Coming Soon !</h3>
                 </section>
               </section>
               <section class="slides" id="goodies">
@@ -108,15 +144,6 @@
                     </tr>
                   <?php endforeach */?>
                 </section>
-                <section class="selectors">
-                  <ul>
-                    <li><a class="selector-news" href="#news"></a></li>
-                    <li><a class="selector-calendrier" href="#calendrier"></a></li>
-                    <li><a class="selector-weekbieres" href="#weekbieres"></a></li>
-                    <li><a class="selector-goodies active" href="#goodies"></a></li>
-                    <li><a class="selector-tarifs" href="#tarifs"></a></li>
-                  </ul>
-                </section>
               </section>
               <section class="slides" id="tarifs">
                 <h1>Tarifs</h1>
@@ -124,15 +151,6 @@
                 <section class="box">
                   <!-- TODO -->
                   <h3 id="coming_soon">Coming Soon !</h3>
-                </section>
-                <section class="selectors">
-                  <ul>
-                    <li><a class="selector-news" href="#news"></a></li>
-                    <li><a class="selector-calendrier" href="#calendrier"></a></li>
-                    <li><a class="selector-weekbieres" href="#weekbieres"></a></li>
-                    <li><a class="selector-goodies" href="#goodies"></a></li>
-                    <li><a class="selector-tarifs active" href="#tarifs"></a></li>
-                  </ul>
                 </section>
               </section>
             </section>
