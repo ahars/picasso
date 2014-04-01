@@ -479,38 +479,39 @@ header ul li:hover a#menu-payutc, header ul li:active a#menu-payutc, header ul l
   border: 1px solid #b31b28;
   padding: 1em;
   min-height: 200px;
+  overflow: auto;
   /* Rubrique Coming Soon */
 }
-/* line 341, ../scss/main.scss */
+/* line 342, ../scss/main.scss */
 #main-container section.slider section.slides section.box h3#coming_soon {
   line-height: 200px;
 }
-/* line 342, ../scss/main.scss */
+/* line 343, ../scss/main.scss */
 #main-container section.slider section.slides section.box img.picture {
   background: white;
   border: 1px solid white;
   float: right;
   margin-left: 10px;
 }
-/* line 348, ../scss/main.scss */
+/* line 349, ../scss/main.scss */
 #main-container section.slider section.slides section.box .article {
   line-height: 20px;
 }
-/* line 351, ../scss/main.scss */
+/* line 352, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns {
   float: left;
   margin-right: 1em;
 }
-/* line 354, ../scss/main.scss */
+/* line 355, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns:last-child {
   margin-right: 0;
 }
-/* line 356, ../scss/main.scss */
+/* line 357, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns:last-child:after {
   content: "";
   clear: both;
 }
-/* line 361, ../scss/main.scss */
+/* line 362, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block {
   height: 20px;
   width: 82px;
@@ -521,15 +522,15 @@ header ul li:hover a#menu-payutc, header ul li:active a#menu-payutc, header ul l
   line-height: 20px;
   position: relative;
 }
-/* line 370, ../scss/main.scss */
+/* line 371, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block a {
   color: white;
 }
-/* line 373, ../scss/main.scss */
+/* line 374, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block a:hover {
   color: #131325;
 }
-/* line 376, ../scss/main.scss */
+/* line 377, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail {
   position: absolute;
   background: #131325;
@@ -538,31 +539,31 @@ header ul li:hover a#menu-payutc, header ul li:active a#menu-payutc, header ul l
   display: none;
   z-index: 4000;
 }
-/* line 383, ../scss/main.scss */
+/* line 384, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-left {
   left: 122px;
 }
-/* line 386, ../scss/main.scss */
+/* line 387, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-right {
   right: 122px;
 }
-/* line 389, ../scss/main.scss */
+/* line 390, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-1 {
   top: 0px;
 }
-/* line 392, ../scss/main.scss */
+/* line 393, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-2 {
   top: -50px;
 }
-/* line 395, ../scss/main.scss */
+/* line 396, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-3 {
   top: -100px;
 }
-/* line 398, ../scss/main.scss */
+/* line 399, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-4 {
   top: -150px;
 }
-/* line 403, ../scss/main.scss */
+/* line 404, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .liste {
   border: 0;
   margin: 0;
@@ -570,54 +571,22 @@ header ul li:hover a#menu-payutc, header ul li:active a#menu-payutc, header ul l
   padding-left: 1em;
   width: 164px;
 }
-/* line 410, ../scss/main.scss */
+/* line 411, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .liste tr td {
   padding-top: 0.35em;
   padding-bottom: 0.35em;
   font-size: 1.1em;
 }
-/* line 415, ../scss/main.scss */
+/* line 416, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .liste tr .titre {
-  padding-left: 1em;
+  padding-left: 0.8em;
 }
-/* line 418, ../scss/main.scss */
+/* line 419, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .liste tr .prix {
-  padding-left: 1.5em;
+  padding-left: 1.3em;
 }
-/* line 421, ../scss/main.scss */
+/* line 422, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .liste tr .degre {
-  padding-left: 1em;
+  padding-left: 0.8em;
   color: #b31b28;
-}
-/* line 429, ../scss/main.scss */
-#main-container section.slider section.slides section.selectors {
-  position: absolute;
-  right: -32px;
-  top: 43%;
-}
-/* line 433, ../scss/main.scss */
-#main-container section.slider section.slides section.selectors ul {
-  list-style: none;
-  margin: auto 0;
-  padding: 0;
-}
-/* line 437, ../scss/main.scss */
-#main-container section.slider section.slides section.selectors ul li {
-  margin: 2em 0;
-}
-/* line 439, ../scss/main.scss */
-#main-container section.slider section.slides section.selectors ul li a {
-  display: block;
-  border-radius: 50%;
-  width: 13px;
-  height: 13px;
-  background-color: #b31b28;
-  -webkit-transition: background-color 0.3s ease-in;
-  -moz-transition: background-color 0.3s ease-in;
-  -o-transition: background-color 0.3s ease-in;
-  transition: background-color 0.3s ease-in;
-}
-/* line 449, ../scss/main.scss */
-#main-container section.slider section.slides section.selectors ul li a:hover, #main-container section.slider section.slides section.selectors ul li a:active, #main-container section.slider section.slides section.selectors ul li a:focus, #main-container section.slider section.slides section.selectors ul li a.active {
-  background-color: white;
 }

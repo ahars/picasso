@@ -337,6 +337,7 @@ header{
         border: 1px solid $rouge;
         padding: 1em;
         min-height: 200px;
+        overflow:auto;
         /* Rubrique Coming Soon */
         h3#coming_soon{line-height:200px;}
         img.picture{
@@ -349,7 +350,7 @@ header{
           line-height: 20px;
         }
         div.columns{
-          float:left;
+          float: left;
           margin-right: 1em;
           &:last-child{
             margin-right: 0;
@@ -413,41 +414,14 @@ header{
                 font-size: 1.1em;
               }
               .titre{
-                padding-left:1em;
+                padding-left:0.8em;
               }
               .prix{
-                padding-left:1.5em;
+                padding-left:1.3em;
               }
               .degre{
-                padding-left:1em;
+                padding-left:0.8em;
                 color: $rouge;
-              }
-            }
-          }
-        }
-      }
-      section.selectors{
-        position: absolute;
-        right: -32px;
-        top:43%;
-        ul{
-          list-style: none;
-          margin: auto 0;
-          padding:0;
-          li{
-            margin:2em 0;
-            a{
-              display: block;
-              border-radius: 50%;
-              width: 13px;
-              height: 13px; 
-              background-color: $rouge;
-              @include transition(background-color 0.3s ease-in);
-              &:hover, 
-              &:active,
-              &:focus,
-              &.active{
-                background-color: $blanc;
               }
             }
           }

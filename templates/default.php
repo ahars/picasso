@@ -53,7 +53,7 @@
               </section>
               <section class="slides" id="calendrier">
                 <h1>Calendrier</h1>
-                <h3>Semestre <?php echo $semestre; ?> - Semaine du <?php echo $semaine_start; ?> au <?php echo $semaine_end; ?></h3>
+                <h3>Semestre <?php echo $semestre; ?> - Semaine du <?php echo preg_replace('#(.*)/(.*)/(.*)$#', '$1/$2', $semaine_start); ?> au <?php echo preg_replace('#(.*)/(.*)/(.*)$#', '$1/$2', $semaine_end); ?></h3>
                 <section class="box">
                   <?php
                     // Parcours des jours.
@@ -124,7 +124,7 @@
               </section>
               <section class="slides" id="weekbieres">
                 <h1>Bières de la semaine</h1>
-                <h3>Semestre <?php echo $semestre; ?> - Semaine du <?php echo $semaine_start; ?> au <?php echo $semaine_end; ?></h3>
+                <h3>Semestre <?php echo $semestre; ?> - Semaine du <?php echo preg_replace('#(.*)/(.*)/(.*)$#', '$1/$2', $semaine_start); ?> au <?php echo preg_replace('#(.*)/(.*)/(.*)$#', '$1/$2', $semaine_end); ?></h3>
                 <section class="box">
                   <!-- TODO -->
                   <h3 id="coming_soon">Coming Soon !</h3>
@@ -132,17 +132,15 @@
               </section>
               <section class="slides" id="goodies">
                 <h1>Goodies</h1>
-                <h3>Les gagnants - Semaine du <?php echo $semaine_start; ?> au <?php echo $semaine_end; ?></h3>
-                <section class="box">
-                  <!-- TODO -->
-                  <h3 id="coming_soon">Coming Soon !</h3>
-                  <?php /*foreach ($datas['goodies'] as $k => $v): ?>
+                <h3>Les gagnants - Semaine du <?php echo preg_replace('#(.*)/(.*)/(.*)$#', '$1/$2', $semaine_start); ?> au <?php echo preg_replace('#(.*)/(.*)/(.*)$#', '$1/$2', $semaine_end); ?></h3>
+                <section class="box">               
+                  <?php foreach ($datas['goodies'] as $k => $v): ?>
                     <tr class="col-sm-4">
                       <td><?php echo $v['numero'] ?></td>
                       <td><?php echo $v['nom'] ?></td>
                       <td><?php echo $v['prenom'] ?></td>
                     </tr>
-                  <?php endforeach */?>
+                  <?php endforeach ?>
                 </section>
               </section>
               <section class="slides" id="tarifs">

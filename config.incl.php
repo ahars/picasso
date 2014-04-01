@@ -24,6 +24,9 @@ $_CONFIG['perm_4'] = '18:15:00;21:15:00';
 // Nom de l'instance de payutc (pour affichage)
 $_CONFIG['title'] = 'picasso';
 
+// URL de picasso (avec le / final)
+$_CONFIG['picasso_url'] = 'http://localhost/picasso/';
+
 // URL de casper (avec le / final)
 $_CONFIG['casper_url'] = 'http://localhost/payutc/casper/';
 
@@ -43,8 +46,8 @@ $_CONFIG['database'] =  array(
     'datasource' => 'Database/MySQL',
     'persistent' => false,
     'host' => '127.0.0.1',
-    'login' => 'picasso',
-    'password' => 'picasso',
+    'login' => 'root',
+    'password' => 'jehu',
     'database' => 'picasso',
     'prefix' => '',
     'encoding' => 'utf8',

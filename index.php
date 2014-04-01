@@ -42,7 +42,7 @@ $app->configureMode('development', function () use ($app) {
 En attente du service CATALOG
 ********************************************************************************************************************
 // This middleware loads all our json clients
-//$app->add(new JsonClientMiddleware);
+$app->add(new JsonClientMiddleware);
 ********************************************************************************************************************
 */
 
@@ -201,14 +201,14 @@ $app->get('/admin', $CASauthenticate('admin'),  function () use ($app){
 
 // --- CAS
 $app->get('/login', function() use ($app) {
-    /*// Si pas de ticket, c'est une invitation à se connecter
+    // Si pas de ticket, c'est une invitation à se connecter
     if(empty($_GET["ticket"])) {
         $app->getLog()->debug("No CAS ticket, unsetting cookies and redirecting to CAS");
         // On jette les cookies actuels
         JsonClientFactory::getInstance()->destroyCookie();
         
         // Redirection vers le CAS
-        $app->redirect(JsonClientFactory::getInstance()->getClient("MYACCOUNT")->getCasUrl()."/login?service=".Config::get("casper_url").'login');
+        $app->redirect(JsonClientFactory::getInstance()->getClient("MYACCOUNT")->getCasUrl()."/login?service=".Config::get("piscaaso_url").'login');
     } else {
         // Connexion au serveur avec le ticket CAS
         try {
@@ -216,7 +216,7 @@ $app->get('/login', function() use ($app) {
             
             $result = JsonClientFactory::getInstance()->getClient("MYACCOUNT")->loginCas(array(
                 "ticket" => $_GET["ticket"],
-                "service" => Config::get("casper_url").'login'
+                "service" => Config::get("picasso_url").'login'
             ));
         } catch (\JsonClient\JsonException $e) {
             // Si l'utilisateur n'existe pas, go inscription
@@ -243,7 +243,7 @@ $app->get('/login', function() use ($app) {
         // Go vers la page d'accueil
         $app->redirect($app->urlFor('home'));
     }
-    */
+    
 })->name('login');
 
 $app->get('/logout', function() use ($app) {
@@ -273,6 +273,9 @@ $app->get('/', function () use ($app){
     $week_end = date('Y-m-d', strtotime('+' . (6 - $day) . ' days'));
     $semaine_start = date('d/m/Y', strtotime('-' . ($day - 1) . ' days'));
     $semaine_end = date('d/m/Y', strtotime('+' . (7 - $day) . ' days'));
+    $article_img = null;
+    $article_img_height = null;
+    $article_img_width = null;
 
     $datas = array();
 
@@ -336,7 +339,7 @@ $app->get('/', function () use ($app){
 
     $regex = preg_replace('#^\[\{(.*)\}\]$#', '$1', $doc);
 
-    $event = split('},{', $regex);
+    $event = preg_split('/},{/', $regex);
     foreach ($event as $evt) {
 
       $a = preg_replace('#^"id":"(.*)","title":"(.*)$#', '$1', $evt);
@@ -400,14 +403,14 @@ $app->get('/', function () use ($app){
         $app->flashNow('error','Impossible de charger les produits depuis Payutc');
     }
     
-    $datas['goodies'] = $pdo->find("SELECT numero,nom,prenom FROM goodies WHERE semaine = '$schema' ORDER BY numero,nom,prenom; ");
+    $datas['goodies'] = $pdo->find("SELECT numero,nom,prenom FROM goodies;");/* WHERE semaine = '$schema' ORDER BY numero,nom,prenom; ");*/
     $datas['weekbieres'] = $pdo->find("SELECT nom,degre,prix,img_url FROM bieres WHERE disabled = 0 AND semaine = '$schema' ORDER BY prix ASC, degre DESC, nom ;");
     $datas['softs'] = $pdo->find("SELECT nom,prix FROM softs WHERE disabled = 0 ORDER BY prix, nom;");
     $datas['snacks'] = $pdo->find("SELECT nom,prix FROM snacks WHERE disabled = 0 ORDER BY prix, nom; ");
     $datas['bouteilles'] = $pdo->find("SELECT nom,degre,prix FROM bieres WHERE semaine = NULL AND category = 'BOUTEILLE' AND disabled = 0 ORDER BY prix ASC, degre DESC, nom; ");
     $datas['pressions'] = $pdo->find("SELECT nom,degre,prix FROM bieres WHERE semaine = NULL AND category = 'PRESSION' AND disabled = 0 ORDER BY prix ASC, degre DESC, nom; ");
   
-    $app->render('default.php',array(
+    $app->render('default_test.php',array(
         'server'   => $app->request()->getRootUri(),
         'week_start' => $week_start,
         'week_end' => $week_end,
@@ -428,7 +431,6 @@ $app->get('/', function () use ($app){
         'cal_date' => $cal_date,
         'cal_horaire' => $cal_horaire,
         'cal_url' => $cal_url,
-        'cal_allDay' => $cal_allDay,
         'cal_tag' => $cal_tag,
         'cal_corps' => $cal_corps,
         'perms' => $perms,
