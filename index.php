@@ -18,7 +18,7 @@ Config::initFromArray($_CONFIG);
 $app = new \Slim\Slim(Config::get('slim_config'));
 
 // Settings for cookies
-$sessionPath = parse_url(Config::get("casper_url"), PHP_URL_PATH);
+$sessionPath = parse_url(Config::get("picasso_url"), PHP_URL_PATH);
 session_set_cookie_params(0, $sessionPath);
 session_start();
 
@@ -208,7 +208,7 @@ $app->get('/login', function() use ($app) {
         JsonClientFactory::getInstance()->destroyCookie();
         
         // Redirection vers le CAS
-        $app->redirect(JsonClientFactory::getInstance()->getClient("MYACCOUNT")->getCasUrl()."/login?service=".Config::get("piscaaso_url").'login');
+        $app->redirect(JsonClientFactory::getInstance()->getClient("MYACCOUNT")->getCasUrl()."/login?service=".Config::get("picasso_url").'login');
     } else {
         // Connexion au serveur avec le ticket CAS
         try {
@@ -259,7 +259,7 @@ $app->get('/logout', function() use ($app) {
     JsonClientFactory::getInstance()->destroyCookie();
     
     // Logout from CAS
-    $app->redirect(JsonClientFactory::getInstance()->getClient("MYACCOUNT")->getCasUrl()."/logout?service=".Config::get("casper_url").'login');
+    $app->redirect(JsonClientFactory::getInstance()->getClient("MYACCOUNT")->getCasUrl()."/logout?service=".Config::get("picasso_url").'login');
 })->name('logout');
 
 $app->get('/', function () use ($app){
@@ -410,7 +410,7 @@ $app->get('/', function () use ($app){
     $datas['bouteilles'] = $pdo->find("SELECT nom,degre,prix FROM bieres WHERE semaine = NULL AND category = 'BOUTEILLE' AND disabled = 0 ORDER BY prix ASC, degre DESC, nom; ");
     $datas['pressions'] = $pdo->find("SELECT nom,degre,prix FROM bieres WHERE semaine = NULL AND category = 'PRESSION' AND disabled = 0 ORDER BY prix ASC, degre DESC, nom; ");
   
-    $app->render('default_test.php',array(
+    $app->render('default.php',array(
         'server'   => $app->request()->getRootUri(),
         'week_start' => $week_start,
         'week_end' => $week_end,
