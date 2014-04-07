@@ -27,7 +27,7 @@ $rouge: #B31B28;
 .visible-desktop {
   display: inherit;
 }
-@media (max-width: 700px) {
+@media (max-width: 960px) {
   .visible-phone {
     display: inherit;
   }
@@ -140,6 +140,18 @@ caption, th, td {
   position:fixed;
 }
 
+.clear {
+  content: "."; 
+  visibility: hidden; 
+  display: block; 
+  height: 0; 
+  clear: both;
+}
+
+.space {
+  height: 100px;
+}
+
 /* -------------------------------------------------------------------------*/
 /* Grid */
 /*
@@ -180,19 +192,25 @@ caption, th, td {
 /* Header */
 
 header{
-  height: 64px;
-  background: $blanc;
-  top:0;
-  left:0;
-  right:0;
+  height: 65px;
+  background: white;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 5000;
+
+  .container {
+  height: 65px;
+  width: 1100px;
+  margin: auto;
+  }
+
   #main-logo{
-    position: absolute;
-    margin-left: -150px;
+    float: left;
     margin-top: -2px;
     height: 64.5px;
     width: 208.25px;
-    background: $blanc;
+    background: white;
     a{
       text-decoration: none;
       img{
@@ -207,14 +225,15 @@ header{
     margin:0;
     padding:0;
     &.menu-left{
-      float:left;
-      margin-left: 75px;
+      width: 506px;
+      margin: auto;
       li:first-child{
         border-left:1px solid $aubergine;
       }
     }
     &.menu-right{
       float:right;
+      width: 225px;
       li:hover, 
       li:active,
       li:focus,
@@ -222,10 +241,16 @@ header{
         background-color:$rouge;
       }
       li{
-        a{
-          margin:15px 15px;
-        }
         border:0;
+        a{
+          width: 75px;
+          height: 65px;
+          span{
+            position: relative;
+            top: 15px;
+            left: 20px;
+          }
+        }
       }
     }
     li{
@@ -243,78 +268,86 @@ header{
       }
       a{
         display: block;
-        margin:15px 35px;
+        margin: 0;
+        height: 65px;
+        width: 100px;
+      }
+      span {
+        display: block;
         background: url("../img/sprite.svg") 0 0 no-repeat;
+        position: relative;
+        top: 15px;
+        left: 35px;
         height: 34px;
         width: 34px;
       }
-      a#menu-news{
+      span#icon-news{
         background-position: -6*34px 0;
       }
-      &:hover a#menu-news, 
-      &:active a#menu-news,
-      &:focus a#menu-news,
-      &.active a#menu-news
+      &:hover span#icon-news, 
+      &:active span#icon-news,
+      &:focus span#icon-news,
+      &.active span#icon-news
       {
         background-position: -6*34px -34px;
       }
-      a#menu-calendrier{
+      span#icon-calendrier{
         background-position: -4*34px 0;
       }
-      &:hover a#menu-calendrier, 
-      &:active a#menu-calendrier,
-      &:focus a#menu-calendrier,
-      &.active a#menu-calendrier
+      &:hover span#icon-calendrier, 
+      &:active span#icon-calendrier,
+      &:focus span#icon-calendrier,
+      &.active span#icon-calendrier
       {
         background-position: -4*34px -34px;
       }
-      a#menu-weekbieres{
+      span#icon-weekbieres{
         background-position: 0 0;
       }
-      &:hover a#menu-weekbieres, 
-      &:active a#menu-weekbieres,
-      &:focus a#menu-weekbieres,
-      &.active a#menu-weekbieres
+      &:hover span#icon-weekbieres, 
+      &:active span#icon-weekbieres,
+      &:focus span#icon-weekbieres,
+      &.active span#icon-weekbieres
       {
         background-position: 0 -34px;
       }
-      a#menu-goodies{
+      span#icon-goodies{
         background-position: -5*34px 0;
       }
-      &:hover a#menu-goodies, 
-      &:active a#menu-goodies,
-      &:focus a#menu-goodies,
-      &.active a#menu-goodies
+      &:hover span#icon-goodies, 
+      &:active span#icon-goodies,
+      &:focus span#icon-goodies,
+      &.active span#icon-goodies
       {
         background-position: -5*34px -34px;
       }
-      a#menu-tarifs{
+      span#icon-tarifs{
         background-position: -2*34px 0;
       }
-      &:hover a#menu-tarifs, 
-      &:active a#menu-tarifs,
-      &:focus a#menu-tarifs,
-      &.active a#menu-tarifs
+      &:hover span#icon-tarifs, 
+      &:active span#icon-tarifs,
+      &:focus span#icon-tarifs,
+      &.active span#icon-tarifs
       {
         background-position: -2*34px -34px;
       }
-      a#menu-facebook{
+      span#icon-facebook{
         background-position: -1*34px 0;
       }
-      &:hover a#menu-facebook, 
-      &:active a#menu-facebook,
-      &:focus a#menu-facebook,
-      &.active a#menu-facebook
+      &:hover span#icon-facebook, 
+      &:active span#icon-facebook,
+      &:focus span#icon-facebook,
+      &.active span#icon-facebook
       {
         background-position: -1*34px -34px;
       }
-      a#menu-payutc{
+      span#icon-payutc{
         background-position: -3*34px 0;
       }
-      &:hover a#menu-payutc, 
-      &:active a#menu-payutc,
-      &:focus a#menu-payutc,
-      &.active a#menu-payutc
+      &:hover span#icon-payutc, 
+      &:active span#icon-payutc,
+      &:focus span#icon-payutc,
+      &.active span#icon-payutc
       {
         background-position: -3*34px -34px;
       }
@@ -326,17 +359,17 @@ header{
 /* Main Container */
 
 #main-container{
-  position:relative;
   z-index: 1000;
+  width: 800px;
+  margin: auto;
+  margin-top: 80px;
   section.slider{
     section.slides{
-      width:760px;
-      position: relative;
+      width:800px;
       h3{margin-left: 78px;}
       section.box{
         border: 1px solid $rouge;
-        padding: 1em;
-        min-height: 200px;
+        padding: 15px;
         /* Rubrique Coming Soon */
         h3#coming_soon{line-height:200px;}
         img.picture{
@@ -348,11 +381,17 @@ header{
         .article{
           line-height: 20px;
         }
+        div.grid{
+          width: 766px;
+          margin: auto;
+        }
         div.columns{
           float:left;
-          margin-right: 1em;
+          margin-left: 15px;
+          &:first-child{
+            margin-left: 0;
+          }
           &:last-child{
-            margin-right: 0;
             &:after{
               content: "";
               clear: both;
@@ -360,11 +399,11 @@ header{
           }
           .block{
             height: 20px;
-            width: 82px;
+            width: 85px;
             background: $rouge;
             border-bottom: 2px solid $aubergine;
             cursor: pointer;
-            padding:1em;
+            padding: 15px;
             line-height: 20px;
             position: relative;
             a{
@@ -376,8 +415,9 @@ header{
             .detail{
               position: absolute;
               background: $aubergine;
-              width: 360px;
-              height: 198px;
+              padding: 10px;
+              width: 370px;
+              height: 188px;
               display: none;
               z-index: 4000;
               &.d-left{
@@ -390,13 +430,13 @@ header{
                 top: 0px;
               }
               &.d-2{
-                top: -50px;
+                top: -52px;
               }
               &.d-3{
-                top: -100px;
+                top: -104px;
               }
               &.d-4{
-                top: -150px;
+                top: -156px;
               }
             }
           }
@@ -405,7 +445,7 @@ header{
             margin:0;
             border-left: 2px solid $rouge;
             padding-left: 1em;
-            width: 164px;
+            width: 180px;
             tr{
               td{
                 padding-top:0.35em;

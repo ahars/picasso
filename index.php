@@ -38,13 +38,13 @@ $app->configureMode('development', function () use ($app) {
     ));
 });
 
-/*
-En attente du service CATALOG
-********************************************************************************************************************
+
+//En attente du service CATALOG
+//********************************************************************************************************************
 // This middleware loads all our json clients
 //$app->add(new JsonClientMiddleware);
-********************************************************************************************************************
-*/
+//********************************************************************************************************************
+
 
 function sanitize(array $_files, $top = true){
     $files = array();
@@ -277,6 +277,9 @@ $app->get('/', function () use ($app){
     $datas = array();
 
     // Récupération du dernier article publié par le Picasso sur le portail des assos.
+    $article_img = null;
+    $article_img_width = null;
+    $article_img_height = null;
     $curl2 = new CURL();
     $doc = $curl2->get(Config::get('article_url'));
 
@@ -336,7 +339,7 @@ $app->get('/', function () use ($app){
 
     $regex = preg_replace('#^\[\{(.*)\}\]$#', '$1', $doc);
 
-    $event = split('},{', $regex);
+    $event = preg_split('/},{/', $regex);
     foreach ($event as $evt) {
 
       $a = preg_replace('#^"id":"(.*)","title":"(.*)$#', '$1', $evt);

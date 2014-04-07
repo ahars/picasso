@@ -16,21 +16,26 @@
     </head>
     <body>
         <header class="fixed">
-          <div class="container">
-            <div id="main-logo">
-              <a href="http://assos.utc.fr/picasso"><img src="res/img/logo_P14.png" alt="Picasso Logo"></a>
+            <div class="container">
+              <div id="main-logo">
+                <a href="http://assos.utc.fr/picasso"><img src="res/img/logo_P14.png" alt="Picasso Logo"></a>
             </div>
-            <ul class="menu-left">
-              <li><a id="menu-news" href="#news"></a></li>
-              <li><a id="menu-calendrier" href="#calendrier"></a></li>
-              <li><a id="menu-weekbieres" href="#weekbieres"></a></li>
-              <li><a id="menu-goodies" href="#goodies"></a></li>
-              <li><a id="menu-tarifs" href="#tarifs"></a></li>
-            </ul>
-            <ul class="menu-right">
-              <li><a id="menu-payutc" href="https://assos.utc.fr/payutc"></a></li>
-              <li><a id="menu-facebook" href="https://www.facebook.com/pic.asso.5"></a></li>
-            </ul>
+            <div id="menu-right">
+              <ul class="menu-right">
+                <li><a id="menu-payutc" href="https://assos.utc.fr/payutc"><span id="icon-payutc"></span></a></li>
+                <li><a id="menu-facebook" href="https://www.facebook.com/pic.asso.5"><span id="icon-facebook"></span></a></li>
+                <li><a id="menu-info" href="#info"><span id="icon-facebook"></span></a></li>
+              </ul>
+            </div>
+            <div id="menu-left">
+              <ul class="menu-left visible-desktop">
+                <li><a id="menu-news" href="#news"><span id="icon-news"></span></a></li>
+                <li><a id="menu-calendrier" href="#calendrier"><span id="icon-calendrier"></span></a></li>
+                <li><a id="menu-weekbieres" href="#weekbieres"><span id="icon-weekbieres"></span></a></li>
+                <li><a id="menu-goodies" href="#goodies"><span id="icon-goodies"></span></a></li>
+                <li><a id="menu-tarifs" href="#tarifs"><span id="icon-tarifs"></span></a></li>
+              </ul>
+            </div>
             <div class="clear"></div>
           </div>
         </header>
@@ -49,6 +54,7 @@
                   <div class="article">
                     <?php echo $article_corps; ?>
                   </div>
+                  <div class="clear"></div>
                 </section>
               </section>
               <section class="slides" id="calendrier">
@@ -120,6 +126,7 @@
                       echo '</div>';
                     }
                   ?>
+                  <div class="clear"></div>
                 </section>
               </section>
               <section class="slides" id="weekbieres">
@@ -128,6 +135,7 @@
                 <section class="box">
                   <!-- TODO -->
                   <h3 id="coming_soon">Coming Soon !</h3>
+                  <div class="clear"></div>
                 </section>
               </section>
               <section class="slides" id="goodies">
@@ -143,6 +151,7 @@
                       <td><?php echo $v['prenom'] ?></td>
                     </tr>
                   <?php endforeach */?>
+                  <div class="clear"></div>
                 </section>
               </section>
               <section class="slides" id="tarifs">
