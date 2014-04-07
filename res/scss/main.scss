@@ -332,14 +332,18 @@ header{
     section.slides{
       width:760px;
       position: relative;
-      h3{margin-left: 78px;}
+      h3{
+        margin-left: 78px;
+      }
       section.box{
         border: 1px solid $rouge;
         padding: 1em;
         min-height: 200px;
         overflow:auto;
         /* Rubrique Coming Soon */
-        h3#coming_soon{line-height:200px;}
+        #coming_soon{
+          line-height:200px;
+        }
         img.picture{
           background: $blanc;
           border: 1px solid $blanc;

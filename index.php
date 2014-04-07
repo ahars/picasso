@@ -409,8 +409,12 @@ $app->get('/', function () use ($app){
     $datas['snacks'] = $pdo->find("SELECT nom,prix FROM snacks WHERE disabled = 0 ORDER BY prix, nom; ");
     $datas['bouteilles'] = $pdo->find("SELECT nom,degre,prix FROM bieres WHERE semaine = NULL AND category = 'BOUTEILLE' AND disabled = 0 ORDER BY prix ASC, degre DESC, nom; ");
     $datas['pressions'] = $pdo->find("SELECT nom,degre,prix FROM bieres WHERE semaine = NULL AND category = 'PRESSION' AND disabled = 0 ORDER BY prix ASC, degre DESC, nom; ");
-  
-    $app->render('default.php',array(
+
+    $ouverture = Config::get('ouverture');
+    $date_ouverture = mktime($ouverture.substr(11,2), $ouverture.substr(14,2), $ouverture.substr(17,2), ($ouverture.substr(3,2) - 1), $ouverture.substr(0,2), $ouverture.substr(6,4));
+    $now = time();
+
+    $app->render('countdown.php',array(
         'server'   => $app->request()->getRootUri(),
         'week_start' => $week_start,
         'week_end' => $week_end,
@@ -434,6 +438,7 @@ $app->get('/', function () use ($app){
         'cal_tag' => $cal_tag,
         'cal_corps' => $cal_corps,
         'perms' => $perms,
+        'ouverture' => $ouverture
     ));
 })->name('home');
 

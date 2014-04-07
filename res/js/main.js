@@ -95,5 +95,4 @@ $(document).ready(function() {
     $.get(loadurl,function(data){
         console.log(data);
     },'html');
-
 });

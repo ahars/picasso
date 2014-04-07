@@ -1,0 +1,118 @@
+/* line 1, ../scss/countdown.scss */
+section#compteur {
+  margin-top: 20%;
+}
+
+/* line 5, ../scss/countdown.scss */
+.countdown-row {
+  clear: both;
+  width: 100%;
+  padding: 0px 2px;
+  text-align: center;
+  font-size: 130px;
+}
+
+/* line 13, ../scss/countdown.scss */
+.countdown-show2 .countdown-section {
+  width: 48%;
+}
+
+/* line 16, ../scss/countdown.scss */
+.countdown-show3 .countdown-section {
+  width: 32.5%;
+}
+
+/* line 19, ../scss/countdown.scss */
+.countdown-show4 .countdown-section {
+  width: 24.5%;
+}
+
+/* line 22, ../scss/countdown.scss */
+.countdown-show5 .countdown-section {
+  width: 19.5%;
+}
+
+/* line 25, ../scss/countdown.scss */
+.countdown-show6 .countdown-section {
+  width: 16.25%;
+}
+
+/* line 28, ../scss/countdown.scss */
+.countdown-show7 .countdown-section {
+  width: 14%;
+}
+
+/* line 32, ../scss/countdown.scss */
+.countdown-section {
+  display: block;
+  float: left;
+  font-size: 75%;
+  text-align: center;
+}
+
+/* line 38, ../scss/countdown.scss */
+.countdown-amount {
+  font-size: 200%;
+}
+
+/* line 41, ../scss/countdown.scss */
+.countdown-period {
+  display: block;
+}
+
+/* line 44, ../scss/countdown.scss */
+.countdown-descr {
+  display: block;
+  width: 100%;
+}
+
+@media screen and (max-width: 700px) {
+  /* line 51, ../scss/countdown.scss */
+  section#compteur {
+    margin-top: 50%;
+  }
+
+  /* line 55, ../scss/countdown.scss */
+  .countdown-row {
+    clear: both;
+    width: 100%;
+    padding: 0px 2px;
+    text-align: center;
+    font-size: 50px;
+  }
+
+  /* line 63, ../scss/countdown.scss */
+  #main-logo {
+    padding-left: 150px;
+  }
+
+  /* line 67, ../scss/countdown.scss */
+  .menu-right {
+    float: right;
+  }
+}
+@media screen and (min-width: 701px) and (max-width: 1023px) {
+  /* line 74, ../scss/countdown.scss */
+  section#compteur {
+    margin-top: 30%;
+  }
+
+  /* line 78, ../scss/countdown.scss */
+  .countdown-row {
+    clear: both;
+    width: 100%;
+    padding: 0px 2px;
+    text-align: center;
+    font-size: 100px;
+  }
+
+  /* line 86, ../scss/countdown.scss */
+  #main-logo {
+    padding-left: 150px;
+  }
+
+  /* line 90, ../scss/countdown.scss */
+  .menu-right {
+    float: right;
+  }
+}

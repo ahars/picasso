@@ -474,7 +474,7 @@ header ul li:hover a#menu-payutc, header ul li:active a#menu-payutc, header ul l
 #main-container section.slider section.slides h3 {
   margin-left: 78px;
 }
-/* line 336, ../scss/main.scss */
+/* line 338, ../scss/main.scss */
 #main-container section.slider section.slides section.box {
   border: 1px solid #b31b28;
   padding: 1em;
@@ -482,36 +482,36 @@ header ul li:hover a#menu-payutc, header ul li:active a#menu-payutc, header ul l
   overflow: auto;
   /* Rubrique Coming Soon */
 }
-/* line 342, ../scss/main.scss */
-#main-container section.slider section.slides section.box h3#coming_soon {
+/* line 344, ../scss/main.scss */
+#main-container section.slider section.slides section.box #coming_soon {
   line-height: 200px;
 }
-/* line 343, ../scss/main.scss */
+/* line 347, ../scss/main.scss */
 #main-container section.slider section.slides section.box img.picture {
   background: white;
   border: 1px solid white;
   float: right;
   margin-left: 10px;
 }
-/* line 349, ../scss/main.scss */
+/* line 353, ../scss/main.scss */
 #main-container section.slider section.slides section.box .article {
   line-height: 20px;
 }
-/* line 352, ../scss/main.scss */
+/* line 356, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns {
   float: left;
   margin-right: 1em;
 }
-/* line 355, ../scss/main.scss */
+/* line 359, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns:last-child {
   margin-right: 0;
 }
-/* line 357, ../scss/main.scss */
+/* line 361, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns:last-child:after {
   content: "";
   clear: both;
 }
-/* line 362, ../scss/main.scss */
+/* line 366, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block {
   height: 20px;
   width: 82px;
@@ -522,15 +522,15 @@ header ul li:hover a#menu-payutc, header ul li:active a#menu-payutc, header ul l
   line-height: 20px;
   position: relative;
 }
-/* line 371, ../scss/main.scss */
+/* line 375, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block a {
   color: white;
 }
-/* line 374, ../scss/main.scss */
+/* line 378, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block a:hover {
   color: #131325;
 }
-/* line 377, ../scss/main.scss */
+/* line 381, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail {
   position: absolute;
   background: #131325;
@@ -539,31 +539,31 @@ header ul li:hover a#menu-payutc, header ul li:active a#menu-payutc, header ul l
   display: none;
   z-index: 4000;
 }
-/* line 384, ../scss/main.scss */
+/* line 388, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-left {
   left: 122px;
 }
-/* line 387, ../scss/main.scss */
+/* line 391, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-right {
   right: 122px;
 }
-/* line 390, ../scss/main.scss */
+/* line 394, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-1 {
   top: 0px;
 }
-/* line 393, ../scss/main.scss */
+/* line 397, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-2 {
   top: -50px;
 }
-/* line 396, ../scss/main.scss */
+/* line 400, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-3 {
   top: -100px;
 }
-/* line 399, ../scss/main.scss */
+/* line 403, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-4 {
   top: -150px;
 }
-/* line 404, ../scss/main.scss */
+/* line 408, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .liste {
   border: 0;
   margin: 0;
@@ -571,21 +571,21 @@ header ul li:hover a#menu-payutc, header ul li:active a#menu-payutc, header ul l
   padding-left: 1em;
   width: 164px;
 }
-/* line 411, ../scss/main.scss */
+/* line 415, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .liste tr td {
   padding-top: 0.35em;
   padding-bottom: 0.35em;
   font-size: 1.1em;
 }
-/* line 416, ../scss/main.scss */
+/* line 420, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .liste tr .titre {
   padding-left: 0.8em;
 }
-/* line 419, ../scss/main.scss */
+/* line 423, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .liste tr .prix {
   padding-left: 1.3em;
 }
-/* line 422, ../scss/main.scss */
+/* line 426, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .liste tr .degre {
   padding-left: 0.8em;
   color: #b31b28;
