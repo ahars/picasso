@@ -444,7 +444,6 @@ $app->get('/', function () use ($app){
     ));
 })->name('home');
 
-
 $app->notFound(function () use ($app) {
   $app->render('404.php',array(
     'server' => $app->request()->getRootUri()
