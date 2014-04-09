@@ -38,13 +38,12 @@ $app->configureMode('development', function () use ($app) {
     ));
 });
 
-/*
-En attente du service CATALOG
-********************************************************************************************************************
+
+//En attente du service CATALOG
+//********************************************************************************************************************
 // This middleware loads all our json clients
-$app->add(new JsonClientMiddleware);
-********************************************************************************************************************
-*/
+//$app->add(new JsonClientMiddleware);
+//********************************************************************************************************************
 
 function sanitize(array $_files, $top = true){
     $files = array();
@@ -280,6 +279,9 @@ $app->get('/', function () use ($app){
     $datas = array();
 
     // Récupération du dernier article publié par le Picasso sur le portail des assos.
+    $article_img = null;
+    $article_img_width = null;
+    $article_img_height = null;
     $curl2 = new CURL();
     $doc = $curl2->get(Config::get('article_url'));
 
@@ -414,7 +416,7 @@ $app->get('/', function () use ($app){
     $date_ouverture = mktime($ouverture.substr(11,2), $ouverture.substr(14,2), $ouverture.substr(17,2), ($ouverture.substr(3,2) - 1), $ouverture.substr(0,2), $ouverture.substr(6,4));
     $now = time();
 
-    $app->render('countdown.php',array(
+    $app->render('default.php',array(
         'server'   => $app->request()->getRootUri(),
         'week_start' => $week_start,
         'week_end' => $week_end,
