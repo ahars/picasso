@@ -412,8 +412,10 @@ $app->get('/', function () use ($app){
     $datas['bouteilles'] = $pdo->find("SELECT nom,degre,prix FROM bieres WHERE semaine = NULL AND category = 'BOUTEILLE' AND disabled = 0 ORDER BY prix ASC, degre DESC, nom; ");
     $datas['pressions'] = $pdo->find("SELECT nom,degre,prix FROM bieres WHERE semaine = NULL AND category = 'PRESSION' AND disabled = 0 ORDER BY prix ASC, degre DESC, nom; ");
 
-    $ouverture = Config::get('ouverture');
-    $date_ouverture = mktime($ouverture.substr(11,2), $ouverture.substr(14,2), $ouverture.substr(17,2), ($ouverture.substr(3,2) - 1), $ouverture.substr(0,2), $ouverture.substr(6,4));
+    $ouverture_matin = Config::get('ouverture_matin');
+    $ouverture_soir = Config::get('ouverture_soir');
+    $date_ouverture_matin = mktime($ouverture_matin.substr(11,2), $ouverture_matin.substr(14,2), $ouverture_matin.substr(17,2), ($ouverture_matin.substr(3,2) - 1), $ouverture_matin.substr(0,2), $ouverture_matin.substr(6,4));
+    $date_ouverture_soir = mktime($ouverture_soir.substr(11,2), $ouverture_soir.substr(14,2), $ouverture_soir.substr(17,2), ($ouverture_soir.substr(3,2) - 1), $ouverture_soir.substr(0,2), $ouverture_soir.substr(6,4));
     $now = time();
 
     $app->render('default.php',array(
@@ -440,8 +442,10 @@ $app->get('/', function () use ($app){
         'cal_tag' => $cal_tag,
         'cal_corps' => $cal_corps,
         'perms' => $perms,
-        'ouverture' => $ouverture
+        'ouverture' => $ouverture_matin,
+        'date_ouverture' => $date_ouverture_matin
     ));
+
 })->name('home');
 
 $app->notFound(function () use ($app) {

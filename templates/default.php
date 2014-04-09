@@ -7,6 +7,7 @@
         <title>Pic'Asso UTC</title>
         <link rel="shortcut icon" href="res/img/favicon.png" />
         <link rel="stylesheet" href="res/css/main.css">
+        <link rel="stylesheet" href="res/css/countdown.css">
 
         <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
         <!--[if lt IE 9]>
@@ -24,7 +25,7 @@
               <ul class="menu-right">
                 <li><a id="menu-payutc" href="https://assos.utc.fr/payutc"><span id="icon-payutc"></span></a></li>
                 <li><a id="menu-facebook" href="https://www.facebook.com/pic.asso.5"><span id="icon-facebook"></span></a></li>
-                <li><a id="menu-info" href="#info"><span id="icon-info"></span></a></li>
+                <!--li><a id="menu-info" href="#info"><span id="icon-info"></span></a></li-->
               </ul>
             </div>
             <div id="menu-left">
@@ -43,6 +44,19 @@
           <div class="container">
             <section class="slider">
               <section class="slides" id="news">
+                <h1>Ouverture</h1>
+                <h3></h3>
+                <section class="box" id="compteur" title=<?php echo $ouverture; ?>>
+                  <div id="countdown"></div>
+                  <div id="labels">
+                    <span id='cd_label_j'>j</span>
+                    <span id='cd_label_h'>h</span>
+                    <span id='cd_label_m'>m</span>
+                    <span id='cd_label_s'>s</span>
+                  </div>
+                  <div class="clear"></div>
+                </section>
+                <?php /* ?>
                 <h1>Dernière News</h1>
                 <h3><?php echo $article_titre . ' - ' . $article_date; ?></h3>
                 <section class="box">
@@ -56,6 +70,7 @@
                   </div>
                   <div class="clear"></div>
                 </section>
+                <?php */ ?>
               </section>
               <section class="slides" id="calendrier">
                 <h1>Calendrier</h1>
@@ -166,9 +181,13 @@
             <div class="clear"></div>
           </div>
         </div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="res/js/jquery-1.9.1.min.js"></script>
+        <script src="res/js/jquery.plugin.js"></script>
         <script src="res/js/jquery.easing.js"></script>
         <script src="res/js/jquery.scrollspy.js"></script>
+        <script src="res/js/jquery.countdown.js"></script>
         <script src="res/js/main.js"></script>
+        <script src="res/js/countdown.js"></script>
     </body>
 </html>

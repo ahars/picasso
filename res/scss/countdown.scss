@@ -1,93 +1,40 @@
 section#compteur {
-	margin-top: 20%;
-}
+	font-size: 100px;
+	height: 110px;
 
-.countdown-row {
-	clear: both;
-	width: 100%;
-	padding: 0px 2px;
-	text-align: center;
-	font-size: 130px;
-}
-
-.countdown-show2 .countdown-section {
-	width: 48%;
-}
-.countdown-show3 .countdown-section {
-	width: 32.5%;
-}
-.countdown-show4 .countdown-section {
-	width: 24.5%;
-}
-.countdown-show5 .countdown-section {
-	width: 19.5%;
-}
-.countdown-show6 .countdown-section {
-	width: 16.25%;
-}
-.countdown-show7 .countdown-section {
-	width: 14%;
-}
-
-.countdown-section {
-	display: block;
-	float: left;
-	font-size: 75%;
-	text-align: center;
-}
-.countdown-amount {
-    font-size: 200%;
-}
-.countdown-period {
-    display: block;
-}
-.countdown-descr {
-	display: block;
-	width: 100%;
-}
-
-@media screen and (max-width: 700px) {
-
-	section#compteur {
-		margin-top: 50%;
+	div#until div#cd {
+		width: 200px;
+		span#cd_days, span#cd_hours, span#cd_minutes, span#cd_seconds {	
+			position: absolute;
+			display: inline-block;
+			float:right;
+		}
+		span#cd_hours {
+			left: 180px;
+		}
+		span#cd_minutes {
+			left: 390px;
+		}
+		span#cd_seconds {
+			left: 620px;
+		}
 	}
-
-	.countdown-row {
-		clear: both;
-		width: 100%;
-		padding: 0px 2px;
-		text-align: center;
-		font-size: 50px;
-	}
-
-	#main-logo {
-		padding-left: 150px;
-	}
-
-	.menu-right {
-		float: right;
-	}
-}
-
-@media screen and (min-width: 701px) and (max-width: 1023px) {
-
-	section#compteur {
-		margin-top: 30%;
-	}
-
-	.countdown-row {
-		clear: both;
-		width: 100%;
-		padding: 0px 2px;
-		text-align: center;
-		font-size: 100px;
-	}
-
-	#main-logo {
-		padding-left: 150px;
-	}
-
-	.menu-right {
-		float: right;
+	
+	div#labels {
+		span#cd_label_j, span#cd_label_h, span#cd_label_m, span#cd_label_s {
+			position: absolute;
+		}
+		span#cd_label_j {
+			left: 130px;
+		}
+		span#cd_label_h {
+			left: 300px;
+		}
+		span#cd_label_m {
+			left: 500px;
+		}
+		span#cd_label_s {
+			left: 730px;
+		}
 	}
 }

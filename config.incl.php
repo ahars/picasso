@@ -15,7 +15,8 @@ $_CONFIG['slim_config'] = array(
 $_CONFIG['application_key'] = 'picasso';
 
 // Date d'ouverture du Pic.
-$_CONFIG['ouverture'] = '22:04:2014:10:00:00';
+$_CONFIG['ouverture_matin'] = '05:05:2014:10:00:00';
+$_CONFIG['ouverture_soir'] = '05:05:2014:18:30:00';
 
 // Type d'évènement dans le calendrier du portail
 $_CONFIG['perm'] = 'Perm au Picasso';
