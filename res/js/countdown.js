@@ -11,5 +11,4 @@ $(function () {
 	date_ouverture.setSeconds(ouverture.substr(17,2));
 
 	$('#countdown').countdown({until: date_ouverture, compact: true, expiryUrl: 'http://assos.utc.fr/picasso/', onExpiry: function(){location.reload();}, layout: '<div id=\'until\'><div id=\'cd\'><span id=\'cd_days\'>{dn}</span></div><div id=\'cd\'><span id=\'cd_hours\'>{hnn}</span></div><div id=\'cd\'><span id=\'cd_minutes\'>{mnn}</span></div><div id=\'cd\'><span id=\'cd_seconds\'>{snn}</span></div></div>'});
-//	$('#countdown').countdown({until: date_ouverture, compact: true, expiryUrl: 'http://assos.utc.fr/picasso/', onExpiry: function(){location.reload();}, layout: '{dn}j {hnn}h {mnn}m {snn}s'});
 });
