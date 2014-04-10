@@ -495,11 +495,11 @@ header ul li:hover span#icon-payutc, header ul li:active span#icon-payutc, heade
 }
 /* line 354, ../scss/main.scss */
 header ul li span#icon-info {
-  background-position: -34px 0;
+  background-position: -241.5px 0;
 }
 /* line 361, ../scss/main.scss */
 header ul li:hover span#icon-info, header ul li:active span#icon-info, header ul li:focus span#icon-info, header ul li.active span#icon-info {
-  background-position: -34px -34px;
+  background-position: -241.5px -34px;
 }
 
 /* -------------------------------------------------------------------------*/

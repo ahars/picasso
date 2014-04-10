@@ -23,9 +23,9 @@
             </div>
             <div id="menu-right">
               <ul class="menu-right">
+                <li><a id="menu-info" href="#info"><span id="icon-info"></span></a></li>
                 <li><a id="menu-payutc" href="https://assos.utc.fr/payutc"><span id="icon-payutc"></span></a></li>
                 <li><a id="menu-facebook" href="https://www.facebook.com/pic.asso.5"><span id="icon-facebook"></span></a></li>
-                <!--li><a id="menu-info" href="#info"><span id="icon-info"></span></a></li-->
               </ul>
             </div>
             <div id="menu-left">
