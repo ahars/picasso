@@ -17,26 +17,48 @@
     </head>
     <body>
         <header class="fixed">
-          <div class="container">
-            <div id="main-logo">
-              <a href="http://assos.utc.fr/picasso"><img src="res/img/logo_P14.png" alt="Picasso Logo"></a>
+            <div class="container">
+              <div id="main-logo">
+                <a href="http://assos.utc.fr/picasso"><img src="res/img/logo_P14.png" alt="Picasso Logo"></a>
             </div>
-            <ul class="menu-right">
-              <li><a id="menu-payutc" href="https://assos.utc.fr/payutc"></a></li>
-              <li><a id="menu-facebook" href="https://www.facebook.com/pic.asso.5"></a></li>
-            </ul>
+            <div id="menu-right">
+              <ul class="menu-right">
+                <li><a id="menu-info" href="#info"><span id="icon-info"></span></a></li>
+                <li><a id="menu-payutc" href="https://assos.utc.fr/payutc"><span id="icon-payutc"></span></a></li>
+                <li><a id="menu-facebook" href="https://www.facebook.com/pic.asso.5"><span id="icon-facebook"></span></a></li>
+              </ul>
+            </div>
             <div class="clear"></div>
           </div>
         </header>
-        <section id="compteur" title=<?php echo $ouverture; ?>>
-            <div id="countdown"></div>
-        </section>
+        <div id="main-container">
+          <div class="container">
+            <section class="slider">
+              <section class="slides" id="main_countdown">
+                <h1>Début de la perm</h1>
+                <h3></h3>
+                <section class="box" id="compteur" title=<?php echo $ouverture_matin . '/' . $ouverture_soir; ?>>
+                  <div id="countdown3"></div>
+                  <div id="labels">
+                    <span id='cd_label_j'>j</span>
+                    <span id='cd_label_h'>h</span>
+                    <span id='cd_label_m'>m</span>
+                    <span id='cd_label_s'>s</span>
+                  </div>
+                  <div class="clear"></div>
+                </section>
+              </section>
+            </section>
+            <div class="clear"></div>
+          </div>
+        </div>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="res/js/jquery-1.9.1.min.js"></script>
-        <script src="res/js/jquery.easing.js"></script>
         <script src="res/js/jquery.plugin.js"></script>
+        <script src="res/js/jquery.easing.js"></script>
+        <script src="res/js/jquery.scrollspy.js"></script>
         <script src="res/js/jquery.countdown.js"></script>
-        <script src="res/js/main.js"></script>
+        <!--script src="res/js/main.js"></script-->
         <script src="res/js/countdown.js"></script>
     </body>
 </html>

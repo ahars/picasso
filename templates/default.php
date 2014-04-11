@@ -23,7 +23,7 @@
             </div>
             <div id="menu-right">
               <ul class="menu-right">
-                <li><a id="menu-info" href="#info"><span id="icon-info"></span></a></li>
+                <!--li><a id="menu-info" href="#info"><span id="icon-info"></span></a></li-->
                 <li><a id="menu-payutc" href="https://assos.utc.fr/payutc"><span id="icon-payutc"></span></a></li>
                 <li><a id="menu-facebook" href="https://www.facebook.com/pic.asso.5"><span id="icon-facebook"></span></a></li>
               </ul>
@@ -44,33 +44,35 @@
           <div class="container">
             <section class="slider">
               <section class="slides" id="news">
-                <h1>Ouverture</h1>
-                <h3></h3>
-                <section class="box" id="compteur" title=<?php echo $ouverture; ?>>
-                  <div id="countdown"></div>
-                  <div id="labels">
-                    <span id='cd_label_j'>j</span>
-                    <span id='cd_label_h'>h</span>
-                    <span id='cd_label_m'>m</span>
-                    <span id='cd_label_s'>s</span>
-                  </div>
-                  <div class="clear"></div>
-                </section>
-                <?php /* ?>
-                <h1>Dernière News</h1>
-                <h3><?php echo $article_titre . ' - ' . $article_date; ?></h3>
-                <section class="box">
-                  <?php
-                    if (!empty($article_img)){
-                      echo '<img src="' . $article_img . '" width="' . $article_width . '" height="' . $article_height . '" class="picture">';
-                    }
-                  ?>
-                  <div class="article">
-                    <?php echo $article_corps; ?>
-                  </div>
-                  <div class="clear"></div>
-                </section>
-                <?php */ ?>
+                <?php if ($now >= $date_ouverture_matin) { ?>
+                  <h1>Dernière News</h1>
+                  <h3><?php echo $article_titre . ' - ' . $article_date; ?></h3>
+                  <section class="box">
+                    <?php 
+                      if (!empty($article_img)) {
+                        echo '<img src="' . $article_img . '" width="' . $article_width . '" height="' . $article_height . '" class="picture">';
+                      }
+                    ?>
+                    <div class="article">
+                      <?php echo $article_corps; ?>
+                    </div>
+                    <div id="compteur" title=<?php echo $ouverture_matin . '/' . $ouverture_soir; ?>><div id="countdown2"></div></div>
+                    <div class="clear"></div>
+                  </section>
+                <?php } else { ?>
+                  <h1>Ouverture</h1>
+                  <h3>Semestre <?php echo $semestre; ?></h3>
+                  <section class="box" id="compteur" title=<?php echo $ouverture_matin . '/' . $ouverture_soir; ?>>
+                    <div id="countdown"></div>
+                    <div id="labels">
+                      <span id='cd_label_j'>j</span>
+                      <span id='cd_label_h'>h</span>
+                      <span id='cd_label_m'>m</span>
+                      <span id='cd_label_s'>s</span>
+                    </div>
+                    <div class="clear"></div>
+                  </section>
+                <?php } ?>
               </section>
               <section class="slides" id="calendrier">
                 <h1>Calendrier</h1>

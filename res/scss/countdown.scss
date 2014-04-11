@@ -1,3 +1,7 @@
+section#main_countdown {
+	margin-top: 45%;
+}
+
 section#compteur {
 	font-size: 100px;
 	height: 110px;
@@ -28,7 +32,7 @@ section#compteur {
 			left: 130px;
 		}
 		span#cd_label_h {
-			left: 300px;
+			left: 290px;
 		}
 		span#cd_label_m {
 			left: 500px;
@@ -37,4 +41,8 @@ section#compteur {
 			left: 730px;
 		}
 	}
+}
+
+div#compteur {
+	visibility: hidden;
 }

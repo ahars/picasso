@@ -414,37 +414,48 @@ $app->get('/', function () use ($app){
 
     $ouverture_matin = Config::get('ouverture_matin');
     $ouverture_soir = Config::get('ouverture_soir');
-    $date_ouverture_matin = mktime($ouverture_matin.substr(11,2), $ouverture_matin.substr(14,2), $ouverture_matin.substr(17,2), ($ouverture_matin.substr(3,2) - 1), $ouverture_matin.substr(0,2), $ouverture_matin.substr(6,4));
-    $date_ouverture_soir = mktime($ouverture_soir.substr(11,2), $ouverture_soir.substr(14,2), $ouverture_soir.substr(17,2), ($ouverture_soir.substr(3,2) - 1), $ouverture_soir.substr(0,2), $ouverture_soir.substr(6,4));
+    $date_ouverture_matin = mktime(substr($ouverture_matin,11,2), substr($ouverture_matin,14,2), substr($ouverture_matin,17,2), substr($ouverture_matin,3,2), substr($ouverture_matin,0,2), substr($ouverture_matin,6,4));
+    $date_ouverture_soir = mktime(substr($ouverture_soir,11,2), substr($ouverture_soir,14,2), substr($ouverture_soir,17,2), substr($ouverture_soir,3,2), substr($ouverture_soir,0,2), substr($ouverture_soir,6,4));
+    $date_countdown_soir = mktime((substr($ouverture_soir,11,2) - 1), (substr($ouverture_soir,14,2) - 30), substr($ouverture_soir,17,2), substr($ouverture_soir,3,2), substr($ouverture_soir,0,2), substr($ouverture_soir,6,4));
     $now = time();
 
-    $app->render('default.php',array(
-        'server'   => $app->request()->getRootUri(),
-        'week_start' => $week_start,
-        'week_end' => $week_end,
-        'semaine' => $semaine,
-        'datas' => $datas,
-        'article_titre' => $article_titre,
-        'article_date' => $article_date,
-        'article_img' => $article_img,
-        'article_img_width' => $article_img_width,
-        'article_img_height' => $article_img_height,
-        'article_corps' => $article_corps,
-        'semestre' => Config::get('semestre'),
-        'semaine_start' => $semaine_start,
-        'semaine_end' => $semaine_end,
-        'perm' => Config::get('perm'),
-        'cal_titre' => $cal_titre,
-        'cal_asso' => $cal_asso,
-        'cal_date' => $cal_date,
-        'cal_horaire' => $cal_horaire,
-        'cal_url' => $cal_url,
-        'cal_tag' => $cal_tag,
-        'cal_corps' => $cal_corps,
-        'perms' => $perms,
-        'ouverture' => $ouverture_matin,
-        'date_ouverture' => $date_ouverture_matin
-    ));
+    if ($now > $date_countdown_soir AND $now < $date_ouverture_soir) {
+        $app->render('countdown.php',array(
+            'ouverture_matin' => $ouverture_matin,
+            'ouverture_soir' => $ouverture_soir
+        ));
+    } else { 
+        $app->render('default.php',array(
+            'server'   => $app->request()->getRootUri(),
+            'week_start' => $week_start,
+            'week_end' => $week_end,
+            'semaine' => $semaine,
+            'datas' => $datas,
+            'article_titre' => $article_titre,
+            'article_date' => $article_date,
+            'article_img' => $article_img,
+            'article_img_width' => $article_img_width,
+            'article_img_height' => $article_img_height,
+            'article_corps' => $article_corps,
+            'semestre' => Config::get('semestre'),
+            'semaine_start' => $semaine_start,
+            'semaine_end' => $semaine_end,
+            'perm' => Config::get('perm'),
+            'cal_titre' => $cal_titre,
+            'cal_asso' => $cal_asso,
+            'cal_date' => $cal_date,
+            'cal_horaire' => $cal_horaire,
+            'cal_url' => $cal_url,
+            'cal_tag' => $cal_tag,
+            'cal_corps' => $cal_corps,
+            'perms' => $perms,
+            'ouverture_matin' => $ouverture_matin,
+            'date_ouverture_matin' => $date_ouverture_matin,
+            'ouverture_soir' => $ouverture_soir,
+            'now' => $now
+        ));        
+    }
+
 
 })->name('home');
 

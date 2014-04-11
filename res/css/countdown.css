@@ -1,47 +1,57 @@
 /* line 1, ../scss/countdown.scss */
+section#main_countdown {
+  margin-top: 45%;
+}
+
+/* line 5, ../scss/countdown.scss */
 section#compteur {
   font-size: 100px;
   height: 110px;
 }
-/* line 5, ../scss/countdown.scss */
+/* line 9, ../scss/countdown.scss */
 section#compteur div#until div#cd {
   width: 200px;
 }
-/* line 7, ../scss/countdown.scss */
+/* line 11, ../scss/countdown.scss */
 section#compteur div#until div#cd span#cd_days, section#compteur div#until div#cd span#cd_hours, section#compteur div#until div#cd span#cd_minutes, section#compteur div#until div#cd span#cd_seconds {
   position: absolute;
   display: inline-block;
   float: right;
 }
-/* line 12, ../scss/countdown.scss */
+/* line 16, ../scss/countdown.scss */
 section#compteur div#until div#cd span#cd_hours {
   left: 180px;
 }
-/* line 15, ../scss/countdown.scss */
+/* line 19, ../scss/countdown.scss */
 section#compteur div#until div#cd span#cd_minutes {
   left: 390px;
 }
-/* line 18, ../scss/countdown.scss */
+/* line 22, ../scss/countdown.scss */
 section#compteur div#until div#cd span#cd_seconds {
   left: 620px;
 }
-/* line 24, ../scss/countdown.scss */
+/* line 28, ../scss/countdown.scss */
 section#compteur div#labels span#cd_label_j, section#compteur div#labels span#cd_label_h, section#compteur div#labels span#cd_label_m, section#compteur div#labels span#cd_label_s {
   position: absolute;
 }
-/* line 27, ../scss/countdown.scss */
+/* line 31, ../scss/countdown.scss */
 section#compteur div#labels span#cd_label_j {
   left: 130px;
 }
-/* line 30, ../scss/countdown.scss */
+/* line 34, ../scss/countdown.scss */
 section#compteur div#labels span#cd_label_h {
-  left: 300px;
+  left: 290px;
 }
-/* line 33, ../scss/countdown.scss */
+/* line 37, ../scss/countdown.scss */
 section#compteur div#labels span#cd_label_m {
   left: 500px;
 }
-/* line 36, ../scss/countdown.scss */
+/* line 40, ../scss/countdown.scss */
 section#compteur div#labels span#cd_label_s {
   left: 730px;
+}
+
+/* line 46, ../scss/countdown.scss */
+div#compteur {
+  visibility: hidden;
 }
