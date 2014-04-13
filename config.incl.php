@@ -14,8 +14,14 @@ $_CONFIG['slim_config'] = array(
 
 $_CONFIG['application_key'] = 'picasso';
 
+// Date d'ouverture du Pic.
+$_CONFIG['ouverture_matin'] = '05:05:2014:10:00:00';
+$_CONFIG['ouverture_soir'] = '05:05:2014:18:30:00';
+
+// Type d'évènement dans le calendrier du portail
 $_CONFIG['perm'] = 'Perm au Picasso';
 
+// Horaire des différentes permanences
 $_CONFIG['perm_1'] = '10:15:00;12:15:00';
 $_CONFIG['perm_2'] = '12:15:00;14:15:00';
 $_CONFIG['perm_3'] = '14:15:00;18:15:00';
@@ -23,6 +29,9 @@ $_CONFIG['perm_4'] = '18:15:00;21:15:00';
 
 // Nom de l'instance de payutc (pour affichage)
 $_CONFIG['title'] = 'picasso';
+
+// URL de picasso (avec le / final)
+$_CONFIG['picasso_url'] = 'http://localhost/picasso/';
 
 // URL de casper (avec le / final)
 $_CONFIG['casper_url'] = 'http://localhost/payutc/casper/';

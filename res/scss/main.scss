@@ -250,7 +250,7 @@ caption, th, td {
 
 header{
   height: 65px;
-  background: white;
+  background: $blanc;
   top: 0;
   left: 0;
   right: 0;
@@ -267,7 +267,7 @@ header{
     margin-top: -2px;
     height: 64.5px;
     width: 208.25px;
-    background: white;
+    background: $blanc;
     a{
       text-decoration: none;
       img{
@@ -407,6 +407,16 @@ header{
       {
         background-position: -3*34px -34px;
       }
+      span#icon-info{
+        background-position: -7*34.5px 0;
+      }
+      &:hover span#icon-info,
+      &:active span#icon-info,
+      &:focus span#icon-info,
+      &.active span#icon-info
+      {
+        background-position: -7*34.5px -34px;
+      }
     }
   }
 }
@@ -427,7 +437,6 @@ header{
         @include container(800px);
         border: 1px solid $rouge;
         padding: 15px;
-        /* Rubrique Coming Soon */
         img.picture{
           width: 30%;
           background: $blanc;
@@ -515,41 +524,14 @@ header{
                 font-size: 1.1em;
               }
               .titre{
-                padding-left:1em;
+                padding-left:0.8em;
               }
               .prix{
-                padding-left:1.5em;
+                padding-left:1.3em;
               }
               .degre{
-                padding-left:1em;
+                padding-left:0.8em;
                 color: $rouge;
-              }
-            }
-          }
-        }
-      }
-      section.selectors{
-        position: absolute;
-        right: -32px;
-        top:43%;
-        ul{
-          list-style: none;
-          margin: auto 0;
-          padding:0;
-          li{
-            margin:2em 0;
-            a{
-              display: block;
-              border-radius: 50%;
-              width: 13px;
-              height: 13px; 
-              background-color: $rouge;
-              @include transition(background-color 0.3s ease-in);
-              &:hover, 
-              &:active,
-              &:focus,
-              &.active{
-                background-color: $blanc;
               }
             }
           }

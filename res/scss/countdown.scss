@@ -1,0 +1,54 @@
+@import "compass";
+@import "susy"; 
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab);
+
+@media (min-width: 971px) {
+
+	section#compteur {
+		font-size: 80px;
+		height: 95px;
+	}
+
+}
+
+@media (min-width: 481px) and (max-width: 970px) {
+
+	section#compteur {
+		font-size: 50px;
+		height: 60px;
+	}
+}
+
+@media (max-width: 480px) {
+
+	section#compteur {
+		font-size: 25px;
+		height: 35px;
+	}
+
+}
+
+section#compteur {
+	@include container(800px);
+	div#countdown{
+		@include container(800px center);
+		@include columns(1 1 1 1 1 1 1 1);
+		div{
+			&.cd_element {
+				@include span(12.5%);
+				@include pre(0);
+				@include post(0);
+			}
+			&.cd_value{
+				text-align:right;
+			}
+			&.cd_label{
+				text-align:center;
+			}
+		}
+	}	
+}
+
+div#compteur {
+	visibility: hidden;
+}

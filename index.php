@@ -18,7 +18,7 @@ Config::initFromArray($_CONFIG);
 $app = new \Slim\Slim(Config::get('slim_config'));
 
 // Settings for cookies
-$sessionPath = parse_url(Config::get("casper_url"), PHP_URL_PATH);
+$sessionPath = parse_url(Config::get("picasso_url"), PHP_URL_PATH);
 session_set_cookie_params(0, $sessionPath);
 session_start();
 
@@ -44,7 +44,6 @@ $app->configureMode('development', function () use ($app) {
 // This middleware loads all our json clients
 //$app->add(new JsonClientMiddleware);
 //********************************************************************************************************************
-
 
 function sanitize(array $_files, $top = true){
     $files = array();
@@ -201,14 +200,14 @@ $app->get('/admin', $CASauthenticate('admin'),  function () use ($app){
 
 // --- CAS
 $app->get('/login', function() use ($app) {
-    /*// Si pas de ticket, c'est une invitation à se connecter
+    // Si pas de ticket, c'est une invitation à se connecter
     if(empty($_GET["ticket"])) {
         $app->getLog()->debug("No CAS ticket, unsetting cookies and redirecting to CAS");
         // On jette les cookies actuels
         JsonClientFactory::getInstance()->destroyCookie();
         
         // Redirection vers le CAS
-        $app->redirect(JsonClientFactory::getInstance()->getClient("MYACCOUNT")->getCasUrl()."/login?service=".Config::get("casper_url").'login');
+        $app->redirect(JsonClientFactory::getInstance()->getClient("MYACCOUNT")->getCasUrl()."/login?service=".Config::get("picasso_url").'login');
     } else {
         // Connexion au serveur avec le ticket CAS
         try {
@@ -216,7 +215,7 @@ $app->get('/login', function() use ($app) {
             
             $result = JsonClientFactory::getInstance()->getClient("MYACCOUNT")->loginCas(array(
                 "ticket" => $_GET["ticket"],
-                "service" => Config::get("casper_url").'login'
+                "service" => Config::get("picasso_url").'login'
             ));
         } catch (\JsonClient\JsonException $e) {
             // Si l'utilisateur n'existe pas, go inscription
@@ -243,7 +242,7 @@ $app->get('/login', function() use ($app) {
         // Go vers la page d'accueil
         $app->redirect($app->urlFor('home'));
     }
-    */
+    
 })->name('login');
 
 $app->get('/logout', function() use ($app) {
@@ -259,7 +258,7 @@ $app->get('/logout', function() use ($app) {
     JsonClientFactory::getInstance()->destroyCookie();
     
     // Logout from CAS
-    $app->redirect(JsonClientFactory::getInstance()->getClient("MYACCOUNT")->getCasUrl()."/logout?service=".Config::get("casper_url").'login');
+    $app->redirect(JsonClientFactory::getInstance()->getClient("MYACCOUNT")->getCasUrl()."/logout?service=".Config::get("picasso_url").'login');
 })->name('logout');
 
 $app->get('/', function () use ($app){
@@ -273,6 +272,9 @@ $app->get('/', function () use ($app){
     $week_end = date('Y-m-d', strtotime('+' . (6 - $day) . ' days'));
     $semaine_start = date('d/m/Y', strtotime('-' . ($day - 1) . ' days'));
     $semaine_end = date('d/m/Y', strtotime('+' . (7 - $day) . ' days'));
+    $article_img = null;
+    $article_img_height = null;
+    $article_img_width = null;
 
     $datas = array();
 
@@ -403,41 +405,59 @@ $app->get('/', function () use ($app){
         $app->flashNow('error','Impossible de charger les produits depuis Payutc');
     }
     
-    $datas['goodies'] = $pdo->find("SELECT numero,nom,prenom FROM goodies WHERE semaine = '$schema' ORDER BY numero,nom,prenom; ");
+    $datas['goodies'] = $pdo->find("SELECT numero,nom,prenom FROM goodies;");/* WHERE semaine = '$schema' ORDER BY numero,nom,prenom; ");*/
     $datas['weekbieres'] = $pdo->find("SELECT nom,degre,prix,img_url FROM bieres WHERE disabled = 0 AND semaine = '$schema' ORDER BY prix ASC, degre DESC, nom ;");
     $datas['softs'] = $pdo->find("SELECT nom,prix FROM softs WHERE disabled = 0 ORDER BY prix, nom;");
     $datas['snacks'] = $pdo->find("SELECT nom,prix FROM snacks WHERE disabled = 0 ORDER BY prix, nom; ");
     $datas['bouteilles'] = $pdo->find("SELECT nom,degre,prix FROM bieres WHERE semaine = NULL AND category = 'BOUTEILLE' AND disabled = 0 ORDER BY prix ASC, degre DESC, nom; ");
     $datas['pressions'] = $pdo->find("SELECT nom,degre,prix FROM bieres WHERE semaine = NULL AND category = 'PRESSION' AND disabled = 0 ORDER BY prix ASC, degre DESC, nom; ");
-  
-    $app->render('default_test.php',array(
-        'server'   => $app->request()->getRootUri(),
-        'week_start' => $week_start,
-        'week_end' => $week_end,
-        'semaine' => $semaine,
-        'datas' => $datas,
-        'article_titre' => $article_titre,
-        'article_date' => $article_date,
-        'article_img' => $article_img,
-        'article_img_width' => $article_img_width,
-        'article_img_height' => $article_img_height,
-        'article_corps' => $article_corps,
-        'semestre' => Config::get('semestre'),
-        'semaine_start' => $semaine_start,
-        'semaine_end' => $semaine_end,
-        'perm' => Config::get('perm'),
-        'cal_titre' => $cal_titre,
-        'cal_asso' => $cal_asso,
-        'cal_date' => $cal_date,
-        'cal_horaire' => $cal_horaire,
-        'cal_url' => $cal_url,
-        'cal_allDay' => $cal_allDay,
-        'cal_tag' => $cal_tag,
-        'cal_corps' => $cal_corps,
-        'perms' => $perms,
-    ));
-})->name('home');
 
+    $ouverture_matin = Config::get('ouverture_matin');
+    $ouverture_soir = Config::get('ouverture_soir');
+    $date_ouverture_matin = mktime(substr($ouverture_matin,11,2), substr($ouverture_matin,14,2), substr($ouverture_matin,17,2), substr($ouverture_matin,3,2), substr($ouverture_matin,0,2), substr($ouverture_matin,6,4));
+    $date_ouverture_soir = mktime(substr($ouverture_soir,11,2), substr($ouverture_soir,14,2), substr($ouverture_soir,17,2), substr($ouverture_soir,3,2), substr($ouverture_soir,0,2), substr($ouverture_soir,6,4));
+    $date_countdown_soir = mktime((substr($ouverture_soir,11,2) - 1), (substr($ouverture_soir,14,2) - 30), substr($ouverture_soir,17,2), substr($ouverture_soir,3,2), substr($ouverture_soir,0,2), substr($ouverture_soir,6,4));
+    $now = time();
+
+    if ($now > $date_countdown_soir AND $now < $date_ouverture_soir) {
+        $app->render('countdown.php',array(
+            'ouverture_matin' => $ouverture_matin,
+            'ouverture_soir' => $ouverture_soir
+        ));
+    } else { 
+        $app->render('default.php',array(
+            'server'   => $app->request()->getRootUri(),
+            'week_start' => $week_start,
+            'week_end' => $week_end,
+            'semaine' => $semaine,
+            'datas' => $datas,
+            'article_titre' => $article_titre,
+            'article_date' => $article_date,
+            'article_img' => $article_img,
+            'article_img_width' => $article_img_width,
+            'article_img_height' => $article_img_height,
+            'article_corps' => $article_corps,
+            'semestre' => Config::get('semestre'),
+            'semaine_start' => $semaine_start,
+            'semaine_end' => $semaine_end,
+            'perm' => Config::get('perm'),
+            'cal_titre' => $cal_titre,
+            'cal_asso' => $cal_asso,
+            'cal_date' => $cal_date,
+            'cal_horaire' => $cal_horaire,
+            'cal_url' => $cal_url,
+            'cal_tag' => $cal_tag,
+            'cal_corps' => $cal_corps,
+            'perms' => $perms,
+            'ouverture_matin' => $ouverture_matin,
+            'date_ouverture_matin' => $date_ouverture_matin,
+            'ouverture_soir' => $ouverture_soir,
+            'now' => $now
+        ));        
+    }
+
+
+})->name('home');
 
 $app->notFound(function () use ($app) {
   $app->render('404.php',array(

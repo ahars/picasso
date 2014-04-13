@@ -27,6 +27,9 @@ $(document).ready(function(event) {
     function doPresentation(){
         id = location.hash.replace("#", "");
         switch(id){
+            case 'news':
+                $('#menu-calendrier').trigger('click');
+                break;
             case 'calendrier':
                 $('#menu-weekbieres').trigger('click');
                 break;
@@ -37,10 +40,10 @@ $(document).ready(function(event) {
                 $('#menu-tarifs').trigger('click');
                 break;
             case 'tarifs':
-                $('#menu-calendrier').trigger('click');
+                $('#menu-news').trigger('click');
                 break;
             default:
-                $('#menu-weekbieres').trigger('click');
+                $('#menu-calendrier').trigger('click');
                 break;
         }
         timeOutPresentation = setTimeout(doPresentation, 30000);

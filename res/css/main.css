@@ -619,17 +619,25 @@ header ul li span#icon-payutc {
 header ul li:hover span#icon-payutc, header ul li:active span#icon-payutc, header ul li:focus span#icon-payutc, header ul li.active span#icon-payutc {
   background-position: -102px -34px;
 }
+/* line 410, ../scss/main.scss */
+header ul li span#icon-info {
+  background-position: -241.5px 0;
+}
+/* line 413, ../scss/main.scss */
+header ul li:hover span#icon-info, header ul li:active span#icon-info, header ul li:focus span#icon-info, header ul li.active span#icon-info {
+  background-position: -241.5px -34px;
+}
 
 /* -------------------------------------------------------------------------*/
 /* Main Container */
-/* line 417, ../scss/main.scss */
+/* line 427, ../scss/main.scss */
 #main-container {
   z-index: 1000;
   margin: auto;
   margin-top: 65px;
   padding: 1em;
 }
-/* line 423, ../scss/main.scss */
+/* line 433, ../scss/main.scss */
 #main-container section.slider section.slides {
   max-width: 800px;
   margin-left: auto;
@@ -641,18 +649,17 @@ header ul li:hover span#icon-payutc, header ul li:active span#icon-payutc, heade
   display: block;
   clear: both;
 }
-/* line 425, ../scss/main.scss */
+/* line 435, ../scss/main.scss */
 #main-container section.slider section.slides h3 {
   margin-left: 78px;
 }
-/* line 426, ../scss/main.scss */
+/* line 436, ../scss/main.scss */
 #main-container section.slider section.slides section.box {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
   border: 1px solid #b31b28;
   padding: 15px;
-  /* Rubrique Coming Soon */
 }
 /* line 12, ../../../../../../.rvm/rubies/ruby-2.0.0-p451/lib/ruby/gems/2.0.0/gems/susy-2.1.1/sass/susy/output/support/_clearfix.scss */
 #main-container section.slider section.slides section.box::after {
@@ -660,7 +667,7 @@ header ul li:hover span#icon-payutc, header ul li:active span#icon-payutc, heade
   display: block;
   clear: both;
 }
-/* line 431, ../scss/main.scss */
+/* line 440, ../scss/main.scss */
 #main-container section.slider section.slides section.box img.picture {
   width: 30%;
   background: white;
@@ -668,18 +675,18 @@ header ul li:hover span#icon-payutc, header ul li:active span#icon-payutc, heade
   float: right;
   margin-left: 10px;
 }
-/* line 438, ../scss/main.scss */
+/* line 447, ../scss/main.scss */
 #main-container section.slider section.slides section.box .article {
   line-height: 20px;
   text-align: justify;
 }
-/* line 442, ../scss/main.scss */
+/* line 451, ../scss/main.scss */
 #main-container section.slider section.slides section.box .grid6 {
   -moz-columns: 1 1 1 1 1 1;
   -webkit-columns: 1 1 1 1 1 1;
   columns: 1 1 1 1 1 1;
 }
-/* line 444, ../scss/main.scss */
+/* line 453, ../scss/main.scss */
 #main-container section.slider section.slides section.box .grid6 div.columns {
   width: 115px;
   float: left;
@@ -687,13 +694,13 @@ header ul li:hover span#icon-payutc, header ul li:active span#icon-payutc, heade
   margin-left: 15px;
   margin-right: 0%;
 }
-/* line 450, ../scss/main.scss */
+/* line 459, ../scss/main.scss */
 #main-container section.slider section.slides section.box .grid4 {
   -moz-columns: 1 1 1 1;
   -webkit-columns: 1 1 1 1;
   columns: 1 1 1 1;
 }
-/* line 452, ../scss/main.scss */
+/* line 461, ../scss/main.scss */
 #main-container section.slider section.slides section.box .grid4 div.columns {
   width: 192px;
   float: left;
@@ -701,17 +708,17 @@ header ul li:hover span#icon-payutc, header ul li:active span#icon-payutc, heade
   margin-left: 0%;
   margin-right: 0%;
 }
-/* line 458, ../scss/main.scss */
+/* line 467, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns {
   -moz-columns: 1;
   -webkit-columns: 1;
   columns: 1;
 }
-/* line 460, ../scss/main.scss */
+/* line 469, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns:first-child {
   margin-left: 0;
 }
-/* line 463, ../scss/main.scss */
+/* line 472, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block {
   height: 20px;
   width: 85px;
@@ -722,15 +729,15 @@ header ul li:hover span#icon-payutc, header ul li:active span#icon-payutc, heade
   line-height: 20px;
   position: relative;
 }
-/* line 472, ../scss/main.scss */
+/* line 481, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block a {
   color: white;
 }
-/* line 475, ../scss/main.scss */
+/* line 484, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block a:hover {
   color: #131325;
 }
-/* line 478, ../scss/main.scss */
+/* line 487, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail {
   position: absolute;
   background: #131325;
@@ -740,85 +747,53 @@ header ul li:hover span#icon-payutc, header ul li:active span#icon-payutc, heade
   display: none;
   z-index: 4000;
 }
-/* line 486, ../scss/main.scss */
+/* line 495, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-left {
   left: 122px;
 }
-/* line 489, ../scss/main.scss */
+/* line 498, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-right {
   right: 122px;
 }
-/* line 492, ../scss/main.scss */
+/* line 501, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-1 {
   top: 0px;
 }
-/* line 495, ../scss/main.scss */
+/* line 504, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-2 {
   top: -52px;
 }
-/* line 498, ../scss/main.scss */
+/* line 507, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-3 {
   top: -104px;
 }
-/* line 501, ../scss/main.scss */
+/* line 510, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .block .detail.d-4 {
   top: -156px;
 }
-/* line 506, ../scss/main.scss */
+/* line 515, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .liste {
   border: 0;
   margin: 0;
   border-left: 2px solid #b31b28;
   padding-left: 1em;
 }
-/* line 512, ../scss/main.scss */
+/* line 521, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .liste tr td {
   padding-top: 0.35em;
   padding-bottom: 0.35em;
   font-size: 1.1em;
 }
-/* line 517, ../scss/main.scss */
+/* line 526, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .liste tr .titre {
-  padding-left: 1em;
+  padding-left: 0.8em;
 }
-/* line 520, ../scss/main.scss */
+/* line 529, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .liste tr .prix {
-  padding-left: 1.5em;
+  padding-left: 1.3em;
 }
-/* line 523, ../scss/main.scss */
+/* line 532, ../scss/main.scss */
 #main-container section.slider section.slides section.box div.columns .liste tr .degre {
-  padding-left: 1em;
+  padding-left: 0.8em;
   color: #b31b28;
-}
-/* line 531, ../scss/main.scss */
-#main-container section.slider section.slides section.selectors {
-  position: absolute;
-  right: -32px;
-  top: 43%;
-}
-/* line 535, ../scss/main.scss */
-#main-container section.slider section.slides section.selectors ul {
-  list-style: none;
-  margin: auto 0;
-  padding: 0;
-}
-/* line 539, ../scss/main.scss */
-#main-container section.slider section.slides section.selectors ul li {
-  margin: 2em 0;
-}
-/* line 541, ../scss/main.scss */
-#main-container section.slider section.slides section.selectors ul li a {
-  display: block;
-  border-radius: 50%;
-  width: 13px;
-  height: 13px;
-  background-color: #b31b28;
-  -moz-transition: background-color 0.3s ease-in;
-  -o-transition: background-color 0.3s ease-in;
-  -webkit-transition: background-color 0.3s ease-in;
-  transition: background-color 0.3s ease-in;
-}
-/* line 548, ../scss/main.scss */
-#main-container section.slider section.slides section.selectors ul li a:hover, #main-container section.slider section.slides section.selectors ul li a:active, #main-container section.slider section.slides section.selectors ul li a:focus, #main-container section.slider section.slides section.selectors ul li a.active {
-  background-color: white;
 }
