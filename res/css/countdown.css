@@ -1,57 +1,70 @@
-/* line 1, ../scss/countdown.scss */
-section#main_countdown {
-  margin-top: 45%;
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab);
+@media (min-width: 971px) {
+  /* line 7, ../scss/countdown.scss */
+  section#compteur {
+    font-size: 80px;
+    height: 95px;
+  }
 }
-
-/* line 5, ../scss/countdown.scss */
-section#compteur {
-  font-size: 100px;
-  height: 110px;
+@media (min-width: 481px) and (max-width: 970px) {
+  /* line 16, ../scss/countdown.scss */
+  section#compteur {
+    font-size: 50px;
+    height: 60px;
+  }
 }
-/* line 9, ../scss/countdown.scss */
-section#compteur div#until div#cd {
-  width: 200px;
-}
-/* line 11, ../scss/countdown.scss */
-section#compteur div#until div#cd span#cd_days, section#compteur div#until div#cd span#cd_hours, section#compteur div#until div#cd span#cd_minutes, section#compteur div#until div#cd span#cd_seconds {
-  position: absolute;
-  display: inline-block;
-  float: right;
-}
-/* line 16, ../scss/countdown.scss */
-section#compteur div#until div#cd span#cd_hours {
-  left: 180px;
-}
-/* line 19, ../scss/countdown.scss */
-section#compteur div#until div#cd span#cd_minutes {
-  left: 390px;
-}
-/* line 22, ../scss/countdown.scss */
-section#compteur div#until div#cd span#cd_seconds {
-  left: 620px;
-}
-/* line 28, ../scss/countdown.scss */
-section#compteur div#labels span#cd_label_j, section#compteur div#labels span#cd_label_h, section#compteur div#labels span#cd_label_m, section#compteur div#labels span#cd_label_s {
-  position: absolute;
+@media (max-width: 480px) {
+  /* line 24, ../scss/countdown.scss */
+  section#compteur {
+    font-size: 25px;
+    height: 35px;
+  }
 }
 /* line 31, ../scss/countdown.scss */
-section#compteur div#labels span#cd_label_j {
-  left: 130px;
+section#compteur {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
-/* line 34, ../scss/countdown.scss */
-section#compteur div#labels span#cd_label_h {
-  left: 290px;
+/* line 12, ../../../../../../.rvm/rubies/ruby-2.0.0-p451/lib/ruby/gems/2.0.0/gems/susy-2.1.1/sass/susy/output/support/_clearfix.scss */
+section#compteur::after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+/* line 33, ../scss/countdown.scss */
+section#compteur div#countdown {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  -moz-columns: 1 1 1 1 1 1 1 1;
+  -webkit-columns: 1 1 1 1 1 1 1 1;
+  columns: 1 1 1 1 1 1 1 1;
+}
+/* line 12, ../../../../../../.rvm/rubies/ruby-2.0.0-p451/lib/ruby/gems/2.0.0/gems/susy-2.1.1/sass/susy/output/support/_clearfix.scss */
+section#compteur div#countdown::after {
+  content: " ";
+  display: block;
+  clear: both;
 }
 /* line 37, ../scss/countdown.scss */
-section#compteur div#labels span#cd_label_m {
-  left: 500px;
+section#compteur div#countdown div.cd_element {
+  width: 12.5%;
+  float: left;
+  margin-right: 5.26316%;
+  margin-left: 0%;
+  margin-right: 0%;
 }
-/* line 40, ../scss/countdown.scss */
-section#compteur div#labels span#cd_label_s {
-  left: 730px;
+/* line 42, ../scss/countdown.scss */
+section#compteur div#countdown div.cd_value {
+  text-align: right;
+}
+/* line 45, ../scss/countdown.scss */
+section#compteur div#countdown div.cd_label {
+  text-align: center;
 }
 
-/* line 46, ../scss/countdown.scss */
+/* line 52, ../scss/countdown.scss */
 div#compteur {
   visibility: hidden;
 }

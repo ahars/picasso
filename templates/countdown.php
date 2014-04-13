@@ -39,12 +39,6 @@
                 <h3></h3>
                 <section class="box" id="compteur" title=<?php echo $ouverture_matin . '/' . $ouverture_soir; ?>>
                   <div id="countdown3"></div>
-                  <div id="labels">
-                    <span id='cd_label_j'>j</span>
-                    <span id='cd_label_h'>h</span>
-                    <span id='cd_label_m'>m</span>
-                    <span id='cd_label_s'>s</span>
-                  </div>
                   <div class="clear"></div>
                 </section>
               </section>

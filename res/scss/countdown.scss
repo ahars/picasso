@@ -1,46 +1,52 @@
-section#main_countdown {
-	margin-top: 45%;
+@import "compass";
+@import "susy"; 
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab);
+
+@media (min-width: 971px) {
+
+	section#compteur {
+		font-size: 80px;
+		height: 95px;
+	}
+
+}
+
+@media (min-width: 481px) and (max-width: 970px) {
+
+	section#compteur {
+		font-size: 50px;
+		height: 60px;
+	}
+}
+
+@media (max-width: 480px) {
+
+	section#compteur {
+		font-size: 25px;
+		height: 35px;
+	}
+
 }
 
 section#compteur {
-	font-size: 100px;
-	height: 110px;
-
-	div#until div#cd {
-		width: 200px;
-		span#cd_days, span#cd_hours, span#cd_minutes, span#cd_seconds {	
-			position: absolute;
-			display: inline-block;
-			float:right;
+	@include container(800px);
+	div#countdown{
+		@include container(800px center);
+		@include columns(1 1 1 1 1 1 1 1);
+		div{
+			&.cd_element {
+				@include span(12.5%);
+				@include pre(0);
+				@include post(0);
+			}
+			&.cd_value{
+				text-align:right;
+			}
+			&.cd_label{
+				text-align:center;
+			}
 		}
-		span#cd_hours {
-			left: 180px;
-		}
-		span#cd_minutes {
-			left: 390px;
-		}
-		span#cd_seconds {
-			left: 620px;
-		}
-	}
-	
-	div#labels {
-		span#cd_label_j, span#cd_label_h, span#cd_label_m, span#cd_label_s {
-			position: absolute;
-		}
-		span#cd_label_j {
-			left: 130px;
-		}
-		span#cd_label_h {
-			left: 290px;
-		}
-		span#cd_label_m {
-			left: 500px;
-		}
-		span#cd_label_s {
-			left: 730px;
-		}
-	}
+	}	
 }
 
 div#compteur {
