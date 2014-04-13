@@ -19,20 +19,75 @@ $rouge: #B31B28;
 
 
 /* -------------------------------------------------------------------------*/
-/* Media */
+@media (min-width: 971px) {
+  .visible-phone {
+    display: none;
+  }
 
-.visible-phone {
-  display: none;
+  .visible-desktop {
+    display: inherit;
+  }
+
+  h1{ font-size:49pt; }
+  h2{ font-size:23pt; }
+  h3{ font-size:17pt; }
+  h4{ font-size:14pt; }
+  h5,h6{ font-size:1em; }
+
+  div.coming_soon{
+    @include container(12 center static);
+    font-size:17pt;
+    text-align:center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
 }
-.visible-desktop {
-  display: inherit;
-}
-@media (max-width: 960px) {
+
+@media (max-width: 480px) {
   .visible-phone {
     display: inherit;
   }
+
   .visible-desktop {
     display: none;
+  }
+
+  h1{ font-size:20pt; }
+  h2{ font-size:15pt; }
+  h3{ font-size:12pt; }
+  h4{ font-size:10pt; }
+  h5,h6{ font-size:1em; }
+
+  div.coming_soon{
+    @include container(12 center static);
+    font-size:12pt;
+    text-align:center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 970px) {
+  .visible-phone {
+    display: inherit;
+  }
+
+  .visible-desktop {
+    display: none;
+  }
+
+  h1{ font-size:37pt; }
+  h2{ font-size:17pt; }
+  h3{ font-size:15pt; }
+  h4{ font-size:12pt; }
+  h5,h6{ font-size:1em; }
+
+  div.coming_soon{
+    @include container(12 center static);
+    font-size:15pt;
+    text-align:center;
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
 }
 
@@ -76,11 +131,6 @@ a:hover{
 h1,h2,h3,h4,h5,h6{ 
   margin-bottom: 12px; color:$blanc; font-weight: 200;
 }
-h1{ font-size:49pt; }
-h2{ font-size:23pt; }
-h3{ font-size:17pt; }
-h4{ font-size:14pt; }
-h5,h6{ font-size:1em; }
 
 ul, ol{ margin-left: $gutter-width;}
 ul{ list-style: square inside; }
@@ -182,10 +232,17 @@ caption, th, td {
 /* -------------------------------------------------------------------------*/
 /* Container */
 
-.container { 
-  @include container;
+.container-header { 
+  @include container(1100px);
   margin:0 auto;
-  position: relative;
+  height: 65px;
+  margin: auto;
+}
+
+.container-content { 
+  @include container(800px);
+  margin:0 auto;
+  margin: auto;
 }
 
 /* -------------------------------------------------------------------------*/
@@ -200,9 +257,9 @@ header{
   z-index: 5000;
 
   .container {
-  height: 65px;
-  width: 1100px;
-  margin: auto;
+    height: 65px;
+    width: 1100px;
+    margin: auto;
   }
 
   #main-logo{
@@ -233,7 +290,6 @@ header{
     }
     &.menu-right{
       float:right;
-      width: 225px;
       li:hover, 
       li:active,
       li:focus,
@@ -360,19 +416,20 @@ header{
 
 #main-container{
   z-index: 1000;
-  width: 800px;
   margin: auto;
-  margin-top: 80px;
+  margin-top: 65px;
+  padding:1em;
   section.slider{
     section.slides{
-      width:800px;
+      @include container(800px);
       h3{margin-left: 78px;}
       section.box{
+        @include container(800px);
         border: 1px solid $rouge;
         padding: 15px;
         /* Rubrique Coming Soon */
-        h3#coming_soon{line-height:200px;}
         img.picture{
+          width: 30%;
           background: $blanc;
           border: 1px solid $blanc;
           float: right;
@@ -380,22 +437,28 @@ header{
         }
         .article{
           line-height: 20px;
+          text-align: justify;
         }
-        div.grid{
-          width: 766px;
-          margin: auto;
+        .grid6{
+          @include columns(1 1 1 1 1 1);
+          div.columns{
+            @include span(115px);
+            @include pre(15px);
+            @include post(0);
+          }
+        }
+        .grid4{
+          @include columns(1 1 1 1);
+          div.columns{
+            @include span(192px);
+            @include pre(0);
+            @include post(0);
+          }
         }
         div.columns{
-          float:left;
-          margin-left: 15px;
+          @include columns(1);
           &:first-child{
             margin-left: 0;
-          }
-          &:last-child{
-            &:after{
-              content: "";
-              clear: both;
-            }
           }
           .block{
             height: 20px;
@@ -445,7 +508,6 @@ header{
             margin:0;
             border-left: 2px solid $rouge;
             padding-left: 1em;
-            width: 180px;
             tr{
               td{
                 padding-top:0.35em;

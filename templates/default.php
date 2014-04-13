@@ -15,7 +15,7 @@
           
     </head>
     <body>
-        <header class="fixed">
+        <header class="fixed visible-desktop">
             <div class="container">
               <div id="main-logo">
                 <a href="http://assos.utc.fr/picasso"><img src="res/img/logo_P14.png" alt="Picasso Logo"></a>
@@ -28,7 +28,7 @@
               </ul>
             </div>
             <div id="menu-left">
-              <ul class="menu-left visible-desktop">
+              <ul class="menu-left">
                 <li><a id="menu-news" href="#news"><span id="icon-news"></span></a></li>
                 <li><a id="menu-calendrier" href="#calendrier"><span id="icon-calendrier"></span></a></li>
                 <li><a id="menu-weekbieres" href="#weekbieres"><span id="icon-weekbieres"></span></a></li>
@@ -39,6 +39,37 @@
             <div class="clear"></div>
           </div>
         </header>
+
+        <header class="fixed visible-tablet">
+            <div class="container">
+              <div id="main-logo">
+                <a href="http://assos.utc.fr/picasso"><img src="res/img/logo_P14.png" alt="Picasso Logo"></a>
+            </div>
+            <div id="menu-right">
+              <ul class="menu-right">
+                <li><a id="menu-payutc" href="https://assos.utc.fr/payutc"><span id="icon-payutc"></span></a></li>
+                <li><a id="menu-facebook" href="https://www.facebook.com/pic.asso.5"><span id="icon-facebook"></span></a></li>
+                <li><a id="menu-info" href="#info"><span id="icon-facebook"></span></a></li>
+              </ul>
+            </div>
+            <div class="clear"></div>
+          </div>
+        </header>
+
+        <header class="fixed visible-phone">
+            <div class="container">
+              <div id="main-logo">
+                <a href="http://assos.utc.fr/picasso"><img src="res/img/logo_P14.png" alt="Picasso Logo"></a>
+            </div>
+            <div id="menu-right">
+              <ul class="menu-right">
+                <li><a id="menu-payutc" href="https://assos.utc.fr/payutc"><span id="icon-payutc"></span></a></li>
+              </ul>
+            </div>
+            <div class="clear"></div>
+          </div>
+        </header>
+
         <div id="main-container">
           <div class="container">
             <section class="slider">

@@ -410,7 +410,7 @@ $app->get('/', function () use ($app){
     $datas['bouteilles'] = $pdo->find("SELECT nom,degre,prix FROM bieres WHERE semaine = NULL AND category = 'BOUTEILLE' AND disabled = 0 ORDER BY prix ASC, degre DESC, nom; ");
     $datas['pressions'] = $pdo->find("SELECT nom,degre,prix FROM bieres WHERE semaine = NULL AND category = 'PRESSION' AND disabled = 0 ORDER BY prix ASC, degre DESC, nom; ");
   
-    $app->render('default.php',array(
+    $app->render('default_test.php',array(
         'server'   => $app->request()->getRootUri(),
         'week_start' => $week_start,
         'week_end' => $week_end,

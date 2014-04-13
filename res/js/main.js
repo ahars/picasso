@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function(event) {
     var loadurl = "http://assos.utc.fr/asso/articles/picasso";
 
     function scrollableElement(els) {
@@ -19,6 +19,11 @@ $(document).ready(function() {
         return [];
     }
 
+    // Variable de gestion du scroll automatique
+    var timeOutPresentation; 
+    var timeOutInactifUser;
+
+    // Fonction permettant le passage d'une section à l'autre
     function doPresentation(){
         id = location.hash.replace("#", "");
         switch(id){
@@ -38,15 +43,33 @@ $(document).ready(function() {
                 $('#menu-weekbieres').trigger('click');
                 break;
         }
+        timeOutPresentation = setTimeout(doPresentation, 30000);
     }
 
-    interval = setInterval(doPresentation, 30000);
+    // Fonction permettant de désactiver le scroll automatique tant que l'utilisateur est actif (la souris bouge)
+    function disablePresentation() {
+        clearTimeout(timeOutPresentation);
+        $('html').unbind("mousemove");
+        timeOutInactifUser = setTimeout(enablePresentation, 30000);
 
+    }
+
+    // Fonction permettant d'activer le scoll automatique. (jusqu'a que la souris bouge)
+    function enablePresentation() {
+        $('html').mousemove(disablePresentation);
+        timeOutPresentation = setTimeout(doPresentation, 30000);
+    }
+
+    // Si l'utilisateur est dans un box alors on arrête les timers.
     $('.box').hover(function(ev){
-        clearInterval(interval);
+        clearTimeout(timeOutPresentation);
+        clearTimeout(timeOutInactifUser);
     }, function(ev){
-        interval = setInterval( doPresentation, 30000);
+        disablePresentation();
     });
+
+    // Activation du scroll automatique au début.
+    enablePresentation();
 
     $('.slides').each(function(i) {
         var height = $(this).height();
@@ -59,7 +82,9 @@ $(document).ready(function() {
                 max: position.top + height,
                 onEnter: function(element, position) {
                     $('#menu-'+element.id).parent().addClass('active');
-                    location.hash = "#"+element.id;
+                    // Permet de changer l'url en fonction d'où l'utilisateur se trouve sur la page
+                    // Desactiver permet de regler des problème de saut de page. 
+                    //location.hash = "#"+element.id; 
                 },
                 onLeave: function(element, position) {
                     $('.menu-left li').removeClass('active');
@@ -95,5 +120,4 @@ $(document).ready(function() {
     $.get(loadurl,function(data){
         console.log(data);
     },'html');
-
 });
