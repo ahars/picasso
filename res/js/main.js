@@ -1,4 +1,4 @@
-$(document).ready(function(event) {
+$(document).ready(function() {
     var loadurl = "http://assos.utc.fr/asso/articles/picasso";
 
     function scrollableElement(els) {

@@ -24,9 +24,9 @@
                 <a href="http://assos.utc.fr/picasso"><img src="res/img/logo_P14.png" alt="Picasso Logo"></a>
             </div>
               <ul class="menu-right">
+                <!--li><a id="menu-info" class="visible-desktop" href="#info"><span id="icon-info"></span></a></li-->
                 <li><a id="menu-payutc" href="https://assos.utc.fr/payutc"><span id="icon-payutc"></span></a></li>
                 <li><a id="menu-facebook" class="visible-desktop" href="https://www.facebook.com/pic.asso.5"><span id="icon-facebook"></span></a></li>
-                <li><a id="menu-info" class="visible-desktop" href="#info"><span id="icon-facebook"></span></a></li>
               </ul>
               <ul class="menu-left visible-desktop">
                 <li><a id="menu-news" href="#news"><span id="icon-news"></span></a></li>
