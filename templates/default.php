@@ -153,10 +153,10 @@
               <!-- ########### WEEKBIERE ########## -->
               <section class="slides" id="weekbieres">
                 <h1>Bières de la semaine</h1>
-                <h3>Semestre <?php echo $semestre; ?> - Semaine du <?php echo preg_replace('#(.*)/(.*)/(.*)$#', '$1/$2', $semaine_start); ?> au <?php echo preg_replace('#(.*)/(.*)/(.*)$#', '$1/$2', $semaine_end); ?></h3>
+                <!--h3>Semestre <?php echo $semestre; ?> - Semaine du <?php echo preg_replace('#(.*)/(.*)/(.*)$#', '$1/$2', $semaine_start); ?> au <?php echo preg_replace('#(.*)/(.*)/(.*)$#', '$1/$2', $semaine_end); ?></h3-->
+                <h3>Semestre <?php echo $semestre; ?> - Semaine du 05/05 au 10/05</h3>
                 <section class="box">
-                  <!-- TODO -->
-                  <div class="coming_soon">Coming Soon !</div>
+                  <img src="res/img/weekbiere1-01.png" alt="weekbiere">
                   <div class="clear"></div>
                 </section>
               </section>
@@ -176,7 +176,7 @@
                         <td><?php echo $v['prenom'] ?></td>
                       </tr>
                     <?php endforeach */?>
-                   </div>
+                  </div>
                   <div class="clear"></div>
                 </section>
               </section>
@@ -186,13 +186,58 @@
                 <h1>Tarifs</h1>
                 <h3>Semestre <?php echo $semestre; ?></h3>
                 <section class="box">
+                  <!--div class="grid4"-->
                   <div class="grid4">
-                    <!-- TODO -->
-                    <div class="coming_soon">Coming Soon !</div>
+                    <div class="columns">
+                      <h2>Pressions</h2>
+                      <table class="liste">
+                        <?php foreach ($datas['pressions'] as $k => $v): ?>
+                        <tr>
+                          <td class="titre"><?php echo $v['nom'] ?></td>
+                          <td class="prix"><?php echo $v['prix'] ?>€</td>
+                          <td class="degre"><?php echo $v['degre'] ?>°</td>
+                        </tr>
+                        <?php endforeach ?>
+                      </table>
+                    </div>
+                    <div class="columns">
+                      <h2>Bouteilles</h2>
+                      <table class="liste">
+                        <?php foreach ($datas['bouteilles'] as $k => $v): ?>
+                        <tr>
+                          <td class="titre"><?php echo $v['nom'] ?></td>
+                          <td class="prix"><?php echo $v['prix'] ?>€</td>
+                          <td class="degre"><?php echo $v['degre'] ?>°</td>
+                        </tr>
+                        <?php endforeach ?>
+                      </table>
+                    </div>
+                    <div class="columns">
+                      <h2>Softs</h2>
+                      <table class="liste">
+                        <?php foreach ($datas['softs'] as $k => $v): ?>
+                        <tr>
+                          <td class="titre"><?php echo $v['nom'] ?></td>
+                          <td class="prix"><?php echo $v['prix'] ?>€</td>
+                        </tr>
+                        <?php endforeach ?>
+                      </table>
+                    </div>
+                    <div class="columns">
+                      <h2>Snacks</h2>
+                      <table class="liste">
+                        <?php foreach ($datas['snacks'] as $k => $v): ?>
+                        <tr>
+                          <td class="titre"><?php echo $v['nom'] ?></td>
+                          <td class="prix"><?php echo $v['prix'] ?>€</td>
+                        </tr>
+                        <?php endforeach ?>
+                      </table>
+                    </div>
                   </div>
+                  <div class="clear"></div>
                 </section>
               </section>
-
 
             </section>
             <div class="clear"></div>

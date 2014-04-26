@@ -408,9 +408,9 @@ $app->get('/', function () use ($app){
     $datas['goodies'] = $pdo->find("SELECT numero,nom,prenom FROM goodies;");/* WHERE semaine = '$schema' ORDER BY numero,nom,prenom; ");*/
     $datas['weekbieres'] = $pdo->find("SELECT nom,degre,prix,img_url FROM bieres WHERE disabled = 0 AND semaine = '$schema' ORDER BY prix ASC, degre DESC, nom ;");
     $datas['softs'] = $pdo->find("SELECT nom,prix FROM softs WHERE disabled = 0 ORDER BY prix, nom;");
-    $datas['snacks'] = $pdo->find("SELECT nom,prix FROM snacks WHERE disabled = 0 ORDER BY prix, nom; ");
-    $datas['bouteilles'] = $pdo->find("SELECT nom,degre,prix FROM bieres WHERE semaine = NULL AND category = 'BOUTEILLE' AND disabled = 0 ORDER BY prix ASC, degre DESC, nom; ");
-    $datas['pressions'] = $pdo->find("SELECT nom,degre,prix FROM bieres WHERE semaine = NULL AND category = 'PRESSION' AND disabled = 0 ORDER BY prix ASC, degre DESC, nom; ");
+    $datas['snacks'] = $pdo->find("SELECT nom,prix FROM snacks WHERE disabled = 0;");/* ORDER BY prix, nom; "); */
+    $datas['bouteilles'] = $pdo->find("SELECT nom,degre,prix FROM bieres WHERE category = 'BOUTEILLE' AND disabled = 0 ORDER BY prix ASC, degre DESC, nom; ");
+    $datas['pressions'] = $pdo->find("SELECT nom,degre,prix FROM bieres WHERE category = 'PRESSION' AND disabled = 0 ORDER BY prix ASC, degre DESC, nom; ");
 
     $ouverture_matin = Config::get('ouverture_matin');
     $ouverture_soir = Config::get('ouverture_soir');
