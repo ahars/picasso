@@ -35,7 +35,7 @@ $rouge: #B31B28;
   h5,h6{ font-size:1em; }
 
   div.coming_soon{
-    @include container(12 center static);
+    @include container;//(12 center static);
     font-size:17pt;
     text-align:center;
     margin-top: 50px;
@@ -59,11 +59,50 @@ $rouge: #B31B28;
   h5,h6{ font-size:1em; }
 
   div.coming_soon{
-    @include container(12 center static);
+    @include container;//(12 center static);
     font-size:12pt;
     text-align:center;
     margin-top: 20px;
     margin-bottom: 20px;
+  }
+
+  .grid2{
+    @include columns(1 1);
+    div.columns{
+      @include span(50px);
+      @include pre(0);
+      @include post(0);
+
+      .liste{
+        border:0;
+        margin:0;
+        border-left: 2px solid $rouge;
+        padding-left: 1em;
+        tr{
+          td{
+            padding-top:0.35em;
+            padding-bottom:0.35em;
+            font-size: 1.1em;
+          }
+          .image{
+            padding-left:0.5em;
+          }
+          .titre{
+            padding-left:0.5em;
+            width:100px;
+          }
+          .prix{
+            padding-left:0.8em;
+            padding-right:0.3em;
+          }
+          .degre{
+            padding-left:0.5em;
+            padding-right:0.5em;
+            color: $rouge;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -83,11 +122,49 @@ $rouge: #B31B28;
   h5,h6{ font-size:1em; }
 
   div.coming_soon{
-    @include container(12 center static);
+    @include container;//(12 center static);
     font-size:15pt;
     text-align:center;
     margin-top: 30px;
     margin-bottom: 30px;
+  }
+  .grid2{
+    @include columns(1 1);
+    div.columns{
+      @include span(50px);
+      @include pre(0);
+      @include post(0);
+
+      .liste{
+        border:0;
+        margin:0;
+        border-left: 2px solid $rouge;
+        padding-left: 1em;
+        tr{
+          td{
+            padding-top:0.35em;
+            padding-bottom:0.35em;
+            font-size: 1.1em;
+          }
+          .image{
+            padding-left:0.5em;
+          }
+          .titre{
+            padding-left:0.5em;
+            width:150px;
+          }
+          .prix{
+            padding-left:0.8em;
+            padding-right:0.3em;
+          }
+          .degre{
+            padding-left:0.5em;
+            padding-right:0.5em;
+            color: $rouge;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -330,7 +407,7 @@ header{
       }
       span {
         display: block;
-        background: url("../img/sprite.svg") 0 0 no-repeat;
+        background: url("../img/sprite2.png") 0 0 no-repeat;
         position: relative;
         top: 15px;
         left: 35px;
@@ -346,6 +423,36 @@ header{
       &.active span#icon-news
       {
         background-position: -6*34px -34px;
+      }
+      span#icon-home{
+        background-position: -10*34.5px 0;
+      }
+      &:hover span#icon-home, 
+      &:active span#icon-home,
+      &:focus span#icon-home,
+      &.active span#icon-home
+      {
+        background-position: -10*34.5px -34px;
+      }
+      span#icon-trombi{
+        background-position: -9*34.9px 0;
+      }
+      &:hover span#icon-trombi, 
+      &:active span#icon-trombi,
+      &:focus span#icon-trombi,
+      &.active span#icon-trombi
+      {
+        background-position: -9*34.9px -34px;
+      }
+      span#icon-commandements{
+        background-position: -8*35px 0;
+      }
+      &:hover span#icon-commandements, 
+      &:active span#icon-commandements,
+      &:focus span#icon-commandements,
+      &.active span#icon-commandements
+      {
+        background-position: -8*35px -34px;
       }
       span#icon-calendrier{
         background-position: -4*34px 0;
@@ -408,7 +515,7 @@ header{
         background-position: -3*34px -34px;
       }
       span#icon-info{
-        background-position: -7*34.5px 0;
+        background-position: -7*34.7px 0;
       }
       &:hover span#icon-info,
       &:active span#icon-info,
@@ -437,6 +544,19 @@ header{
         @include container(800px);
         border: 1px solid $rouge;
         padding: 15px;
+
+        span.command {
+          font-size: 20px;
+          padding-bottom: 10px;
+          display:block;
+          span.nombre {
+            padding-left: 7px;
+          }
+          span.nombre, span.nombres {
+            color:$rouge;
+            padding-right:10px;
+          }
+        }
         img.picture{
           width: 30%;
           background: $blanc;
@@ -476,7 +596,7 @@ header{
             border-bottom: 2px solid $aubergine;
             cursor: pointer;
             padding: 15px;
-            line-height: 20px;
+            line-height: 15px;
             position: relative;
             a{
               color: $blanc;
@@ -510,6 +630,29 @@ header{
               &.d-4{
                 top: -156px;
               }
+              div {
+                position:absolute;
+              }
+              div.date, div.perm {
+                right:10px;
+              }
+              div.asso, div.titre, div.corps {
+                left:10px;
+
+              }
+              div.perm, div.titre {
+                top:30px;
+              }
+              div.corps {
+                top: 80px;
+              }
+              div.asso, div.date, div.perm {
+                font-style: bold;
+                font-size: 20px;
+              }
+              div.asso {
+                color: $rouge;
+              }
             }
           }
           .liste{
@@ -523,15 +666,57 @@ header{
                 padding-bottom:0.35em;
                 font-size: 1.1em;
               }
+              .image{
+                padding-left:0.5em;
+              }
               .titre{
-                padding-left:0.8em;
+                padding-left:0.5em;
               }
               .prix{
-                padding-left:1.3em;
+                padding-left:0.8em;
+                padding-right:0.3em;
               }
               .degre{
-                padding-left:0.8em;
+                padding-left:0.5em;
+                padding-right:0.5em;
                 color: $rouge;
+              }
+            }
+          }
+        }
+        .grid2{
+          @include columns(1 1);
+          div.columns{
+            @include span(380px);
+            @include pre(0);
+            @include post(0);
+
+            .liste{
+              border:0;
+              margin:0;
+              border-left: 2px solid $rouge;
+              padding-left: 1em;
+              tr{
+                td{
+                  padding-top:0.35em;
+                  padding-bottom:0.35em;
+                  font-size: 1.1em;
+                }
+                .image{
+                  padding-left:0.5em;
+                }
+                .titre{
+                  padding-left:0.5em;
+                }
+                .prix{
+                  padding-left:0.8em;
+                  padding-right:0.3em;
+                }
+                .degre{
+                  padding-left:0.5em;
+                  padding-right:0.5em;
+                  color: $rouge;
+                }
               }
             }
           }
@@ -540,3 +725,5 @@ header{
     }
   }
 }
+
+

@@ -14,7 +14,7 @@ $_CONFIG['slim_config'] = array(
 
 $_CONFIG['application_key'] = 'picasso';
 
-// Date d'ouverture du Pic.
+// Date d'ouverture du Pic (countdown).
 $_CONFIG['ouverture_matin'] = '05:05:2014:10:00:00';
 $_CONFIG['ouverture_soir'] = '05:05:2014:18:30:00';
 
@@ -22,10 +22,10 @@ $_CONFIG['ouverture_soir'] = '05:05:2014:18:30:00';
 $_CONFIG['perm'] = 'Perm au Picasso';
 
 // Horaire des différentes permanences
-$_CONFIG['perm_1'] = '10:15:00;12:15:00';
-$_CONFIG['perm_2'] = '12:15:00;14:15:00';
-$_CONFIG['perm_3'] = '14:15:00;18:15:00';
-$_CONFIG['perm_4'] = '18:15:00;21:15:00';
+$_CONFIG['perm_1'] = '09:30:00;12:15:00';
+$_CONFIG['perm_2'] = '12:00:00;14:30:00';
+$_CONFIG['perm_3'] = '14:00:00;18:30:00';
+$_CONFIG['perm_4'] = '18:00:00;23:00:00';
 
 // Nom de l'instance de payutc (pour affichage)
 $_CONFIG['title'] = 'picasso';
@@ -51,9 +51,9 @@ $_CONFIG['calendar_url'] = 'http://assos.utc.fr/event.json';
 $_CONFIG['database'] =  array(
     'datasource' => 'Database/MySQL',
     'persistent' => false,
-    'host' => '127.0.0.1',
-    'login' => 'picasso',
-    'password' => 'picasso',
+    'host' => 'localhost',
+    'login' => 'root',
+    'password' => 'root',
     'database' => 'picasso',
     'prefix' => '',
     'encoding' => 'utf8',

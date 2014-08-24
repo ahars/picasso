@@ -22,32 +22,33 @@
 }
 /* line 31, ../scss/countdown.scss */
 section#compteur {
-  max-width: 800px;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
-/* line 12, ../../../../../../.rvm/rubies/ruby-2.0.0-p451/lib/ruby/gems/2.0.0/gems/susy-2.1.1/sass/susy/output/support/_clearfix.scss */
-section#compteur::after {
+/* line 12, ../../../../../../Library/Ruby/Gems/2.0.0/gems/susy-2.1.2/sass/susy/output/support/_clearfix.scss */
+section#compteur:after {
   content: " ";
   display: block;
   clear: both;
 }
 /* line 33, ../scss/countdown.scss */
 section#compteur div#countdown {
-  max-width: 800px;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   -moz-columns: 1 1 1 1 1 1 1 1;
   -webkit-columns: 1 1 1 1 1 1 1 1;
   columns: 1 1 1 1 1 1 1 1;
+  padding-left: 30px;
 }
-/* line 12, ../../../../../../.rvm/rubies/ruby-2.0.0-p451/lib/ruby/gems/2.0.0/gems/susy-2.1.1/sass/susy/output/support/_clearfix.scss */
-section#compteur div#countdown::after {
+/* line 12, ../../../../../../Library/Ruby/Gems/2.0.0/gems/susy-2.1.2/sass/susy/output/support/_clearfix.scss */
+section#compteur div#countdown:after {
   content: " ";
   display: block;
   clear: both;
 }
-/* line 37, ../scss/countdown.scss */
+/* line 38, ../scss/countdown.scss */
 section#compteur div#countdown div.cd_element {
   width: 12.5%;
   float: left;
@@ -55,16 +56,16 @@ section#compteur div#countdown div.cd_element {
   margin-left: 0%;
   margin-right: 0%;
 }
-/* line 42, ../scss/countdown.scss */
+/* line 43, ../scss/countdown.scss */
 section#compteur div#countdown div.cd_value {
   text-align: right;
 }
-/* line 45, ../scss/countdown.scss */
+/* line 46, ../scss/countdown.scss */
 section#compteur div#countdown div.cd_label {
-  text-align: center;
+  text-align: left;
 }
 
-/* line 52, ../scss/countdown.scss */
+/* line 53, ../scss/countdown.scss */
 div#compteur {
   visibility: hidden;
 }

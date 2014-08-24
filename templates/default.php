@@ -70,15 +70,15 @@
                   </section>
                 <?php } ?>
               </section>
-<?php /*
+
               <!-- ########### CALENDRIER ########## -->
               <section class="slides" id="calendrier">
                 <h1>Calendrier</h1>
                 <h3>Semestre <?php echo $semestre; ?> - Semaine du <?php echo preg_replace('#(.*)/(.*)/(.*)$#', '$1/$2', $semaine_start); ?> au <?php echo preg_replace('#(.*)/(.*)/(.*)$#', '$1/$2', $semaine_end); ?></h3>
-                <section class="box visible-desktop">
+                <section class="box">
                   <div class="grid5">
                     <?php
-                      // Parcours des jours.
+/*                      // Parcours des jours.
                       for ($i = 0; $i < 5; $i++) { 
                         
                         $journee = false;
@@ -108,11 +108,14 @@
                             $journee = true;
                           }
                         }
+*/ /*
+                        list($perm1_start, $perm1_end) = explode(';', $perms[0]);
+                        list($perm2_start, $perm2_end) = explode(';', $perms[1]);
+                        list($perm3_start, $perm3_end) = explode(';', $perms[2]);
+                        list($perm4_start, $perm4_end) = explode(';', $perms[3]);
 
                         // Perm normale.
                         for ($j = 0; $j < 4; $j++) {
-
-                          list($perm_start, $perm_end) = explode(';', $perms[$j]);
 
                           $found = false;
                           for ($k = 0; $k < count($cal_titre); $k++) {
@@ -120,149 +123,113 @@
                             list($cal_date_s, $cal_date_e) = explode(';', $cal_date[$k]);
                             list($cal_horaire_s, $cal_horaire_e) = explode(';', $cal_horaire[$k]);
 
-                            if ($cal_tag[$k] == $perm AND $cal_date_s == ($semaine_start + $i) AND $cal_date_e == ($semaine_start + $i) AND $cal_horaire_s == $perm_start AND $cal_horaire_e == $perm_end AND !$found) {
-                              echo '<div class="block">';
-                              echo '<a href="' . $cal_url[$k] . '">' . $cal_asso[$k] . '</a>';
-                              if ($i < 3) {
-                                echo '<div class="detail d-left d-' . ($j + 1) . '">';
-                              } else {
-                                echo '<div class="detail d-right d-' . ($j + 1) . '">';
+                            if ($cal_tag[$k] == $perm AND $cal_date_s == ($semaine_start + $i) AND $cal_date_e == ($semaine_start + $i)) {
+
+                              switch ($j) {
+                                case 0:
+                                  if ($cal_horaire_s >= $perm1_start AND $cal_horaire_e <= $perm1_end AND $cal_horaire_s < $perm2_start AND !found) {
+                                    $number = $j + 1;
+                                    $found = true;
+                                  }
+                                  break;
+                                
+                                case 1:
+                                  if ($cal_horaire_s >= $perm2_start AND $cal_horaire_e <= $perm2_end AND $cal_horaire_s < $perm3_start AND !found) {
+                                    $number = $j + 1;
+                                    $found = true;
+                                  }
+                                  break;
+
+                                case 2:
+                                  if ($cal_horaire_s >= $perm3_start AND $cal_horaire_e <= $perm3_end AND $cal_horaire_s < $perm4_start AND !found) {
+                                    $number = $j + 1;
+                                    $found = true;
+                                  }
+                                  break;
+
+                                case 3:
+                                  if ($cal_horaire_s >= $perm4_start AND $cal_horaire_e <= $perm4_end AND AND !found) {
+                                    $number = $j + 1;
+                                    $found = true;
+                                  }
+                                  break;
                               }
+                            }
+
+                            if (found) {
+                              echo '<a href="' . $cal_url[$k] . '">';
+                              echo '<div class="block">';
+                              echo '<span class="perm_asso">' . $cal_asso[$k] . '</span>';
+                              if ($i < 3) {
+                                echo '<div class="detail d-left d-' . $number . '">';
+                              } else {
+                                echo '<div class="detail d-right d-' . $number . '">';
+                              }
+                              echo '<div class="date">' . $cal_date[$k] . '</div>';
+                              echo '<div class="perm">' . preg_replace('#(.*)\:(.*)\:00$#', '$1h$2', $cal_horaire_s) . ' - ' . preg_replace('#(.*)\:(.*)\:00$#', '$1h$2', $cal_horaire_e) . '</div>';
                               echo '<div class="asso">' . $cal_asso[$k] . '</div>';
-                              echo '<div class="titre">' . $cal_titre[$k] . ' (' . preg_replace('#(.*)\:(.*)\:00$#', '$1h$2', $cal_horaire_s) . ' - ' . preg_replace('#(.*)\:(.*)\:00$#', '$1h$2', $cal_horaire_e) . ')</div>';
-                              echo $cal_corps[$k] . '</div></div>';
-                              $found = true;
+                              echo '<div class="titre">' . $cal_titre[$k] . '</div>';
+                              echo '<div class="corps">' . $cal_corps[$k] . '</div>';
+                              echo '<div class="lien">[Clique pour plus d\'infos]</div>'
                             }
                           }
 
-                          if (!$found AND !$journee) {
-                            echo '<div class="block"></div>';
+                          if (!$found) {
+                            echo '<a href="#"><div class="block"></div></a>';
                          }
                         }
-                        echo '</div>';
+                        echo '</div></div></a></div>';
                       }
                     ?>
                   </div>
                   <div class="clear"></div>
                 </section>
-                <section class="box visible-phone">
-                  <div class="coming_soon">Coming Soon !</div>
-                </section>
               </section>
-*/ ?>
-              <section class="slides" id="calendrier">
-                <h1>Calendrier</h1>
-                <h3>Semestre <?php echo $semestre; ?> - Semaine du 05/05 au 10/05</h3>
-                <section class="box visible-desktop">
-                  <div class="grid5">
+
+<a href="#">
+<div class="block"></div>
+</a>
+
+*/  ?>
+
                     <!-- LUNDI -->
                     <div class="columns">
-                      <a href="http://assos.utc.fr/event/show/425">
-                        <div class="block">
-                          <span clas="perm_asso">Picasso</span>
-                          <div class="detail d-left d-1">
-                            <div class="date">Lundi 05 Mai</div>
-                            <div class="perm">10h15 - 12h15</div>
-                            <div class="asso">Picasso</div>
-                            <div class="titre">Ouverture du Pic !</div>
-                            <div class="corps">OPEN THE PIC</div>
-                            <div class="lien">[Clique pour plus d'infos]</div>
-                          </div>
-                        </div>
+                      <a href="#">
+                        <div class="block"></div>
                       </a>
-                      <a href="http://assos.utc.fr/event/show/425">
-                        <div class="block">
-                          <span clas="perm_asso">Picasso</span>
-                          <div class="detail d-left d-2">
-                            <div class="date">Lundi 05 Mai</div>
-                            <div class="perm">12h15 - 14h15</div>
-                            <div class="asso">Picasso</div>
-                            <div class="titre">Ouverture du Pic !</div>
-                            <div class="corps">OPEN THE PIC</div>
-                            <div class="lien">[Clique pour plus d'infos]</div>
-                          </div>
-                        </div>
+                      <a href="#">
+                        <div class="block"></div>
                       </a>
-                      <a href="http://assos.utc.fr/event/show/425">
-                        <div class="block">
-                          <span clas="perm_asso">Picasso</span>
-                          <div class="detail d-left d-3">
-                            <div class="date">Lundi 05 Mai</div>
-                            <div class="perm">14h15 - 18h15</div>
-                            <div class="asso">Picasso</div>
-                            <div class="titre">Ouverture du Pic !</div>
-                            <div class="corps">OPEN THE PIC</div>
-                            <div class="lien">[Clique pour plus d'infos]</div>
-                          </div>
-                        </div>
+                      <a href="#">
+                        <div class="block"></div>
                       </a>
-                      <a href="http://assos.utc.fr/event/show/425">
+                      <a href="http://assos.utc.fr/event/show/502">
                         <div class="block">
-                          <span clas="perm_asso">Picasso</span>
+                          <span clas="perm_asso">Pompom Rugby</span>
                           <div class="detail d-left d-4">
-                            <div class="date">Lundi 05 Mai</div>
+                            <div class="date">Lundi 16 Juin</div>
                             <div class="perm">18h30 - 22h00</div>
-                            <div class="asso">Picasso</div>
-                            <div class="titre">Ouverture du Pic !</div>
-                            <div class="corps">OPEN THE PIC</div>
+                            <div class="asso">Pompom - Rugby</div>
+                            <div class="titre">Perm Lundi (Pompom - Rugby)</div>
+                            <div class="corps">Des Pompoms, des Rugbywomen et du fun</div>
                             <div class="lien">[Clique pour plus d'infos]</div>
                           </div>
                         </div>
-                      </a>
+                      </a> 
                     </div>
                     <!-- MARDI -->
                     <div class="columns">
-                      <a href="http://assos.utc.fr/event/show/429">
-                        <div class="block">
-                          <span clas="perm_asso">Etuville</span>
-                          <div class="detail d-left d-1">
-                            <div class="date">Mardi 06 Mai</div>
-                            <div class="perm">10h15 - 12h15</div>
-                            <div class="asso">Etuville</div>
-                            <div class="titre">Matinée douceur avec etuville</div>
-                            <div class="corps">Réveil en douceur avec la team d'Etuville</div>
-                            <div class="lien">[Clique pour plus d'infos]</div>
-                          </div>
-                        </div>
+                      <a href="#">
+                        <div class="block"></div>
                       </a>
-                      <a href="http://assos.utc.fr/event/show/422">
-                        <div class="block">
-                          <span clas="perm_asso">Supporter'UTC</span>
-                          <div class="detail d-left d-2">
-                            <div class="date">Mardi 06 Mai</div>
-                            <div class="perm">12h15 - 14h15</div>
-                            <div class="asso">Supporter'UTC</div>
-                            <div class="titre">American lunch par les pom-poms girls de l'utc</div>
-                            <div class="corps">Les Pom-poms Girls de l'UTC t'invitent à leur American Lunch mardi 6 mai !</div>
-                            <div class="lien">[Clique pour plus d'infos]</div>
-                          </div>
-                        </div>
+                      <a href="#">
+                        <div class="block"></div>
                       </a>
-                      <a href="http://assos.utc.fr/event/show/422">
-                        <div class="block">
-                          <span clas="perm_asso">Supporter'UTC</span>
-                          <div class="detail d-left d-3">
-                            <div class="date">Mardi 06 Mai</div>
-                            <div class="perm">14h15 - 18h15</div>
-                            <div class="asso">Supporter'UTC</div>
-                            <div class="titre">American lunch par les pom-poms girls de l'utc</div>
-                            <div class="corps">Les Pom-poms Girls de l'UTC t'invitent à leur American Lunch mardi 6 mai !</div>
-                            <div class="lien">[Clique pour plus d'infos]</div>
-                          </div>
-                        </div>
+                      <a href="#">
+                        <div class="block"></div>
                       </a>
-                      <a href="http://assos.utc.fr/event/show/421">
-                        <div class="block">
-                          <span clas="perm_asso">PMDE</span>
-                          <div class="detail d-left d-4">
-                            <div class="date">Mardi 06 Mai</div>
-                            <div class="perm">18h30 - 22h00</div>
-                            <div class="asso">PMDE</div>
-                            <div class="titre">Perm HAWAII par le PMDE</div>
-                            <div class="corps">Du soleil, des fleurs, des palmiers et de la bière !</div>
-                            <div class="lien">[Clique pour plus d'infos]</div>
-                          </div>
-                        </div>
+                      <a href="#">
+                        <div class="block"></div>
                       </a>
                     </div>
                     <!-- MERCREDI -->
@@ -270,15 +237,15 @@
                       <a href="#">
                         <div class="block"></div>
                       </a>
-                      <a href="http://assos.utc.fr/event/show/424">
+                      <a href="http://assos.utc.fr/event/show/500">
                         <div class="block">
-                          <span clas="perm_asso">Cac'Carotte</span>
-                          <div class="detail d-right d-2">
-                            <div class="date">Mercredi 07 Mai</div>
+                          <span clas="perm_asso">Club Chine</span>
+                          <div class="detail d-left d-2">
+                            <div class="date">Mercredi 18 Juin</div>
                             <div class="perm">12h15 - 14h15</div>
-                            <div class="asso">Cac'Carotte</div>
-                            <div class="titre">PERM CAC'CAROTTE</div>
-                            <div class="corps">Des légumes dans votre assiette au Pic mercredi midi!</div>
+                            <div class="asso">Club Chine</div>
+                            <div class="titre">Déjeuner chaud! Nouilles à wok!</div>
+                            <div class="corps">Déjeuner chaud! Nouilles à wok!</div>
                             <div class="lien">[Clique pour plus d'infos]</div>
                           </div>
                         </div>
@@ -286,19 +253,10 @@
                       <a href="#">
                         <div class="block"></div>
                       </a>
-                      <a href="http://assos.utc.fr/event/show/426">
-                        <div class="block">
-                          <span clas="perm_asso">La Jolie Douche</span>
-                          <div class="detail d-right d-4">
-                            <div class="date">Mercredi 07 Mai</div>
-                            <div class="perm">18h30 - 22h00</div>
-                            <div class="asso">Jolie Douche</div>
-                            <div class="titre">Pic'Asso - Jolie Douche</div>
-                            <div class="corps">La Jolie Douche au Pic 1800</div>
-                            <div class="lien">[Clique pour plus d'infos]</div>
-                          </div>
-                        </div>
+                      <a href="#">
+                        <div class="block"></div>
                       </a>
+                      
                     </div>
                     <!-- JEUDI -->
                     <div class="columns">
@@ -311,8 +269,18 @@
                       <a href="#">
                         <div class="block"></div>
                       </a>
-                      <a href="#">
-                        <div class="block"></div>
+                      <a href="http://assos.utc.fr/event/show/503">
+                        <div class="block">
+                          <span clas="perm_asso">Motherfuckers</span>
+                          <div class="detail d-right d-4">
+                            <div class="date">Jeudi 19 Juin</div>
+                            <div class="perm">18h30 - 22h00</div>
+                            <div class="asso">Motherfuckers</div>
+                            <div class="titre">Perm Full Moon Party</div>
+                            <div class="corps">le Pic'Asso ouvre pour une des DERNIÈRES fois ses portes, pour une soirée enflammée sur la plage Thaïlandaise</div>
+                            <div class="lien">[Clique pour plus d'infos]</div>
+                          </div>
+                        </div>
                       </a>
                     </div>
                     <!-- VENDREDI -->
@@ -320,114 +288,119 @@
                       <a href="#">
                         <div class="block"></div>
                       </a>
-                      <a href="http://assos.utc.fr/event/show/431">
-                        <div class="block">
-                          <span clas="perm_asso">BDE-UTC</span>
-                          <div class="detail d-right d-2">
-                            <div class="date">Vendredi 09 Mai</div>
-                            <div class="perm">12h15 - 14h15</div>
-                            <div class="asso">BDE-UTC</div>
-                            <div class="titre">Quand le BDE se met aux fourneaux</div>
-                            <div class="corps">Envie d'une ambiance sympas en mangeant un bout? Passe à la perm du BDE ;)</div>
-                            <div class="lien">[Clique pour plus d'infos]</div>
-                          </div>
-                        </div>
+                      <a href="#">
+                        <div class="block"></div>
                       </a>
                       <a href="#">
                         <div class="block"></div>
                       </a>
-                      <a href="http://assos.utc.fr/event/show/427">
-                        <div class="block">
-                          <span clas="perm_asso">XK&QB</span>
-                          <div class="detail d-right d-4">
-                            <div class="date">Vendredi 09 Mai</div>
-                            <div class="perm">18h30 - 22h00</div>
-                            <div class="asso">xK&QB</div>
-                            <div class="titre">Pic'Asso - xK&QB</div>
-                            <div class="corps">XK&QB</div>
-                            <div class="lien">[Clique pour plus d'infos]</div>
-                          </div>
-                        </div>
+                      <a href="#">
+                        <div class="block"></div>
                       </a>
                     </div>
+
+
+<?php  /*
+list($perm1_start, $perm1_end) = explode(';', $perms[0]);
+list($perm2_start, $perm2_end) = explode(';', $perms[1]);
+list($perm3_start, $perm3_end) = explode(';', $perms[2]);
+list($perm4_start, $perm4_end) = explode(';', $perms[3]);
+
+// Parcours des 5 jours
+for ($i = 0; $i < 5; $i++) {
+?>
+
+  <div class="columns">
+
+  <?php
+  // Pour chaque perm d'une journée
+  for ($j = 0; $j < 4; $j++) {
+
+    $found = false;
+    $nb = 0;
+
+    for ($k = 0; $k < count($cal_titre); $k++) {
+
+      list($cal_date_s, $cal_date_e) = explode(';', $cal_date[$k]);
+      list($cal_horaire_s, $cal_horaire_e) = explode(';', $cal_horaire[$k]);
+
+      if ($cal_tag[$k] == $perm) {
+
+        $nb = $nb + 1;
+
+        if () {
+          
+        }
+      }
+    }
+    
+
+
+    if (!$found) { ?>
+      <a href="#">
+        <div class="block">
+          <span class="perm_asso"><?php echo $nb; ?></span>
+        </div>
+      </a>
+    <?php } else { ?>
+      <a href=<?php echo $cal_url[$nb]; ?>>
+        <div class="block">
+          <span class="perm_asso"><?php echo $cal_asso[$nb]; ?></span>
+          <?php if($i < 3) { ?> 
+            <div class="detail d-left d-"<?php echo $j;?>>
+          <?php } else { ?>
+            <div class="detail d-right d-"<?php echo $j;?>>
+          <?php } ?>
+            <div class="date"><?php echo $cal_date_s; ?></div>
+            <div class="perm"><?php echo $cal_horaire_s; ?></div>
+            <div class="asso"><?php echo $cal_asso[$nb]; ?></div>
+            <div class="titre"><?php echo $cal_titre[$nb]; ?></div>
+            <div class="corps"><?php echo $cal_corps[$nb]; ?></div>
+            <div class="lien">[Clique pour plus d'infos]</div>
+          </div>
+        </div>
+      </a>
+    <?php }
+    } ?>
+  </div>
+<?php } */?>
+
                   </div>
                   <div class="clear"></div>
-                </section>
-                <section class="box visible-phone">
-                  <div class="coming_soon">Coming Soon !</div>
                 </section>
               </section>
 
               <!-- ########### WEEKBIERE ########## -->
               <section class="slides" id="weekbieres">
                 <h1>Bières de la semaine</h1>
-                <!--h3>Semestre <?php echo $semestre; ?> - Semaine du <?php echo preg_replace('#(.*)/(.*)/(.*)$#', '$1/$2', $semaine_start); ?> au <?php echo preg_replace('#(.*)/(.*)/(.*)$#', '$1/$2', $semaine_end); ?></h3-->
-                <h3>Semestre <?php echo $semestre; ?> - Semaine du 05/05 au 10/05</h3>
+                <h3>Semestre <?php echo $semestre; ?> - Semaine du <?php echo preg_replace('#(.*)/(.*)/(.*)$#', '$1/$2', $semaine_start); ?> au <?php echo preg_replace('#(.*)/(.*)/(.*)$#', '$1/$2', $semaine_end); ?></h3>
                 <section class="box">
                   <div class="grid2">
                     <div class="columns" id="pression">
                       <h2>Pression</h2>
                       <table class="liste">
+                        <?php foreach ($datas['weekpressions'] as $k => $v): ?>
                         <tr>
-                          <td class="image"><img src="res/img/biere/deliria.jpg" width="100px" length="100px"></td>
-                          <td class="titre">Deliria</td>
-                          <td class="prix">1.80€</td>
-                          <td class="degre">8.5°</td>
+                          <td class="image"><img src=<?php echo $v['img_url']; ?> width="100px" length="100px"></td>
+                          <td class="titre"><?php echo $v['nom']; ?></td>
+                          <td class="prix"><?php echo $v['prix']; ?>€</td>
+                          <td class="degre"><?php echo $v['degre']; ?>°</td>
                         </tr>
-                        <tr>
-                          <td class="image"><img src="res/img/biere/nice_chouffe.jpg" width="100px" length="100px"></td>
-                          <td class="titre">N'ice Chouffe</td>
-                          <td class="prix">2.00€</td>
-                          <td class="degre">10°</td>
-                        </tr>
-                        <tr>
-                          <td class="image"><img src="res/img/biere/hopus.png" width="100px" length="100px"><br/></td>
-                          <td class="titre">Hopus</td>
-                          <td class="prix">1.85€</td>
-                          <td class="degre">8.3°</td>
-                        </tr>
-                        <tr>
-                          <td class="image"><img src="res/img/biere/maredsous.jpg" width="100px" length="100px"></td>
-                          <td class="titre">Maredsous 6</td>
-                          <td class="prix">1.70€</td>
-                          <td class="degre">6°</td>
-                        </tr>
-                        <tr>
-                          <td class="image"><img src="res/img/biere/carolus_classic.jpg" width="100px" length="100px"></td>
-                          <td class="titre">Carolus Classic</td>
-                          <td class="prix">1.60€</td>
-                          <td class="degre">8.5°</td>
-                        </tr>
+                        <?php endforeach ?>
                       </table>
                       <br/>
                     </div>
                     <div class="columns" id="bouteille">
                       <h2>Bouteilles</h2>
                       <table class="liste">
+                        <?php foreach ($datas['weekbouteilles'] as $k => $v): ?>
                         <tr>
-                          <td class="image"><img src="res/img/biere/scotch_silly_barrel_aged.jpg" width="100px" length="100px"></td>
-                          <td class="titre">Scotch Silly Barrel Aged 75cl</td>
-                          <td class="prix">4.50€</td>
-                          <td class="degre">8°</td>
+                          <td class="image"><img src=<?php echo $v['img_url']; ?> width="100px" length="100px"></td>
+                          <td class="titre"><?php echo $v['nom']; ?></td>
+                          <td class="prix"><?php echo $v['prix']; ?>€</td>
+                          <td class="degre"><?php echo $v['degre']; ?>°</td>
                         </tr>
-                        <tr>
-                          <td class="image"><img src="res/img/biere/gulden_draak.jpg" width="100px" length="100px"></td>
-                          <td class="titre">Gulden Draak</td>
-                          <td class="prix">1.60€</td>
-                          <td class="degre">10.7°</td>
-                        </tr>
-                        <tr>
-                          <td class="image"><img src="res/img/biere/namur.jpg" width="100px" length="100px"></td>
-                          <td class="titre">Blanche de Namur</td>
-                          <td class="prix">1.20€</td>
-                          <td class="degre">4.5°</td>
-                        </tr>
-                        <tr>
-                          <td class="image"><img src="res/img/biere/loic_raison.jpg" width="100px" length="100px"></td>
-                          <td class="titre">Cidre Loic Raison</td>
-                          <td class="prix">1.10€</td>
-                          <td class="degre">5.5°</td>
-                        </tr>
+                        <?php endforeach ?>
                       </table>
                     </div>
                   <div class="clear"></div>
@@ -437,152 +410,26 @@
               <!-- ########### GOODIES ########## -->
               <section class="slides" id="goodies">
                 <h1>Goodies</h1>
-                <!--h3>Les gagnants - Semaine du <?php echo preg_replace('#(.*)/(.*)/(.*)$#', '$1/$2', $semaine_start); ?> au <?php echo preg_replace('#(.*)/(.*)/(.*)$#', '$1/$2', $semaine_end); ?></h3-->
-                <h3>Les gagnants de la tombola du <?php echo preg_replace('#(.*)/(.*)/(.*)$#', '$1/$2', $semaine_start); ?></h3>
+                <h3>Les gagnants - Semaine du <?php echo preg_replace('#(.*)/(.*)/(.*)$#', '$1/$2', $semaine_start); ?> au <?php echo preg_replace('#(.*)/(.*)/(.*)$#', '$1/$2', $semaine_end); ?></h3>
                 <section class="box"> 
                   <div class="grid4">
-                  <!--div class="coming_soon">Soon !</div-->
-                    <?php /*foreach ($datas['goodies'] as $k => $v): ?>
-                      <tr class="col-sm-4">
-                        <td><?php echo $v['numero'] ?></td>
-                        <td><?php echo $v['nom'] ?></td>
-                        <td><?php echo $v['prenom'] ?></td>
-                      </tr>
-                    <?php endforeach */?>
                     <div class="columns">
                       <table class="liste">
-                        <tr>
-                          <td class="degre">1</td>
-                          <td class="titre">Léo Thielin</td>
-                        </tr>
-                        <tr>
-                          <td class="degre">2</td>
-                          <td class="titre">Stephane Karagulmez</td>
-                        </tr>
-                        <tr>
-                          <td class="degre">3</td>
-                          <td class="titre">Quentin Ducluzaux</td>
-                        </tr>
-                        <tr>
-                          <td class="degre">4</td>
-                          <td class="titre">Florian Trois</td>
-                        </tr>
-                        <tr>
-                          <td class="degre">5</td>
-                          <td class="titre">Valentine Le Tournoulx</td>
-                        </tr>
-                        <tr>
-                          <td class="degre">6</td>
-                          <td class="titre">Quentin Ducluzaux</td>
-                        </tr>
-                        <tr>
-                          <td class="degre">7</td>
-                          <td class="titre">Fanny Saffroy</td>
-                        </tr>
-                        <tr>
-                          <td class="degre">8</td>
-                          <td class="titre">Alexandre Coden</td>
-                        </tr>
-                      </table>
-                    </div>
-                    <div class="columns">
-                      <table class="liste">
-                        <tr>
-                          <td class="degre">9</td>
-                          <td class="titre">Sarah Ouro-Yondou</td>
-                        </tr>
-                        <tr>
-                          <td class="degre">10</td>
-                          <td class="titre">Anthony Palaprat</td>
-                        </tr>
-                        <tr>
-                          <td class="degre">11</td>
-                          <td class="titre">Florian Conejos</td>
-                        </tr>
-                        <tr>
-                          <td class="degre">12</td>
-                          <td class="titre">Maxime Basset</td>
-                        </tr>
-                        <tr>
-                          <td class="degre">13</td>
-                          <td class="titre">Anthony Palaprat</td>
-                        </tr>
-                        <tr>
-                          <td class="degre">14</td>
-                          <td class="titre">Quentin Dermersedian</td>
-                        </tr>
-                        <tr>
-                          <td class="degre">15</td>
-                          <td class="titre">Romain Fayolle</td>
-                        </tr>
-                        <tr>
-                          <td class="degre">16</td>
-                          <td class="titre">Romain Fayolle</td>
-                        </tr>
-                      </table>
-                    </div>
-                    <div class="columns">
-                      <table class="liste">
-                        <tr>
-                          <td class="degre">17</td>
-                          <td class="titre">Julia Halioua</td>
-                        </tr>
-                        <tr>
-                          <td class="degre">18</td>
-                          <td class="titre">Nathalie Simon</td>
-                        </tr>
-                        <tr>
-                          <td class="degre">19</td>
-                          <td class="titre">Flore Cailloux</td>
-                        </tr>
-                        <tr>
-                          <td class="degre">20</td>
-                          <td class="titre">Grégoire Michenaud-Rague</td>
-                        </tr>
-                        <tr>
-                          <td class="degre">21</td>
-                          <td class="titre">Clément Vasseur</td>
-                        </tr>
-                        <tr>
-                          <td class="degre">22</td>
-                          <td class="titre">Léo Lemeray</td>
-                        </tr>
-                        <tr>
-                          <td class="degre">23</td>
-                          <td class="titre">Yu Jia François Phongphaysane</td>
-                        </tr>
-                        <tr>
-                          <td class="degre">24</td>
-                          <td class="titre">Léo Thielin</td>
-                        </tr>
-                      </table>
-                    </div>
-                    <div class="columns">
-                      <table class="liste">
-                        <tr>
-                          <td class="degre">25</td>
-                          <td class="titre">Sébastien Crest</td>
-                        </tr>
-                        <tr>
-                          <td class="degre">26</td>
-                          <td class="titre">Gwendoline Verot</td>
-                        </tr>
-                        <tr>
-                          <td class="degre">27</td>
-                          <td class="titre">Lise Murgue</td>
-                        </tr>
-                        <tr>
-                          <td class="degre">28</td>
-                          <td class="titre">Mathieu Nicolle</td>
-                        </tr>
-                        <tr>
-                          <td class="degre">29</td>
-                          <td class="titre">Sophie Jeandel</td>
-                        </tr>
-                        <tr>
-                          <td class="degre">30</td>
-                          <td class="titre">Constance Duncan</td>
-                        </tr>
+                        <?php $i = 0;
+                          foreach ($datas['goodies'] as $k => $v):
+                            $i = $i + 1;
+                          ?>  
+                          <tr>
+                            <td class="degre"><?php echo $v['numero']; ?></td>
+                            <td class="titre"><?php echo $v['prenom'] . ' ' . $v['nom']; ?></td>
+                          </tr>
+                          <?php if (($i % 5) == 0) { ?>
+                            </table>
+                            </div>
+                            <div class="columns">
+                            <table class="liste">
+                          <?php }
+                          endforeach ?>
                       </table>
                     </div>
                   </div>
@@ -595,7 +442,6 @@
                 <h1>Tarifs</h1>
                 <h3>Semestre <?php echo $semestre; ?></h3>
                 <section class="box">
-                  <!--div class="grid4"-->
                   <div class="grid4">
                     <div class="columns">
                       <h2>Pression</h2>
@@ -683,7 +529,7 @@
           </div>
         </div>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="res/js/jquery-1.9.1.min.js"></script>
+        <!--script src="res/js/jquery-1.9.1.min.js"></script-->
         <script src="res/js/jquery.plugin.js"></script>
         <script src="res/js/jquery.easing.js"></script>
         <script src="res/js/jquery.scrollspy.js"></script>

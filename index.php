@@ -161,7 +161,7 @@ $app->post('/admin/add-:action(-:id)', $isLogged(),  function ($action,$id = nul
         $d['isUpdate'] = true;
         echo json_encode($d);
       }else{
-        if($action == "users"){
+        if($action == "site_users"){
           $pdo->save($action,$d,false);
         }else{
           $pdo->save($action,$d);
@@ -181,11 +181,11 @@ $app->get('/admin', $CASauthenticate('admin'),  function () use ($app){
     $week_end = date('Y-m-d', strtotime('+'.(6-$day).' days'));
     $datas = array();
     try{
-      $datas['goodies'] = $pdo->find("select * from goodies order by semaine DESC, numero, nom, prenom;");
-      $datas['bieres'] = $pdo->find("select * from bieres order by semaine DESC, category, nom, prix;");
-      $datas['softs'] = $pdo->find("select * from softs order by nom, prix;");
-      $datas['snacks'] = $pdo->find("select * from snacks order by nom, prix;");
-      $datas['users'] = $pdo->find("select * from users order by login;");
+      $datas['goodies'] = $pdo->find("select * from site_goodies order by semaine DESC, numero, nom, prenom;");
+      $datas['bieres'] = $pdo->find("select * from site_bieres order by semaine DESC, category, nom, prix;");
+      $datas['softs'] = $pdo->find("select * from site_softs order by nom, prix;");
+      $datas['snacks'] = $pdo->find("select * from site_snacks order by nom, prix;");
+      $datas['users'] = $pdo->find("select * from site_users order by login;");
     }catch(PDOException $e){
       $app->flashNow('error','Une erreur est survenue lors des requêtes à la BDD!');
     }
@@ -346,7 +346,7 @@ $app->get('/', function () use ($app){
 
       $a = preg_replace('#^"id":"(.*)","title":"(.*)$#', '$1', $evt);
       $b = preg_replace('#^"id":"(.*)","title":"(.*)","start":(.*)$#', '$2', $evt);
-      $c = date('d/m/Y', preg_replace('#^"id":"(.*)","title":"(.*)","start":(.*),"end":(.*)$#', '$3', $evt));
+      $c = date('d/m/Y@', preg_replace('#^"id":"(.*)","title":"(.*)","start":(.*),"end":(.*)$#', '$3', $evt));
       $d = preg_replace('#^"id":"(.*)","title":"(.*)","start":(.*),"end":(.*)$#', '$3', $evt);
       $e = date('d/m/Y', preg_replace('#^"id":"(.*)","title":"(.*)","start":(.*),"end":(.*),"url":"(.*)$#', '$4', $evt));
       $f = preg_replace('#^"id":"(.*)","title":"(.*)","start":(.*),"end":(.*),"url":"(.*)$#', '$4', $evt);
@@ -405,12 +405,16 @@ $app->get('/', function () use ($app){
         $app->flashNow('error','Impossible de charger les produits depuis Payutc');
     }
     
-    $datas['goodies'] = $pdo->find("SELECT numero,nom,prenom FROM goodies;");/* WHERE semaine = '$schema' ORDER BY numero,nom,prenom; ");*/
-    $datas['weekbieres'] = $pdo->find("SELECT nom,degre,prix,img_url FROM bieres WHERE disabled = 0 AND semaine = '$schema' ORDER BY prix ASC, degre DESC, nom ;");
-    $datas['softs'] = $pdo->find("SELECT nom,prix FROM softs WHERE disabled = 0 ORDER BY prix, nom;");
-    $datas['snacks'] = $pdo->find("SELECT nom,prix FROM snacks WHERE disabled = 0;");/* ORDER BY prix, nom; "); */
-    $datas['bouteilles'] = $pdo->find("SELECT nom,degre,prix FROM bieres WHERE category = 'BOUTEILLE' AND disabled = 0 ORDER BY prix ASC, degre DESC, nom; ");
-    $datas['pressions'] = $pdo->find("SELECT nom,degre,prix FROM bieres WHERE category = 'PRESSION' AND disabled = 0 ORDER BY prix ASC, degre DESC, nom; ");
+    $datas['goodies'] = $pdo->find("SELECT numero,nom,prenom FROM site_goodies;");/* WHERE semaine = '$schema' ORDER BY numero,nom,prenom; ");*/
+    $datas['weekbouteilles'] = $pdo->find("SELECT nom,degre,prix,img_url FROM site_bieres WHERE category = 'BOUTEILLE' AND disabled = 0 AND weekbiere = 1 ORDER BY prix ASC, degre DESC, nom ;");
+    $datas['weekpressions'] = $pdo->find("SELECT nom,degre,prix,img_url FROM site_bieres WHERE category = 'PRESSION' AND disabled = 0 AND weekbiere = 1 ORDER BY prix ASC, degre DESC, nom ;");
+    $datas['softs'] = $pdo->find("SELECT nom,prix FROM site_softs WHERE disabled = 0 ORDER BY prix, nom;");
+    $datas['sucre'] = $pdo->find("SELECT nom,prix FROM site_snacks WHERE disabled = 0 AND category = 'SUCRÉ';");
+    $datas['frais'] = $pdo->find("SELECT nom,prix FROM site_snacks WHERE disabled = 0 AND category = 'FRAIS';");
+    $datas['matin'] = $pdo->find("SELECT nom,prix FROM site_snacks WHERE disabled = 0 AND category = 'MATIN';");
+    $datas['sale'] = $pdo->find("SELECT nom,prix FROM site_snacks WHERE disabled = 0 AND category = 'SALÉ';");
+    $datas['bouteilles'] = $pdo->find("SELECT nom,degre,prix FROM site_bieres WHERE category = 'BOUTEILLE' AND disabled = 0 AND weekbiere = 0 ORDER BY prix ASC, degre DESC, nom; ");
+    $datas['pressions'] = $pdo->find("SELECT nom,degre,prix FROM site_bieres WHERE category = 'PRESSION' AND disabled = 0 AND weekbiere = 0 ORDER BY prix ASC, degre DESC, nom; ");
 
     $ouverture_matin = Config::get('ouverture_matin');
     $ouverture_soir = Config::get('ouverture_soir');
@@ -455,9 +459,19 @@ $app->get('/', function () use ($app){
             'now' => $now
         ));        
     }
-
-
 })->name('home');
+
+$app->get('/info', function () use ($app){
+    $app->render('info.php',array(
+        'server'   => $app->request()->getRootUri()
+  ));
+});
+
+$app->get('/treso', function () use ($app){
+    $app->render('https:assos.utc.fr/picasso/treso/index.php',array(
+        'server'   => $app->request()->getRootUri()
+  ));
+});
 
 $app->notFound(function () use ($app) {
   $app->render('404.php',array(

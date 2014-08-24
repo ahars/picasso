@@ -29,10 +29,11 @@
 }
 
 section#compteur {
-	@include container(800px);
+	@include container;//(800px);
 	div#countdown{
-		@include container(800px center);
+		@include container;//(800px center);
 		@include columns(1 1 1 1 1 1 1 1);
+		padding-left: 30px;
 		div{
 			&.cd_element {
 				@include span(12.5%);
@@ -43,7 +44,7 @@ section#compteur {
 				text-align:right;
 			}
 			&.cd_label{
-				text-align:center;
+				text-align:left;
 			}
 		}
 	}	
