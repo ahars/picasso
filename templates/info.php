@@ -20,7 +20,7 @@
     <header class="fixed">
       <div class="container-header">
         <div id="main-logo">
-          <a href="http://assos.utc.fr/picasso"><img src="res/img/logo_P14.png" alt="Picasso Logo"></a>
+          <a href="http://assos.utc.fr/picasso"><img src="res/img/logo_A14.png" alt="Picasso Logo"></a>
         </div>
           <ul class="menu-right">
             <li><a id="menu-info" class="visible-desktop" href="http://assos.utc.fr/picasso"><span id="icon-home"></span></a></li>
@@ -62,9 +62,9 @@
           <!-- ########### TROMBI ########## -->
           <section class="slides" id="trombi">
             <h1>Trombi</h1>
-            <h3>Équipe Pic'Asso - P14</h3>
+            <h3>Équipe Pic'Asso - A14</h3>
             <section class="box">
-              <img src="res/img/Trombinoscope_PicassoP14.png" id="trombi">
+              <img src="res/img/Trombinoscope_PicassoA14.png" id="trombi">
               <div class="clear"></div>
             </section>
           </section>

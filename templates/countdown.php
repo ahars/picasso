@@ -19,7 +19,7 @@
     <header class="fixed">
         <div class="container">
           <div id="main-logo">
-            <a href="http://assos.utc.fr/picasso"><img src="res/img/logo_P14.png" alt="Picasso Logo"></a>
+            <a href="http://assos.utc.fr/picasso"><img src="res/img/logo_A14.png" alt="Picasso Logo"></a>
         </div>
         <div id="menu-right">
           <ul class="menu-right">
