@@ -52,7 +52,7 @@
                   <section class="box">
                     <?php 
                       if (!empty($article_img)) {
-                        echo '<img src="' . $article_img . '" width="' . $article_width . '" height="' . $article_height . '" class="picture">';
+                        echo '<img src="' . $article_img . '" width="' . $article_img_width . '" height="' . $article_img_height . '" class="picture">';
                       }
                     ?>
                     <div class="article">
