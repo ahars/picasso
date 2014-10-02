@@ -21,7 +21,7 @@
         <header class="fixed">
             <div class="container-header">
               <div id="main-logo">
-                <a href="http://assos.utc.fr/picasso"><img src="res/img/logo_P14.png" alt="Picasso Logo"></a>
+                <a href="http://assos.utc.fr/picasso"><img src="res/img/logo_A14.png" alt="Picasso Logo"></a>
             </div>
               <ul class="menu-right">
                 <li><a id="menu-info" href="info"><span id="icon-info"></span></a></li>
@@ -52,7 +52,7 @@
                   <section class="box">
                     <?php 
                       if (!empty($article_img)) {
-                        echo '<img src="' . $article_img . '" width="' . $article_width . '" height="' . $article_height . '" class="picture">';
+                        echo '<img src="' . $article_img . '" width="' . $article_img_width . '" height="' . $article_img_height . '" class="picture">';
                       }
                     ?>
                     <div class="article">
